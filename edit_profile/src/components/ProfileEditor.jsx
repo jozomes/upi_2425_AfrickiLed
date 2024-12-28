@@ -18,7 +18,7 @@ function ProfileEditor() {
       <div>
         <form>
             <div>
-                <label htmlFor="description">Product description:</label>
+                <label htmlFor="description">Malo duzi opis:</label>
                 <textarea id="description"
                     name="short_desc"
                     minLength="1"
