@@ -4,39 +4,39 @@ import '../cssFiles/mainMenu.css'
 function MainMenu() {
    return (
     <>
-        <body>
+        
         <div>
         <header>
-            <div class="parent_header">
-                <h1 class="header_naslov">Get Commit</h1>
+            <div className="parent_header">
+                <h1 className="header_naslov">Get Commit</h1>
             </div>
-            <div class="parent_logout">
-                <button class="logout">Log Out</button>
+            <div className="parent_logout">
+                <button className="logout">Log Out</button>
             </div>
         </header>
         </div>
-        <div class="parent_user_window">
-            <div class="user_window">
-                <div class="parent_user_image">
-                    <div class="user_image">
+        <div className="parent_user_window">
+            <div className="user_window">
+                <div className="parent_user_image">
+                    <div className="user_image">
                         <img src="" alt="User Profile" />
                     </div>
                 </div>
-                <div class="user_description">
+                <div className="user_description">
                   <p>Ime: </p>
                   <p>Godine: </p>
                   <p>Opis: </p>
                   <p>Smjer: </p>
                 </div>
-                <div class="parent_buttons">
-                  <button class="buttons">0</button>
-                  <button class="buttons">1</button>
+                <div className="parent_buttons">
+                  <button className="buttons">0</button>
+                  <button className="buttons">1</button>
                 </div>
               </div>
         </div>
-    </body>
+    
     <footer>
-        <div class="footer">
+        <div className="footer">
             <p>Credits:</p>
             <a>About</a>
             <a>Contact Us</a>
