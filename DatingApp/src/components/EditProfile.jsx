@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import stil from '../cssFiles/LoginForm.module.css'
 
 function EditProfile() {
     const [formaPodaci, postaviPodatke] = useState({
@@ -17,20 +17,29 @@ function EditProfile() {
     }
 
     return (
-      <div>
+      <div className={stil.container}>
+        <div className={stil.header}>
+            <div className={stil.text}>Uređivanje profila</div>
+            <div className={stil.underline}></div>
+        </div>
         <form>
             <div>
-                <label htmlFor="description">Malo duzi opis:</label>
-                <textarea id="description"
+                <label htmlFor="description">Malo duži opis:</label>
+                <div className={stil.inputs}>
+                <div className={stil.input}>
+                    <textarea id="description"
                     name="short_desc"
                     minLength="1"
                     maxLength="100"
-                    onChange={promjenaUlaza}>
-                </textarea>
+                    onChange={promjenaUlaza}
+                    placeholder='Duži opis'>
+                  </textarea>      
+                </div>
             </div>
             <div>
                 <label>
                     Najdrazi programski jezik
+                    <div className={stil.input}>
                     <select
                     name='fav_language'
                     value={formaPodaci.fav_language}
@@ -43,17 +52,26 @@ function EditProfile() {
                             </option>
                         ))}
                     </select>
+                    </div>
                 </label>
+                
             </div>
             <div>
                 <label htmlFor="GitHubAccount">GitHub:</label>
-                <input type="text" name="github" value={formaPodaci.github} onChange={promjenaUlaza} >
+                <div className={stil.input}>
+                <input type="text" name="github" value={formaPodaci.github} onChange={promjenaUlaza} 
+                placeholder='GitHub'>
                 </input>
+                </div>
             </div>
             <div>
                 <label htmlFor="LeetCodeAccount">LeetCode:</label>
-                <input type="text" name="leetcode" value={formaPodaci.leetcode} onChange={promjenaUlaza} >
-                </input>
+                <div className={stil.input}>
+                    <input type="text" name="leetcode" value={formaPodaci.leetcode} onChange={promjenaUlaza} 
+                    placeholder='LeetCode'>
+                    </input>
+                </div>
+            </div>
             </div>
         </form>
       </div>
