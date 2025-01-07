@@ -1,0 +1,21 @@
+[
+  {
+    "email": "jmestrovi@pmfst.hr",
+    "ime": "Jozo",
+    "prezime": "Meštrović",
+    "putanjaZaSliku": "RuzanKoNocNemaSlike",
+    "lozinka": "volimnasilje",
+    "smjer": "ArijskaInfa",
+    "opis": "Goat",
+    "najdraziProgramskiJezik": "C#",
+    "github": "jozomes",
+    "leetcode": "enjinir",
+    "detalji": {
+      "opis": "Goat",
+      "najdraziProgramskiJezik": "C#",
+      "github": "jozomes",
+      "leetcode": "enjinir"
+    },
+    "liked": []
+  }
+]
