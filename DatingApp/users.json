@@ -17,5 +17,24 @@
       "leetcode": "enjinir"
     },
     "liked": []
+  },
+  {
+    "email": "ioreb@pmfst.hr",
+    "ime": "Ivana",
+    "prezime": "Oreb",
+    "putanjaZaSliku": ":)",
+    "lozinka": "lozinka123",
+    "smjer": "Informatika",
+    "opis": ":)",
+    "najdraziProgramskiJezik": "Python",
+    "github": "ivanaoreb",
+    "leetcode": "ivanaoreb",
+    "detalji": {
+      "opis": ":)",
+      "najdraziProgramskiJezik": "Python",
+      "github": "ivanaoreb",
+      "leetcode": "ivanaoreb"
+    },
+    "liked": []
   }
 ]

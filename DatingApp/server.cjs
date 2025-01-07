@@ -37,6 +37,27 @@ app.listen(PORT, () => {
   console.log(`Server sluša zahtjeve na portu ${PORT}`);
 });
 
+app.get('/users', (req, res) => {
+  console.log("Primljen zahtjev za '/users' endpoint");
+  console.log("Korisnici:", users);
+  if(users.length==0){console.log("nema korisnika");}
+  res.json({message:"radi molim te"});
+});
+
+app.get('/login', (req, res) =>{
+  const {email, lozinka} = req.query;
+
+  if(!email || !lozinka){
+    return res.status(400).json({error:'Sva polja moraju biti popunjena!'});
+  }
+  const korisnik=users.find(user => user.email===email && user.lozinka ===lozinka);
+
+  if(!korisnik){
+    return res.status(401).json({error: "Neispravni podatci"});
+  }
+  res.status(200).json({message:"Uspješna prijava!", korisnik});
+});
+
 app.post('/users', (req, res) => {
   const newUser = req.body;
 
