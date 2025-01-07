@@ -5,7 +5,7 @@ const MyComponent = () => {
 
   useEffect(() => {
     // Make a request to the backend when the component mounts
-    fetch('http://localhost:3000/api/hello')
+    fetch('http://localhost:5000/api/hello')
       .then((response) => response.json())  // Parse JSON response
       .then((data) => setMessage(data.message))  // Set the response message
       .catch((error) => console.error('Error:', error));  // Handle any errors
