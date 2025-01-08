@@ -44,7 +44,7 @@ app.get('/users', (req, res) => {
   res.json({message:"radi molim te"});
 });
 
-//Zahtjev na serveru za specifican mail, vraca mail ako postoji vraca null ako nije
+
 app.get('/users/:mail', (req, res) => {
   const potentialMail = req.params.mail;
 
