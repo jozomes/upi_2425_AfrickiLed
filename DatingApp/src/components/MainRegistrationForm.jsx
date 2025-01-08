@@ -42,6 +42,11 @@ function MainRegistrationForm() {
     const SendData = event => {
         event.preventDefault();
 
+        if (!formaPodaci.email.endsWith("@pmfst.hr")) {
+            alert("Unesite pmfst.hr domenu");
+            return;
+        }
+
         if (formaPodaci.lozinka != formaPodaci.ponovi_lozinku) {
             alert("Lozinke se ne podudaraju");
             return;
