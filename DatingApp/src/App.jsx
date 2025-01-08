@@ -7,12 +7,14 @@ import ServerTest from './components/ServerTest'
 import RegistrationForm from './components/RegistrationForm'
 import LoginForm from './components/LoginForm'
 import RegistrationTest from './components/RegistrationTest'
+import MainRegistrationForm from './components/MainRegistrationForm'
 
 function App() {
 
   return (
     <>
       <RegistrationTest />
+      <MainRegistrationForm></MainRegistrationForm>
       <LoginForm />
       <RegistrationForm />
       <ServerTest />
