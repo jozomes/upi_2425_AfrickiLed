@@ -36,5 +36,19 @@
       "leetcode": "ivanaoreb"
     },
     "liked": []
+  },
+  {
+    "email": "muvodic@pmfst.hr",
+    "lozinka": "123456",
+    "smjer": "Informatika",
+    "ime": "Mariela",
+    "prezime": "Uvodic",
+    "detalji": {
+      "opis": "Nema ga",
+      "najdraziProgramskiJezik": "python",
+      "github": "manje22",
+      "leetcode": "manje2004"
+    },
+    "liked": []
   }
 ]

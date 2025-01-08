@@ -35,7 +35,8 @@ function MainRegistrationForm() {
                 "najdraziProgramskiJezik": object.fav_language,
                 "github":object.github,
                 "leetcode":object.leetcode
-            }
+            },
+            "liked":[]
         }
     }
 
@@ -53,6 +54,10 @@ function MainRegistrationForm() {
         }
         const zaSlanje = ParseData(formaPodaci);
         console.log(zaSlanje);
+
+        axios.post('http://localhost:5000/users', zaSlanje)
+        .then(rez=> console.log(rez))
+        .catch(err => console.log(err))
     }
 
     return(
