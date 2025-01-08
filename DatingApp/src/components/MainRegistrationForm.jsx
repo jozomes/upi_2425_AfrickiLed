@@ -40,7 +40,27 @@ function MainRegistrationForm() {
         }
     }
 
-    const SendData = event => {
+    async function JedinstvenMail(mail){
+        const url = `http://localhost:5000/users/${mail}`;
+
+        try{
+            const rez = await axios.get(url);
+            if (rez.status === 200)
+            {
+                console.log("Email ok");
+                return true;
+            }
+        }catch (err) {
+            if (err.response && err.response.status === 400) {
+                return false;
+            }
+            console.error("Dogodila se greska: ", err);
+        }
+
+        return false;
+    }
+
+    const SendData = async event => {
         event.preventDefault();
 
         if (!formaPodaci.email.endsWith("@pmfst.hr")) {
@@ -52,12 +72,24 @@ function MainRegistrationForm() {
             alert("Lozinke se ne podudaraju");
             return;
         }
+
+        const jedinstven = await JedinstvenMail(formaPodaci.email);
+        if (!jedinstven) {
+            alert("Ovaj mail se vec koristi");
+            return;
+        }
+
         const zaSlanje = ParseData(formaPodaci);
         console.log(zaSlanje);
 
-        axios.post('http://localhost:5000/users', zaSlanje)
-        .then(rez=> console.log(rez))
-        .catch(err => console.log(err))
+        try {
+            const response = await axios.post('http://localhost:5000/users', zaSlanje);
+            console.log(response);
+            alert("Registracija uspješna!");
+        } catch (err) {
+            console.error("Greška prilikom slanja podataka:", err);
+            alert("Došlo je do greške prilikom registracije.");
+        }
     }
 
     return(

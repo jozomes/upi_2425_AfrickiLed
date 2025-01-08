@@ -50,5 +50,19 @@
       "leetcode": "manje2004"
     },
     "liked": []
+  },
+  {
+    "email": "novaosoba@pmfst.hr",
+    "lozinka": "abc",
+    "smjer": "Informatika",
+    "ime": "nova",
+    "prezime": "osoba",
+    "detalji": {
+      "opis": "Ova je test, jeli radi registracija",
+      "najdraziProgramskiJezik": "tajna je :)",
+      "github": "osoba",
+      "leetcode": "osobaLeet"
+    },
+    "liked": []
   }
 ]
