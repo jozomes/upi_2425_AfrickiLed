@@ -36,5 +36,47 @@
       "leetcode": "ivanaoreb"
     },
     "liked": []
+  },
+  {
+    "email": "muvodic@pmfst.hr",
+    "lozinka": "123456",
+    "smjer": "Informatika",
+    "ime": "Mariela",
+    "prezime": "Uvodic",
+    "detalji": {
+      "opis": "Nema ga",
+      "najdraziProgramskiJezik": "python",
+      "github": "manje22",
+      "leetcode": "manje2004"
+    },
+    "liked": []
+  },
+  {
+    "email": "novaosoba@pmfst.hr",
+    "lozinka": "abc",
+    "smjer": "Informatika",
+    "ime": "nova",
+    "prezime": "osoba",
+    "detalji": {
+      "opis": "Ova je test, jeli radi registracija",
+      "najdraziProgramskiJezik": "tajna je :)",
+      "github": "osoba",
+      "leetcode": "osobaLeet"
+    },
+    "liked": []
+  },
+  {
+    "email": "nova2@pmfst.hr",
+    "lozinka": "123",
+    "smjer": "Matematika",
+    "ime": "mate",
+    "prezime": "matić",
+    "detalji": {
+      "opis": "duzi opis osobe",
+      "najdraziProgramskiJezik": "c",
+      "github": "mateGit",
+      "leetcode": "mateLeet"
+    },
+    "liked": []
   }
 ]

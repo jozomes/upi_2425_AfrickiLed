@@ -44,6 +44,20 @@ app.get('/users', (req, res) => {
   res.json({message:"radi molim te"});
 });
 
+
+app.get('/users/:mail', (req, res) => {
+  const potentialMail = req.params.mail;
+
+  const existingUser = users.find(user => user.email.toLowerCase() === potentialMail);
+
+  if (existingUser) {
+      return res.status(400).json({ error: 'Email already exists' });
+  }
+
+  return res.status(200).json({message:"Ne postoji korisnik, sve ok!"})
+});
+
+
 app.get('/login', (req, res) =>{
   const {email, lozinka} = req.query;
 
