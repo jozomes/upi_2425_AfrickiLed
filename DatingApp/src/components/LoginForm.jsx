@@ -71,9 +71,9 @@ function LoginForm() {
                 </div>
             </div>
 
-            <li>
+            <div>
                 <Link to={"/register"}>Nemas profil?</Link>
-            </li>
+            </div>
         </div>
     );
 }
