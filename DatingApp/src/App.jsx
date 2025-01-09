@@ -15,16 +15,18 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/register' element={<MainRegistrationForm></MainRegistrationForm>}></Route>
+        <Route path="/" element={<LoginForm />}></Route>
+        <Route path="/register" element={<MainRegistrationForm />}></Route> 
       </Routes>
-      <RegistrationTest />
+
+      {/* <RegistrationTest />
       <MainRegistrationForm></MainRegistrationForm>
       <LoginForm />
       <RegistrationForm />
       <ServerTest />
       <EditProfile />
       <LargeProfile />
-      <MainMenu />
+      <MainMenu /> */}
     </>
   )
 }
