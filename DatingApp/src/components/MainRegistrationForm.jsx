@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function MainRegistrationForm() {
     const [formaPodaci, postaviPodatke] = useState({
@@ -247,7 +247,9 @@ function MainRegistrationForm() {
                 </div>
                 <button type="submit">Prijavi se</button>
             </form>
-            
+            <div>
+                <Link to={"/"}>Imas vec profil?</Link>
+            </div>
         </div>
     )
 }

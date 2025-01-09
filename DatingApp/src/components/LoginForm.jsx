@@ -26,7 +26,7 @@ function LoginForm() {
 
             setError("");
             // alert("Prijava uspješna!");
-            navigate("/MainMenu");
+            navigate("/MainMenu")
         }
         catch(error){
             setError("Došlo je do pogreške s poslužiteljem.");
