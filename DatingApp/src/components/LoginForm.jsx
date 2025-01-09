@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import stil from '../cssFiles/LoginForm.module.css';
+import { Link } from 'react-router-dom';
 
 function LoginForm() {
     const [email, setEmail] = useState("");
@@ -66,6 +67,10 @@ function LoginForm() {
                     Prijava
                 </div>
             </div>
+
+            <li>
+                <Link to={"/register"}>Nemas profil?</Link>
+            </li>
         </div>
     );
 }

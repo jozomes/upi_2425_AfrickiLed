@@ -8,11 +8,15 @@ import RegistrationForm from './components/RegistrationForm'
 import LoginForm from './components/LoginForm'
 import RegistrationTest from './components/RegistrationTest'
 import MainRegistrationForm from './components/MainRegistrationForm'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
 
   return (
     <>
+      <Routes>
+        <Route path='/register' element={<MainRegistrationForm></MainRegistrationForm>}></Route>
+      </Routes>
       <RegistrationTest />
       <MainRegistrationForm></MainRegistrationForm>
       <LoginForm />
