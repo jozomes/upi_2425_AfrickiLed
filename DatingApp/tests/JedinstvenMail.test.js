@@ -1,6 +1,6 @@
-// JedinstvenMail.test.js
+
 const axios = require('axios');
-const JedinstvenMail = require('./JedinstvenMail.js'); // Adjust the import path accordingly
+const JedinstvenMail = require('./JedinstvenMail.js'); 
 
 jest.mock('axios');
 
