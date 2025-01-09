@@ -64,5 +64,19 @@
       "leetcode": "osobaLeet"
     },
     "liked": []
+  },
+  {
+    "email": "nova2@pmfst.hr",
+    "lozinka": "123",
+    "smjer": "Matematika",
+    "ime": "mate",
+    "prezime": "matić",
+    "detalji": {
+      "opis": "duzi opis osobe",
+      "najdraziProgramskiJezik": "c",
+      "github": "mateGit",
+      "leetcode": "mateLeet"
+    },
+    "liked": []
   }
 ]
