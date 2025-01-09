@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginForm />}></Route>
         <Route path="/register" element={<MainRegistrationForm />}></Route>
-        <Route path="/MainMenu" element={MainMenu}></Route>
+        <Route path="/MainMenu" element={<MainMenu/>}></Route>
       </Routes>
 
       {/* <RegistrationTest />

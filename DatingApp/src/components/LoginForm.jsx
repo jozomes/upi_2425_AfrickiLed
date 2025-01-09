@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import stil from '../cssFiles/LoginForm.module.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
     const [email, setEmail] = useState("");
     const [lozinka, setLozinka] = useState("");
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async () => {
         if (!email || !lozinka) {
@@ -23,7 +25,8 @@ function LoginForm() {
             }
 
             setError("");
-            alert("Prijava uspješna!");
+            // alert("Prijava uspješna!");
+            navigate("/MainMenu");
         }
         catch(error){
             setError("Došlo je do pogreške s poslužiteljem.");
