@@ -1,17 +1,18 @@
 import { useState } from 'react'
 import '../cssFiles/mainMenu.css'
+import { useNavigate } from 'react-router-dom'
 
 function MainMenu() {
+    const navigate = useNavigate();
    return (
     <>
-        
         <div>
         <header>
             <div className="parent_header">
                 <h1 className="header_naslov">Get Commit</h1>
             </div>
             <div className="parent_logout">
-                <button className="logout">Log Out</button>
+                <button className="logout" onClick={() => navigate("/")}>Log Out</button>
             </div>
         </header>
         </div>
