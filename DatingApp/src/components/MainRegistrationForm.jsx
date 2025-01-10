@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 function MainRegistrationForm() {
     const [formaPodaci, postaviPodatke] = useState({
@@ -22,6 +23,7 @@ function MainRegistrationForm() {
 
     const smjerovi = ["Informatika", "Informatika-tehnika", "Matematika", "Fizika ", "Biologija-kemija"];
     const prog_lang = ["python", "c#", "javascript", "c++", "c", "java", "php", "rust", "tajna je :)"];
+    const navigate = useNavigate();
 
     function ParseData(object) {
         return{
@@ -85,7 +87,8 @@ function MainRegistrationForm() {
         try {
             const response = await axios.post('http://localhost:5000/users', zaSlanje);
             console.log(response);
-            alert("Registracija uspješna!");
+            //alert("Registracija uspješna!");
+            navigate("/");
         } catch (err) {
             console.error("Greška prilikom slanja podataka:", err);
             alert("Došlo je do greške prilikom registracije.");
@@ -244,7 +247,9 @@ function MainRegistrationForm() {
                 </div>
                 <button type="submit">Prijavi se</button>
             </form>
-            
+            <div>
+                <Link to={"/"}>Imas vec profil?</Link>
+            </div>
         </div>
     )
 }

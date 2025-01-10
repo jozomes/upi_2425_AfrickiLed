@@ -78,5 +78,33 @@
       "leetcode": "mateLeet"
     },
     "liked": []
+  },
+  {
+    "email": "markolivaja@pmfst.hr",
+    "lozinka": "hajduk",
+    "smjer": "Fizika ",
+    "ime": "Marko",
+    "prezime": "Livaja",
+    "detalji": {
+      "opis": "Ja san nogometas, hajduk",
+      "najdraziProgramskiJezik": "tajna je :)",
+      "github": "markoGit",
+      "leetcode": "markoLeet"
+    },
+    "liked": []
+  },
+  {
+    "email": "lukaModric@pmfst.hr",
+    "lozinka": "nogomet",
+    "smjer": "Matematika",
+    "ime": "Luka",
+    "prezime": "Modric",
+    "detalji": {
+      "opis": ":P",
+      "najdraziProgramskiJezik": "c",
+      "github": "",
+      "leetcode": ""
+    },
+    "liked": []
   }
 ]

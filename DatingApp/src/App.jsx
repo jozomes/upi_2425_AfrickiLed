@@ -8,19 +8,26 @@ import RegistrationForm from './components/RegistrationForm'
 import LoginForm from './components/LoginForm'
 import RegistrationTest from './components/RegistrationTest'
 import MainRegistrationForm from './components/MainRegistrationForm'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
 
   return (
     <>
-      <RegistrationTest />
+      <Routes>
+        <Route path="/" element={<LoginForm />}></Route>
+        <Route path="/register" element={<MainRegistrationForm />}></Route>
+        <Route path="/MainMenu" element={<MainMenu/>}></Route>
+      </Routes>
+
+      {/* <RegistrationTest />
       <MainRegistrationForm></MainRegistrationForm>
       <LoginForm />
       <RegistrationForm />
       <ServerTest />
       <EditProfile />
       <LargeProfile />
-      <MainMenu />
+      <MainMenu /> */}
     </>
   )
 }
