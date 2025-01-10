@@ -7,6 +7,7 @@ function EditProfile() {
         fav_language: "",
         github: "",
         leetcode: "",
+        profileImage: null,
       });
 
     const prog_lang = ["python", "c#", "javascript", "c++", "c", "java", "php", "rust", "tajna je :)"];
@@ -16,13 +17,74 @@ function EditProfile() {
         postaviPodatke({ ...formaPodaci, [name]: value });
     }
 
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if(file){
+            postaviPodatke({ ...formaPodaci, profileImage: file});
+        }
+    };
+    const [profilePicture, setProfilePicture] = useState("");
+
+    const handleImageUpload = async (event) => {
+        const formData = new FormData();
+        formData.append('profilePicture', event.target.files[0]);
+
+        try {
+            const response = await fetch('http://localhost:5000/upload-profile-picture', {
+            method: 'POST',
+             body: formData,
+            });
+
+            const data = await response.json();
+    
+            if (response.ok) {
+                console.log('Slika uspješno spremljena:', data.imageUrl);
+                setProfilePicture(data.imageUrl); // Spremi URL slike u stanje
+            } else {
+                console.error('Greška pri uploadu slike:', data.message);
+            }
+        } catch (error) {
+            console.error('Došlo je do greške:', error);
+            }
+};
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append('profileImage', formaPodaci.profileImage);
+        formData.append('short_desc', formaPodaci.short_desc);
+        formData.append('fav_language', formaPodaci.fav_language);
+        formData.append('github', formaPodaci.github);
+        formData.append('leetcode', formaPodaci.leetcode);
+
+         try {
+            const response = await fetch('http://localhost:5000/upload-profile-picture', {
+            method: 'POST',
+            body: formData,
+            });
+
+            // Check for non-OK response
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Greška pri uploadu slike:', errorData.message);
+                return;
+            }
+
+            const data = await response.json();
+            console.log('Slika uspješno spremljena:', data);  // Check server response
+        } catch (error) {
+            console.error('Greška prilikom slanja slike:', error);
+        }
+};
+
+
     return (
       <div className={stil.container}>
         <div className={stil.header}>
             <div className={stil.text}>Uređivanje profila</div>
             <div className={stil.underline}></div>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="description">Malo duži opis:</label>
                 <div className={stil.inputs}>
@@ -72,6 +134,16 @@ function EditProfile() {
                     </input>
                 </div>
             </div>
+            <div>
+                <label htmlFor="profileImage">Upload slike</label>
+                <input
+                    type="file"
+                    name="profileImage"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                />
+            </div>
+            <button type="submit">Spremi profil</button>
             </div>
         </form>
       </div>

@@ -5,10 +5,28 @@ const cors = require("cors")
 const fs = require("fs")
 const path = require("path")
 
+const multer = require("multer")
+
 const app = express();
 //MIDDLEWARE
 app.use(cors());
 app.use(express.json());
+
+const uploadFolder = path.join(__dirname, 'profilePictures');
+if(!fs.existsSync(uploadFolder)){
+  fs.mkdirSync(uploadFolder);
+}
+
+const storage = multer.diskStorage({
+  destination: function(req,file,cb){
+    cb(null, uploadFolder);
+  },
+  filename: function(req, file, cb){
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({storage: storage})
 
 
 ///////////////////////////////////////
@@ -101,3 +119,22 @@ app.post('/users', (req, res) => {
 
   res.status(201).json(userToAdd);
 });
+
+app.post('/upload-profile-picture', upload.single('profileImage'), (req, res) => {
+  if (!req.file) {
+    console.log('Nema slike za upload');
+    return res.status(400).json({ message: 'Slika nije poslata' });
+  }
+
+  // Generiraj URL za pristup slici
+  const imageUrl = `http://localhost:5000/profilePictures/${req.file.filename}`;
+  console.log('Slika uspješno spremljena:', req.file.filename);
+
+  // Pošaljite URL slike kao odgovor
+  res.status(200).json({
+    message: 'Slika uspješno spremljena',
+    imageUrl: imageUrl
+  });
+});
+
+app.use('/profilePictures', express.static('profilePictures'));
