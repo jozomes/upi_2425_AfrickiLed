@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 import stil from '../cssFiles/LoginForm.module.css'
 import axios from 'axios';
 import { UserContext } from '../App';
+import { useNavigate } from 'react-router-dom';
 
 function EditProfile() {
     const {currentUser, setCurrentUser} = useContext(UserContext);
@@ -14,6 +15,7 @@ function EditProfile() {
       });
 
     const prog_lang = ["python", "c#", "javascript", "c++", "c", "java", "php", "rust", "tajna je :)"];
+    const navigate = useNavigate();
 
     function promjenaUlaza(event) {
         const { name, value } = event.target;
@@ -98,6 +100,10 @@ function EditProfile() {
         }
     }
 
+    const Exit = (event) => {
+        event.preventDefault();
+        navigate("/MainMenu");
+    }
 
     return (
       <div className={stil.container}>
@@ -166,6 +172,7 @@ function EditProfile() {
                 />
             </div>
             <button type="submit">Spremi profil</button>
+            <button onClick={Exit}>Povratak na main menu</button>
             </div>
         </form>
       </div>
