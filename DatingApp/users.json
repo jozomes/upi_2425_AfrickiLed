@@ -106,5 +106,19 @@
       "leetcode": ""
     },
     "liked": []
+  },
+  {
+    "email": "jozomestrovi@pmfst.hr",
+    "lozinka": "jej",
+    "smjer": "Informatika",
+    "ime": "Davor Daki",
+    "prezime": "Skender",
+    "detalji": {
+      "opis": "When in doubt get it out!",
+      "najdraziProgramskiJezik": "javascript",
+      "github": "ne dam ",
+      "leetcode": "nista"
+    },
+    "liked": []
   }
 ]
