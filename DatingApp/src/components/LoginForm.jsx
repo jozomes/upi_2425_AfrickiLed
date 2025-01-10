@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import stil from '../cssFiles/LoginForm.module.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -37,6 +37,10 @@ function LoginForm() {
             //console.error("Greška: ", error);
         }
     };
+
+    useEffect(()=> {
+        console.log('currentuser updated: ', currentUser);
+    }, [currentUser]);
 
     return (
         <div className={stil.container}>

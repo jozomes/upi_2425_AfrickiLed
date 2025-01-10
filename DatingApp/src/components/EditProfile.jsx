@@ -1,16 +1,21 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import stil from '../cssFiles/LoginForm.module.css'
+import axios from 'axios';
+import { UserContext } from '../App';
+import { useNavigate } from 'react-router-dom';
 
 function EditProfile() {
+    const {currentUser, setCurrentUser} = useContext(UserContext);
     const [formaPodaci, postaviPodatke] = useState({
-        short_desc: "",
-        fav_language: "",
-        github: "",
-        leetcode: "",
+        short_desc: currentUser.detalji.short_desc,
+        fav_language: currentUser.detalji.fav_language,
+        github: currentUser.detalji.github,
+        leetcode: currentUser.detalji.leetcode,
         profileImage: null,
       });
 
     const prog_lang = ["python", "c#", "javascript", "c++", "c", "java", "php", "rust", "tajna je :)"];
+    const navigate = useNavigate();
 
     function promjenaUlaza(event) {
         const { name, value } = event.target;
@@ -75,8 +80,30 @@ function EditProfile() {
         } catch (error) {
             console.error('Greška prilikom slanja slike:', error);
         }
-};
+    };
 
+    const UpdateProfile = async (event) => {
+        event.preventDefault();
+
+        try {
+            const response = await axios.patch(`http://localhost:5000/update/${currentUser.email}`,{
+                detalji: {
+                    "opis": formaPodaci.short_desc,
+                    "najdraziProgramskiJezik": formaPodaci.fav_language,
+                    "github": formaPodaci.github,
+                    "leetcode": formaPodaci.leetcode,
+                }
+            });
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const Exit = (event) => {
+        event.preventDefault();
+        navigate("/MainMenu");
+    }
 
     return (
       <div className={stil.container}>
@@ -84,7 +111,8 @@ function EditProfile() {
             <div className={stil.text}>Uređivanje profila</div>
             <div className={stil.underline}></div>
         </div>
-        <form onSubmit={handleSubmit}>
+
+        <form onSubmit={UpdateProfile}>
             <div>
                 <label htmlFor="description">Malo duži opis:</label>
                 <div className={stil.inputs}>
@@ -144,6 +172,7 @@ function EditProfile() {
                 />
             </div>
             <button type="submit">Spremi profil</button>
+            <button onClick={Exit}>Povratak na main menu</button>
             </div>
         </form>
       </div>

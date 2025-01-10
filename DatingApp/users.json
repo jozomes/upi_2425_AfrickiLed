@@ -44,10 +44,10 @@
     "ime": "Mariela",
     "prezime": "Uvodic",
     "detalji": {
-      "opis": "Nema ga",
-      "najdraziProgramskiJezik": "python",
-      "github": "manje22",
-      "leetcode": "manje2004"
+      "opis": "Testiram jeli radi botun za  povratak",
+      "najdraziProgramskiJezik": "c#",
+      "github": "neki",
+      "leetcode": "nekidrugi"
     },
     "liked": []
   },
@@ -86,8 +86,8 @@
     "ime": "Marko",
     "prezime": "Livaja",
     "detalji": {
-      "opis": "Ja san nogometas, hajduk",
-      "najdraziProgramskiJezik": "tajna je :)",
+      "opis": "Igrac hajduka i novi programer",
+      "najdraziProgramskiJezik": "rust",
       "github": "markoGit",
       "leetcode": "markoLeet"
     },
