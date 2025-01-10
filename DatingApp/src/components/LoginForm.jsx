@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import stil from '../cssFiles/LoginForm.module.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../App';
 
 function LoginForm() {
     const [email, setEmail] = useState("");
     const [lozinka, setLozinka] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const {currentUser, setCurrentUser} = useContext(UserContext);
 
     const handleSubmit = async () => {
         if (!email || !lozinka) {
@@ -26,7 +28,9 @@ function LoginForm() {
 
             setError("");
             // alert("Prijava uspješna!");
-            navigate("/MainMenu")
+            console.log(data.korisnik);
+            setCurrentUser(data.korisnik);
+            navigate("/MainMenu");
         }
         catch(error){
             setError("Došlo je do pogreške s poslužiteljem.");

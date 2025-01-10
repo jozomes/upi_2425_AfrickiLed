@@ -1,9 +1,18 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import '../cssFiles/mainMenu.css'
 import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../App';
 
 function MainMenu() {
     const navigate = useNavigate();
+    const {currentUser, setCurrentUser} = useContext(UserContext);
+
+    const LogOutAndExit = () =>{
+        setCurrentUser(null);
+        navigate("/");
+        console.log(currentUser);
+    }
+
    return (
     <>
         <div>
@@ -12,7 +21,10 @@ function MainMenu() {
                 <h1 className="header_naslov">Get Commit</h1>
             </div>
             <div className="parent_logout">
-                <button className="logout" onClick={() => navigate("/")}>Log Out</button>
+                <button className="logout" onClick={LogOutAndExit}>Log Out</button>
+            </div>
+            <div>
+                <p>{currentUser.ime}</p>
             </div>
         </header>
         </div>
