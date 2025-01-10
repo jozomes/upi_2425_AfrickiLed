@@ -90,6 +90,29 @@ app.get('/login', (req, res) =>{
   res.status(200).json({message:"Uspješna prijava!", korisnik});
 });
 
+app.patch('/update/:mail', (req,res) =>{
+  const potentialMail = req.params.mail;
+
+  const existingUser = users.find(user => user.email.toLowerCase() === potentialMail);
+
+  if (!existingUser) {
+      return res.status(404).json({ error: 'Nije pronaden taj korisnik' });
+  }
+
+  existingUser.detalji = req.body.detalji;
+
+  fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2), (err) => {
+    if (err) {
+        console.log("Failed to write updated data to file");
+        return;
+    }
+    console.log("Updated file successfully");
+    return res.status(200).json({message:"azuriran korisnik", existingUser});
+  });
+});
+
+
+
 app.post('/users', (req, res) => {
   const newUser = req.body;
 

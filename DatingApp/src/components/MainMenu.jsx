@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 import '../cssFiles/mainMenu.css'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../App';
+import { useEffect } from 'react';
 
 function MainMenu() {
     const navigate = useNavigate();
@@ -13,7 +14,9 @@ function MainMenu() {
         console.log(currentUser);
     }
 
-    
+    useEffect(()=> {
+        console.log('currentuser updated: ', currentUser);
+    }, [currentUser]);
 
    return (
     <>
@@ -28,11 +31,11 @@ function MainMenu() {
             <div className="parent_logout">
                 <button className="logout" onClick={() => navigate("/edit-profile")}>Edit Profile</button>
             </div>
-            
-            {/* <div>
-                <p>{currentUser.ime}</p>
-            </div> */}
+
         </header>
+        <div>
+            <p>{currentUser.ime}</p>
+        </div>
         </div>
         <div className="parent_user_window">
             <div className="user_window">
