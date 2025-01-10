@@ -13,6 +13,8 @@ function MainMenu() {
         console.log(currentUser);
     }
 
+    
+
    return (
     <>
         <div>
@@ -23,16 +25,25 @@ function MainMenu() {
             <div className="parent_logout">
                 <button className="logout" onClick={LogOutAndExit}>Log Out</button>
             </div>
-            <div>
-                <p>{currentUser.ime}</p>
+            <div className="parent_logout">
+                <button className="logout" onClick={() => navigate("/edit-profile")}>Edit Profile</button>
             </div>
+            
+            {/* <div>
+                <p>{currentUser.ime}</p>
+            </div> */}
         </header>
         </div>
         <div className="parent_user_window">
             <div className="user_window">
                 <div className="parent_user_image">
                     <div className="user_image">
-                        <img src="" alt="User Profile" />
+                        {/* Prikazivanje slike korisnika */}
+                        {currentUser && currentUser.profileImage ? (
+                            <img src={currentUser.profileImage} alt="User Profile" />
+                            ) : (
+                                <p>No image available</p>
+                            )}
                     </div>
                 </div>
                 <div className="user_description">

@@ -21,6 +21,7 @@ function App() {
           <Route path="/" element={<LoginForm />}></Route>
           <Route path="/register" element={<MainRegistrationForm />}></Route>
           <Route path="/MainMenu" element={<MainMenu/>}></Route>
+          <Route path="/edit-profile" element={<EditProfile />} />
         </Routes>
       </UserContext.Provider>
     </>
