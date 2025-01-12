@@ -42,11 +42,11 @@ function MainMenu() {
                 <div className="parent_user_image">
                     <div className="user_image">
                         {/* Prikazivanje slike korisnika */}
-                        {currentUser && currentUser.profileImage ? (
-                            <img src={currentUser.profileImage} alt="User Profile" />
-                            ) : (
-                                <p>No image available</p>
-                            )}
+                        {currentUser && currentUser.putanjaZaSliku ? (
+                            <img src={currentUser.putanjaZaSliku} alt="User Profile" />
+                        ) : (
+                            <p>No image available</p>
+                        )}
                     </div>
                 </div>
                 <div className="user_description">
