@@ -80,7 +80,7 @@ function LoginForm() {
             </div>
 
             <div>
-                <Link to={"/register"}>Nemas profil?</Link>
+                <Link to={"/register"}  className={stil.noprofile}>Nemaš profil?</Link>
             </div>
         </div>
     );

@@ -161,13 +161,13 @@ function EditProfile() {
                 </div>
             </div>
             <div>
-                <label htmlFor="profileImage">Upload slike</label>
-                <input
+                <label htmlFor="profileImage">Upload slike:</label>
+                    <input
                     type="file"
                     name="profileImage"
                     accept="image/*"
                     onChange={handleImageChange}
-                />
+                    />
             </div>
             <button type="submit">Spremi profil</button>
             <button onClick={Exit}>Povratak na main menu</button>

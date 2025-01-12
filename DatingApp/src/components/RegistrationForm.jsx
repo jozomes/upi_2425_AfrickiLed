@@ -15,12 +15,6 @@ function RegistrationForm() {
 
   const smjerovi = ["Informatika", "Informatika-tehnika", "Matematika", "Fizika ", "Biologija-kemija"];
 
-  const postojeciKorisnici = [
-    { email: "korisnik1@pmfst.hr" },
-    { email: "korisnik2@pmfst.hr" },
-    { email: "korisnik3@pmfst.hr" },
-  ];
-
   function promjenaUlaza(event) {
     const { name, value } = event.target;
     postaviPodatke({ ...formaPodaci, [name]: value });

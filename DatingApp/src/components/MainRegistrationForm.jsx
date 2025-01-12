@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import stil from '../cssFiles/LoginForm.module.css';
 
 function MainRegistrationForm() {
     const [formaPodaci, postaviPodatke] = useState({
@@ -96,12 +97,16 @@ function MainRegistrationForm() {
     }
 
     return(
-        <div>
-            <h1>Registracija</h1>
+        <div className={stil.container}>
+            <div className={stil.header}>
+               <div className={stil.text}>Registracija</div>
+                <div className={stil.underline}></div>
+            </div>
+            
+            <div className={stil.inputs}>
             <form onSubmit={SendData}>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <div>
+                <label htmlFor="email">Email:</label>
+                <div className={stil.input}>
                     <input
                         id="email"
                         type="email"
@@ -111,12 +116,11 @@ function MainRegistrationForm() {
                         onChange={promjenaUlaza}
                         required
                     />
-                    </div>
                 </div>
 
-                <div>
-                    <label htmlFor="lozinka">Lozinka:</label>
-                    <div>
+               
+                <label htmlFor="lozinka">Lozinka:</label>
+                <div className={stil.input}>
                     <input
                         id="lozinka"
                         type="password"
@@ -126,12 +130,10 @@ function MainRegistrationForm() {
                         onChange={promjenaUlaza}
                         required
                     />
-                    </div>
                 </div>
-
-                <div>
-                    <label htmlFor="ponovi_lozinku">Ponovi lozinku:</label>
-                    <div>
+                
+                <label htmlFor="ponovi_lozinku">Ponovi lozinku:</label>
+                <div className={stil.input}>
                     <input
                         id="ponovi_lozinku"
                         type="password"
@@ -141,12 +143,50 @@ function MainRegistrationForm() {
                         onChange={promjenaUlaza}
                         required
                     />
-                    </div>
+                </div>
+            
+                <hr></hr>
+
+                <label htmlFor="ime">Ime:</label>
+                <div className={stil.input}>
+                    <input
+                        id="ime"
+                        type="text"
+                        name="ime"
+                        value={formaPodaci.ime}
+                        placeholder="Ime"
+                        onChange={promjenaUlaza}
+                        required
+                    />
+                </div>
+               
+                <label htmlFor="prezime">Prezime:</label>
+                <div className={stil.input}>
+                    <input
+                        id="prezime"
+                        type="text"
+                        name="prezime"
+                        value={formaPodaci.prezime}
+                        onChange={promjenaUlaza}
+                        placeholder="Prezime"
+                        required
+                    />
+                </div>
+               
+                <label htmlFor="description">Malo duži opis:</label>
+                <div className={stil.input}>
+                    <textarea id="description"
+                        name="short_desc"
+                        value={formaPodaci.short_desc}
+                        minLength="1"
+                        maxLength="100"
+                        onChange={promjenaUlaza}
+                        placeholder='Duži opis'>
+                    </textarea>      
                 </div>
 
-                <div>
-                    <label htmlFor="smjer">Smjer:</label>
-                    <div >
+                <label htmlFor="smjer">Smjer:</label>
+                <div className={stil.input}>
                     <select
                         id="smjer"
                         name="smjer"
@@ -161,95 +201,50 @@ function MainRegistrationForm() {
                         </option>
                         ))}
                     </select>
-                    </div>
-                </div>
-
-                <div>
-                    <label htmlFor="ime">Ime:</label>
-                    <div>
-                    <input
-                        id="ime"
-                        type="text"
-                        name="ime"
-                        value={formaPodaci.ime}
-                        placeholder="Ime"
-                        onChange={promjenaUlaza}
-                        required
-                    />
-                    </div>
-                </div>
-
-                <div>
-                    <label htmlFor="prezime">PREZIME:</label>
-                    <div>
-                    <input
-                        id="prezime"
-                        type="text"
-                        name="prezime"
-                        value={formaPodaci.prezime}
-                        onChange={promjenaUlaza}
-                        placeholder="Prezime"
-                        required
-                    />
-                    </div>
-                </div>
-
-                <div>
-                    <label htmlFor="description">Malo duži opis:</label>
-                    <div>
-                        <textarea id="description"
-                        name="short_desc"
-                        value={formaPodaci.short_desc}
-                        minLength="1"
-                        maxLength="100"
-                        onChange={promjenaUlaza}
-                        placeholder='Duži opis'>
-                    </textarea>      
-                    </div>
-                </div>
-
-                <div>
-                    <label>
-                        Najdrazi programski jezik
-                        <div>
-                            <select
-                            name='fav_language'
-                            value={formaPodaci.fav_language}
-                            onChange={promjenaUlaza}
-                            required>
-                                <option value=''>--":P"--</option>
-                                {prog_lang.map(lang => (
-                                    <option key={lang} value={lang}>
-                                        {lang}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </label>
                 </div>
                 
-                <div>
-                    <label htmlFor="GitHubAccount">GitHub:</label>
-                    <div>
+                <hr></hr>
+
+                <label htmlFor="description">Najdraži programski jezik:</label>
+                <div className={stil.input}>
+                    <select
+                        name='fav_language'
+                        value={formaPodaci.fav_language}
+                        onChange={promjenaUlaza}
+                        required>
+                            <option value=''>--":P"--</option>
+                            {prog_lang.map(lang => (
+                                <option key={lang} value={lang}>
+                                    {lang}
+                                </option>
+                            ))}
+                    </select>
+                </div>
+                    
+                
+                <label htmlFor="GitHubAccount">GitHub:</label>
+                <div className={stil.input}>
                     <input type="text" name="github" value={formaPodaci.github} onChange={promjenaUlaza} 
                     placeholder='GitHub'>
                     </input>
-                    </div>
                 </div>
                 
-                <div>
-                    <label htmlFor="LeetCodeAccount">LeetCode:</label>
-                    <div>
+                <label htmlFor="LeetCodeAccount">LeetCode:</label>
+                <div className={stil.input}>
                         <input type="text" name="leetcode" value={formaPodaci.leetcode} onChange={promjenaUlaza} 
                         placeholder='LeetCode'>
                         </input>
-                    </div>
                 </div>
+                <div>
                 <button type="submit">Prijavi se</button>
+                </div>
             </form>
-            <div>
-                <Link to={"/"}>Imas vec profil?</Link>
             </div>
+            
+            <div>
+                <Link to={"/"} className={stil.noprofile}>Već imaš profil?</Link>
+            </div>
+
         </div>
     )
 }

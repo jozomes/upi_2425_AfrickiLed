@@ -23,8 +23,8 @@
     font-weight: 150;
 }
 
-.underline{
-    width: 150px;
+.underline, hr{
+    width: 85%;
     height: 5px;
     background: rgb(227, 11, 92);
     border-radius: 10px;
@@ -41,10 +41,11 @@
     display: flex;
     align-items: center;
     margin: auto;
-    width: 350px;
+    width: 85%;
     height: 60px;
     background: rgb(252, 204, 222);
     border-radius: 5px;
+
 }
 
 .input input, textarea{
@@ -57,13 +58,13 @@
     font-size: 20px;
 }
 
-.submitc{
+.submitc, button{
     display: flex;
     gap:30px;
     margin:60px auto;
 }
 
-.submit{
+.submit, button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,4 +81,8 @@
 select{
     border: none;
     background-color: transparent;
+}
+
+.noprofile{
+    color: rgb(248, 72, 137);
 }
