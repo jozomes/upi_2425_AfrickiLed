@@ -146,7 +146,7 @@ app.post('/users', (req, res) => {
 app.post('/upload-profile-picture', upload.single('profileImage'), (req, res) => {
   if (!req.file) {
       console.log('Nema slike za upload');
-      return res.status(400).json({ message: 'Slika nije poslata' });
+      return res.status(400).json({ message: 'Slika nije poslana' });
   }
 
   const imageUrl = `http://localhost:5000/profilePictures/${req.file.filename}`;
