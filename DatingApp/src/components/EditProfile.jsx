@@ -57,18 +57,14 @@ function EditProfile() {
         event.preventDefault();
         const formData = new FormData();
         formData.append('profileImage', formaPodaci.profileImage);
-        formData.append('short_desc', formaPodaci.short_desc);
-        formData.append('fav_language', formaPodaci.fav_language);
-        formData.append('github', formaPodaci.github);
-        formData.append('leetcode', formaPodaci.leetcode);
+        formData.append('email', currentUser.email); // Dodaj email korisnika
 
-         try {
+        try {
             const response = await fetch('http://localhost:5000/upload-profile-picture', {
-            method: 'POST',
-            body: formData,
+                method: 'POST',
+                body: formData,
             });
 
-            // Check for non-OK response
             if (!response.ok) {
                 const errorData = await response.json();
                 console.error('Greška pri uploadu slike:', errorData.message);
@@ -76,12 +72,14 @@ function EditProfile() {
             }
 
             const data = await response.json();
-            console.log('Slika uspješno spremljena:', data);  // Check server response
+            console.log('Slika uspješno spremljena:', data);
+
+            // Ažuriraj trenutno stanje korisnika
+            setCurrentUser({ ...currentUser, putanjaZaSliku: data.putanjaZaSliku });
         } catch (error) {
             console.error('Greška prilikom slanja slike:', error);
         }
-    };
-
+};
     const UpdateProfile = async (event) => {
         event.preventDefault();
 
@@ -112,7 +110,7 @@ function EditProfile() {
             <div className={stil.underline}></div>
         </div>
 
-        <form onSubmit={UpdateProfile}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="description">Malo duži opis:</label>
                 <div className={stil.inputs}>

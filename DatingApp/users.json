@@ -3,7 +3,7 @@
     "email": "jmestrovi@pmfst.hr",
     "ime": "Jozo",
     "prezime": "Meštrović",
-    "putanjaZaSliku": "RuzanKoNocNemaSlike",
+    "putanjaZaSliku": "http://localhost:5000/profilePictures/1736691241979.jpg",
     "lozinka": "volimnasilje",
     "smjer": "ArijskaInfa",
     "opis": "Goat",
@@ -111,8 +111,8 @@
     "email": "jozomestrovi@pmfst.hr",
     "lozinka": "jej",
     "smjer": "Informatika",
-    "ime": "Davor Daki",
-    "prezime": "Skender",
+    "ime": "Filip",
+    "prezime": "Brkljača",
     "detalji": {
       "opis": "When in doubt get it out!",
       "najdraziProgramskiJezik": "javascript",
@@ -120,5 +120,20 @@
       "leetcode": "nista"
     },
     "liked": []
+  },
+  {
+    "email": "dskendero@pmfst.hr",
+    "lozinka": "123123",
+    "smjer": "Informatika i tehnika",
+    "ime": "Davor",
+    "prezime": "Skenderović",
+    "detalji": {
+      "opis": "Ko rano rani sam u nju upada",
+      "najdraziProgramskiJezik": "ASSEMBLY",
+      "github": "hub",
+      "leetcode": "leetleet"
+    },
+    "liked": [],
+    "putanjaZaSliku": "http://localhost:5000/profilePictures/1736691563842.jpg"
   }
 ]
