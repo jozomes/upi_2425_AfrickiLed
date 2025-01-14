@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1736544602183" clover="3.2.0">
+  <project timestamp="1736544602183" name="All files">
+    <metrics statements="46" coveredstatements="42" conditionals="20" coveredconditionals="17" methods="3" coveredmethods="3" elements="69" coveredelements="62" complexity="0" loc="46" ncloc="46" packages="1" files="3" classes="3"/>
+    <file name="JedinstvenMail.js" path="C:\Users\Jozo\Desktop\localupi\DatingApp\tests\JedinstvenMail.js">
+      <metrics statements="12" coveredstatements="12" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="3" count="3" type="stmt"/>
+      <line num="5" count="3" type="stmt"/>
+      <line num="6" count="3" type="stmt"/>
+      <line num="7" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="13" count="2" type="cond" truecount="4" falsecount="0"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="19" count="1" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
+    </file>
+    <file name="SendData.js" path="C:\Users\Jozo\Desktop\localupi\DatingApp\tests\SendData.js">
+      <metrics statements="19" coveredstatements="15" conditionals="6" coveredconditionals="4" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="15" count="3" type="stmt"/>
+      <line num="18" count="3" type="cond" truecount="1" falsecount="1"/>
+      <line num="19" count="0" type="stmt"/>
+      <line num="20" count="0" type="stmt"/>
+      <line num="24" count="3" type="cond" truecount="1" falsecount="1"/>
+      <line num="25" count="0" type="stmt"/>
+      <line num="26" count="0" type="stmt"/>
+      <line num="29" count="3" type="stmt"/>
+      <line num="31" count="3" type="stmt"/>
+      <line num="33" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="34" count="1" type="stmt"/>
+      <line num="35" count="1" type="stmt"/>
+      <line num="39" count="2" type="stmt"/>
+      <line num="45" count="1" type="stmt"/>
+      <line num="48" count="1" type="stmt"/>
+      <line num="49" count="1" type="stmt"/>
+      <line num="53" count="1" type="stmt"/>
+    </file>
+    <file name="handleSubmit.js" path="C:\Users\Jozo\Desktop\localupi\DatingApp\tests\handleSubmit.js">
+      <metrics statements="15" coveredstatements="15" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="6" type="cond" truecount="4" falsecount="0"/>
+      <line num="4" count="2" type="stmt"/>
+      <line num="5" count="2" type="stmt"/>
+      <line num="8" count="4" type="stmt"/>
+      <line num="9" count="4" type="stmt"/>
+      <line num="10" count="3" type="stmt"/>
+      <line num="12" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="13" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="14" count="2" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="20" count="1" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
+      <line num="25" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
