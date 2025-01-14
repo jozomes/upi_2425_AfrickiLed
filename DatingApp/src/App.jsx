@@ -15,6 +15,7 @@ export const UserContext = createContext(null);
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  const [isInitializing, setIsInitializing] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -32,7 +33,12 @@ function App() {
         localStorage.removeItem("token");
       }
     }
+    setIsInitializing(false);
   }, []);
+
+  if (isInitializing) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
