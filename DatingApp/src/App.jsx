@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, useEffect } from 'react'
 import './App.css'
 import EditProfile from './components/EditProfile'
 import LargeProfile from './components/LargeProfile'
@@ -9,11 +9,31 @@ import LoginForm from './components/LoginForm'
 import RegistrationTest from './components/RegistrationTest'
 import MainRegistrationForm from './components/MainRegistrationForm'
 import { Route, Routes } from 'react-router-dom'
+import { jwtDecode } from 'jwt-decode'
 
 export const UserContext = createContext(null);
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if(token){
+      try {
+        const decoded = jwtDecode(token);
+        const currentTime = Date.now()/1000;
+        if (decoded.exp > currentTime) {
+          setCurrentUser(decoded.korisnik);
+        }else{
+          localStorage.removeItem("token");
+        }
+      } catch (error) {
+        console.error("Invalid token: ", error);
+        localStorage.removeItem("token");
+      }
+    }
+  }, []);
+
   return (
     <>
       <UserContext.Provider value={{currentUser, setCurrentUser}}>

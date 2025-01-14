@@ -10,6 +10,7 @@ function MainMenu() {
 
     const LogOutAndExit = () =>{
         setCurrentUser(null);
+        localStorage.removeItem("token");
         navigate("/");
         console.log(currentUser);
     }
@@ -19,6 +20,10 @@ function MainMenu() {
             navigate("/");
         }
     }, [currentUser, navigate]);
+
+    if (!currentUser) {
+        return null;
+    }
 
    return (
     <div className='container'>
