@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors")
+const jwt = require('jsonwebtoken');
 
 //potrebno za zapis korisnika
 const fs = require("fs")
@@ -11,6 +12,23 @@ const app = express();
 //MIDDLEWARE
 app.use(cors());
 app.use(express.json());
+
+const provjeriToken = (req, res, next)=>{
+  const authZaglavlje = req.headers['authorization'];
+  if(!authZaglavlje) return res.status(403).send('Ne postoji autorizacijsko zaglavlje');
+
+  const token = authZaglavlje.split(' ')[1];
+  if (!token) return res.status(403).send('Bearer token nije pronaden');
+
+  try{
+    const dekodiraniToken = jwt.verify(token, 'getCommit');
+    req.korisnik = dekodiraniToken;
+  }catch(err){
+    return res.status(401).send('Neispravni token');
+  }
+
+  return next();
+}
 
 const uploadFolder = path.join(__dirname, 'profilePictures');
 if(!fs.existsSync(uploadFolder)){
@@ -78,16 +96,26 @@ app.get('/users/:mail', (req, res) => {
 
 app.get('/login', (req, res) =>{
   const {email, lozinka} = req.query;
-
-  if(!email || !lozinka){
-    return res.status(400).json({error:'Sva polja moraju biti popunjena!'});
+  try {
+    if(!email || !lozinka){
+      return res.status(400).json({error:'Sva polja moraju biti popunjena!'});
+    }
+    const korisnik=users.find(user => user.email===email && user.lozinka ===lozinka);
+  
+    if(!korisnik){
+      return res.status(401).json({error: "Neispravni podatci"});
+    }
+    //res.status(200).json({message:"Uspješna prijava!", korisnik});
+    const token = jwt.sign(
+      {idkorisnika: korisnik.mail},
+      'getCommit',
+      {expiresIn: '1h'}
+    );
+    res.json({token});
+  } catch (error) {
+    res.status(500).send(error.message);
   }
-  const korisnik=users.find(user => user.email===email && user.lozinka ===lozinka);
-
-  if(!korisnik){
-    return res.status(401).json({error: "Neispravni podatci"});
-  }
-  res.status(200).json({message:"Uspješna prijava!", korisnik});
+  
 });
 
 app.patch('/update/:mail', (req,res) =>{

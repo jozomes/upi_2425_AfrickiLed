@@ -135,5 +135,20 @@
     },
     "liked": [],
     "putanjaZaSliku": "http://localhost:5000/profilePictures/1736691563842.jpg"
+  },
+  {
+    "email": "jay@pmfst.hr",
+    "lozinka": "lozinka",
+    "smjer": "Biologija-kemija",
+    "ime": "Jay",
+    "prezime": "Pas",
+    "detalji": {
+      "opis": "ja sam pas i testitram da radim prije sta krenem",
+      "najdraziProgramskiJezik": "tajna je :)",
+      "github": "pas",
+      "leetcode": "pas"
+    },
+    "liked": [],
+    "putanjaZaSliku": "http://localhost:5000/profilePictures/1736883884006.png"
   }
 ]
