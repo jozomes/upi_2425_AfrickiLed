@@ -107,7 +107,7 @@ app.get('/login', (req, res) =>{
     }
     //res.status(200).json({message:"Uspješna prijava!", korisnik});
     const token = jwt.sign(
-      {idkorisnika: korisnik.mail},
+      {korisnik: korisnik},
       'getCommit',
       {expiresIn: '1h'}
     );

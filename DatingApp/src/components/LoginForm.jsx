@@ -3,6 +3,8 @@ import stil from '../cssFiles/LoginForm.module.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
+import { jwtDecode } from 'jwt-decode';
+import axios from 'axios';
 
 function LoginForm() {
     const [email, setEmail] = useState("");
@@ -18,25 +20,24 @@ function LoginForm() {
         }
         
         try{
-            const response = await fetch(`http://localhost:5000/login?email=${encodeURIComponent(email)}&lozinka=${encodeURIComponent(lozinka)}`)
+            const res = await axios.get(`http://localhost:5000/login?email=${encodeURIComponent(email)}&lozinka=${encodeURIComponent(lozinka)}`)
+            const token = res.data.token;
+            localStorage.setItem("token", token);
 
-            const data=await response.json();
+            const decoded = jwtDecode(token);
+            setCurrentUser(decoded.korisnik);
 
-            if(!response.ok){
-                setError(data.error || "Neispravni podaci za prijavu");
-            }
-
-            setError("");
-            // alert("Prijava uspješna!");
-            console.log(data.korisnik);
-            setCurrentUser(data.korisnik);
             navigate("/MainMenu");
         }
         catch(error){
             setError("Došlo je do pogreške s poslužiteljem.");
-            //console.error("Greška: ", error);
+            console.error("Greška: ", error);
         }
     };
+
+    useEffect(() => {
+        console.log('currentUser updated: ', currentUser);
+    }, [currentUser]);
 
     useEffect(()=> {
         console.log('currentuser updated: ', currentUser);

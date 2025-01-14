@@ -58,6 +58,21 @@ function EditProfile() {
         const formData = new FormData();
         formData.append('profileImage', formaPodaci.profileImage);
         formData.append('email', currentUser.email); // Dodaj email korisnika
+        
+
+        try {
+            const response = await axios.patch(`http://localhost:5000/update/${currentUser.email}`,{
+                detalji: {
+                    "opis": formaPodaci.short_desc,
+                    "najdraziProgramskiJezik": formaPodaci.fav_language,
+                    "github": formaPodaci.github,
+                    "leetcode": formaPodaci.leetcode,
+                }
+            });
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
 
         try {
             const response = await fetch('http://localhost:5000/upload-profile-picture', {
@@ -80,23 +95,23 @@ function EditProfile() {
             console.error('Greška prilikom slanja slike:', error);
         }
 };
-    const UpdateProfile = async (event) => {
-        event.preventDefault();
+    // const UpdateProfile = async (event) => {
+    //     event.preventDefault();
 
-        try {
-            const response = await axios.patch(`http://localhost:5000/update/${currentUser.email}`,{
-                detalji: {
-                    "opis": formaPodaci.short_desc,
-                    "najdraziProgramskiJezik": formaPodaci.fav_language,
-                    "github": formaPodaci.github,
-                    "leetcode": formaPodaci.leetcode,
-                }
-            });
-            console.log(response);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    //     try {
+    //         const response = await axios.patch(`http://localhost:5000/update/${currentUser.email}`,{
+    //             detalji: {
+    //                 "opis": formaPodaci.short_desc,
+    //                 "najdraziProgramskiJezik": formaPodaci.fav_language,
+    //                 "github": formaPodaci.github,
+    //                 "leetcode": formaPodaci.leetcode,
+    //             }
+    //         });
+    //         console.log(response);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
     const Exit = (event) => {
         event.preventDefault();

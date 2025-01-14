@@ -15,8 +15,10 @@ function MainMenu() {
     }
 
     useEffect(()=> {
-        console.log('currentuser updated: ', currentUser);
-    }, [currentUser]);
+        if (!currentUser) {
+            navigate("/");
+        }
+    }, [currentUser, navigate]);
 
    return (
     <div className='container'>
