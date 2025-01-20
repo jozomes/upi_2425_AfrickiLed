@@ -3,16 +3,36 @@ import '../cssFiles/mainMenu.css'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../App';
 import { useEffect } from 'react';
+import axios from 'axios';
 
 function MainMenu() {
     const navigate = useNavigate();
     const {currentUser, setCurrentUser} = useContext(UserContext);
+    const [partners, setPartners] = useState(null);
 
     const LogOutAndExit = () =>{
         setCurrentUser(null);
         localStorage.removeItem("token");
+        localStorage.removeItem("partners");
         navigate("/");
         console.log(currentUser);
+    }
+
+
+    async function GetPartners() {
+        try {
+            const res = await axios.get('http://localhost:5000/browse',{
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                  },
+            })
+            const partners = res.data;
+            console.log(res.data);
+            localStorage.setItem("partners", partners);
+            setPartners(partners);
+        } catch (error) {
+            console.error("Dogodila se greska u dohvacanju drugih usera");
+        }
     }
 
     useEffect(()=> {
@@ -20,6 +40,13 @@ function MainMenu() {
             navigate("/");
         }
     }, [currentUser, navigate]);
+
+    useEffect(()=>{
+        if (!partners) {
+            GetPartners();
+        }
+    }, []);
+
 
     if (!currentUser) {
         return null;

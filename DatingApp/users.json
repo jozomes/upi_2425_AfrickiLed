@@ -64,7 +64,7 @@
       "github": "osoba",
       "leetcode": "osobaLeet"
     },
-    "liked": []
+    "liked": ["nova2@pmfst.hr", "markolivaja@pmfst.hr", "lukaModric@pmfst.hr"]
   },
   {
     "email": "nova2@pmfst.hr",
@@ -87,12 +87,13 @@
     "ime": "Marko",
     "prezime": "Livaja",
     "detalji": {
-      "opis": "Igrac hajduka i novi programer",
-      "najdraziProgramskiJezik": "rust",
+      "opis": "test",
+      "najdraziProgramskiJezik": "tajna je :)",
       "github": "markoGit",
       "leetcode": "markoLeet"
     },
-    "liked": []
+    "liked": [],
+    "putanjaZaSliku": "http://localhost:5000/profilePictures/1737362509434.jpeg"
   },
   {
     "email": "lukaModric@pmfst.hr",
