@@ -1,75 +1,75 @@
-import { useState, useContext } from 'react'
-import '../cssFiles/mainMenu.css'
-import { useNavigate } from 'react-router-dom'
+import { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
-import { useEffect } from 'react';
+import ProfileCard from './ProfileCard'; 
+import '../cssFiles/mainMenu.css';
 
 function MainMenu() {
-    const navigate = useNavigate();
-    const {currentUser, setCurrentUser} = useContext(UserContext);
+  const navigate = useNavigate();
+  const { currentUser, setCurrentUser } = useContext(UserContext);
 
-    const LogOutAndExit = () =>{
-        setCurrentUser(null);
-        navigate("/");
-        console.log(currentUser);
-    }
+  const LogOutAndExit = () => {
+    setCurrentUser(null);
+    navigate("/");
+  };
 
-    useEffect(()=> {
-        console.log('currentuser updated: ', currentUser);
-    }, [currentUser]);
+  useEffect(() => {
+    console.log('currentuser updated: ', currentUser);
+  }, [currentUser]);
 
-   return (
+  return (
     <div className='container'>
-        <div>
-        <header>
-            <div className="parent_header">
-                <h1 className="header_naslov">Get Commit</h1>
-                <div className="underline"></div>
-            </div>
-            <div className="parent_logout">
-                <button className="logout" onClick={LogOutAndExit}>Log Out</button>
-                <button className="logout" onClick={() => navigate("/edit-profile")}>Edit Profile</button>
-            </div>
+      <header>
+        <div className="parent_header">
+          <h1 className="header_naslov">Get Commit</h1>
+          <div className="underline"></div>
+        </div>
+        <div className="parent_logout">
+          <button className="logout" onClick={LogOutAndExit}>Log Out</button>
+          <button className="logout" onClick={() => navigate("/edit-profile")}>Edit Profile</button>
+        </div>
+      </header>
 
-        </header>
-        <div>
-            <h3>Bok, {currentUser.ime}!</h3>
+      <div className="parent_user_window">
+        {/*zakomentirano jer je napisano unutar profile card-a*/}
+        {/* <div className="user_description">
+          <p>Ime: {currentUser?.ime}</p>
+          <p>Godine: {currentUser?.godine}</p>
+          <p>Opis: {currentUser?.opis}</p>
+          <p>Smjer: {currentUser?.smjer}</p>
+        </div> */}
+
+      
+        {currentUser && (
+          <ProfileCard
+            name={currentUser.ime}
+            age={currentUser.godine}
+            shortBio={currentUser.shortBio}
+            major={currentUser.smjer}
+            favLanguage={currentUser.favLanguage}
+            github={currentUser.github}
+            githubProfile={currentUser.githubProfile}
+            longBio={currentUser.longBio}
+            image={currentUser.putanjaZaSliku}
+          />
+        )}
+
+        <div className="btn_like_dislike">
+          <button>0</button>
+          <button>1</button>
         </div>
-        </div>
-        <div className="parent_user_window">
-            <div className="user_window">
-                <div className="parent_user_image">
-                    <div className="user_image">
-                        {/* Prikazivanje slike korisnika */}
-                        {currentUser && currentUser.putanjaZaSliku ? (
-                            <img src={currentUser.putanjaZaSliku} alt="User Profile" />
-                        ) : (
-                            <p>No image available</p>
-                        )}
-                    </div>
-                </div>
-                <div className="user_description">
-                  <p>Ime: </p>
-                  <p>Godine: </p>
-                  <p>Opis: </p>
-                  <p>Smjer: </p>
-                </div>
-                
-                <div className="parent_buttons">
-                  <button>0</button>
-                  <button>1</button>
-                </div>
-              </div>
-        </div>
-    
-    <footer>
+      </div>
+
+      <footer>
         <div className="footer">
-            <p>Credits:</p>
-            <a>About</a>
-            <a>Contact Us</a>
+          <p>Credits:</p>
+          <br></br>
+          <a>About</a>
+          <a>Contact Us</a>
         </div>
-    </footer>
+      </footer>
     </div>
-   )
-  }
-export default MainMenu
+  );
+}
+
+export default MainMenu;

@@ -235,12 +235,13 @@ function MainRegistrationForm() {
                         placeholder='LeetCode'>
                         </input>
                 </div>
+                <br></br>
                 <div>
                 <button type="submit">Prijavi se</button>
                 </div>
             </form>
             </div>
-            
+            <br></br>
             <div>
                 <Link to={"/"} className={stil.noprofile}>Već imaš profil?</Link>
             </div>
