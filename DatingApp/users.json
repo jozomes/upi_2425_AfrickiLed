@@ -64,7 +64,11 @@
       "github": "osoba",
       "leetcode": "osobaLeet"
     },
-    "liked": ["nova2@pmfst.hr", "markolivaja@pmfst.hr", "lukaModric@pmfst.hr"]
+    "liked": [
+      "nova2@pmfst.hr",
+      "markolivaja@pmfst.hr",
+      "lukaModric@pmfst.hr"
+    ]
   },
   {
     "email": "nova2@pmfst.hr",
@@ -93,7 +97,7 @@
       "leetcode": "markoLeet"
     },
     "liked": [],
-    "putanjaZaSliku": "http://localhost:5000/profilePictures/1737362509434.jpeg"
+    "putanjaZaSliku": "http://localhost:5000/profilePictures/1737471600894.jpeg"
   },
   {
     "email": "lukaModric@pmfst.hr",
@@ -137,5 +141,5 @@
     },
     "liked": [],
     "putanjaZaSliku": "http://localhost:5000/profilePictures/1736691563842.jpg"
-  },
+  }
 ]

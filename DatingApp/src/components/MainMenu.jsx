@@ -1,9 +1,8 @@
 import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
-
-import { useEffect } from 'react';
 import axios from 'axios';
+import ProfileCard from './ProfileCard';
 
 function MainMenu() {
     const navigate = useNavigate();
