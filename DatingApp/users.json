@@ -44,12 +44,13 @@
     "ime": "Mariela",
     "prezime": "Uvodic",
     "detalji": {
-      "opis": "Testiram jeli radi botun za  povratak",
-      "najdraziProgramskiJezik": "c#",
+      "opis": "jeli radi edit sa tokenom",
+      "najdraziProgramskiJezik": "c++",
       "github": "neki",
       "leetcode": "nekidrugi"
     },
-    "liked": []
+    "liked": [],
+    "putanjaZaSliku": "http://localhost:5000/profilePictures/1736887076746.png"
   },
   {
     "email": "novaosoba@pmfst.hr",
@@ -63,7 +64,7 @@
       "github": "osoba",
       "leetcode": "osobaLeet"
     },
-    "liked": []
+    "liked": ["nova2@pmfst.hr", "markolivaja@pmfst.hr", "lukaModric@pmfst.hr"]
   },
   {
     "email": "nova2@pmfst.hr",
@@ -86,12 +87,13 @@
     "ime": "Marko",
     "prezime": "Livaja",
     "detalji": {
-      "opis": "Igrac hajduka i novi programer",
-      "najdraziProgramskiJezik": "rust",
+      "opis": "test",
+      "najdraziProgramskiJezik": "tajna je :)",
       "github": "markoGit",
       "leetcode": "markoLeet"
     },
-    "liked": []
+    "liked": [],
+    "putanjaZaSliku": "http://localhost:5000/profilePictures/1737362509434.jpeg"
   },
   {
     "email": "lukaModric@pmfst.hr",
@@ -136,18 +138,4 @@
     "liked": [],
     "putanjaZaSliku": "http://localhost:5000/profilePictures/1736691563842.jpg"
   },
-  {
-    "email": "gjurkovic@pmfst.hr",
-    "lozinka": "GabiDam19",
-    "smjer": "Informatika",
-    "ime": "Gabrijela",
-    "prezime": "Jurkovic",
-    "detalji": {
-      "opis": "ajmeee",
-      "najdraziProgramskiJezik": "tajna je :)",
-      "github": "AjmeMeni",
-      "leetcode": "AjmeMeni"
-    },
-    "liked": []
-  }
 ]
