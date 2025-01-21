@@ -71,6 +71,7 @@ function MainMenu() {
       setCurrentPartner(partners[partnerIndex]);
     }
 
+    //async funkcija za post na serveru
     function LikePartner() {
       NextPartner();
     }

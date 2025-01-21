@@ -144,7 +144,7 @@ app.patch('/update/:mail', (req,res) =>{
 
 app.get('/browse', provjeriToken, (req,res) =>{
   const likedUsers = req.korisnik.korisnik.liked;
-  const filteredUsers = users.filter(user => !likedUsers.includes(user.email));
+  const filteredUsers = users.filter(user => !likedUsers.includes(user.email) && user.email != req.korisnik.korisnik.email);
   res.send(filteredUsers);
 })
 
@@ -178,6 +178,8 @@ app.post('/users', (req, res) => {
 
   res.status(201).json(userToAdd);
 });
+
+
 
 
 app.post('/upload-profile-picture', upload.single('profileImage'), (req, res) => {
