@@ -47,6 +47,11 @@ function MainMenu() {
     }, []);
 
 
+    function BrowsePartners() {
+      
+    }
+
+
     if (!currentUser) {
         return null;
     }
@@ -77,13 +82,12 @@ function MainMenu() {
         {currentUser && (
           <ProfileCard
             name={currentUser.ime}
-            age={currentUser.godine}
-            shortBio={currentUser.shortBio}
+            surname={currentUser.prezime}
             major={currentUser.smjer}
-            favLanguage={currentUser.favLanguage}
-            github={currentUser.github}
-            githubProfile={currentUser.githubProfile}
-            longBio={currentUser.longBio}
+            favLanguage={currentUser.detalji.najdraziProgramskiJezik}
+            github={currentUser.detalji.github}
+            leetcode={currentUser.detalji.leetcode}
+            longBio={currentUser.detalji.opis}
             image={currentUser.putanjaZaSliku}
           />
         )}
