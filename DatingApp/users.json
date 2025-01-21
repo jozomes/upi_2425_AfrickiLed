@@ -135,5 +135,19 @@
     },
     "liked": [],
     "putanjaZaSliku": "http://localhost:5000/profilePictures/1736691563842.jpg"
+  },
+  {
+    "email": "gjurkovic@pmfst.hr",
+    "lozinka": "GabiDam19",
+    "smjer": "Informatika",
+    "ime": "Gabrijela",
+    "prezime": "Jurkovic",
+    "detalji": {
+      "opis": "ajmeee",
+      "najdraziProgramskiJezik": "tajna je :)",
+      "github": "AjmeMeni",
+      "leetcode": "AjmeMeni"
+    },
+    "liked": []
   }
 ]
