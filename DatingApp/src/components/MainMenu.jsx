@@ -61,6 +61,19 @@ function MainMenu() {
       }
     }
 
+    function NextPartner(){
+      if (partnerIndex >= partners.length) {
+        setPartnerIndex(0);
+        return;
+      }
+
+      setPartnerIndex(partnerIndex+1);
+      setCurrentPartner(partners[partnerIndex]);
+    }
+
+    function LikePartner() {
+      NextPartner();
+    }
 
     if (!currentUser) {
         return null;
@@ -94,8 +107,8 @@ function MainMenu() {
         )}
 
         <div className="btn_like_dislike">
-          <button>0</button>
-          <button>1</button>
+          <button onClick={NextPartner}>0</button>
+          <button onClick={LikePartner}>1</button>
         </div>
       </div>
 
