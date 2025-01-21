@@ -8,6 +8,8 @@ function MainMenu() {
     const navigate = useNavigate();
     const {currentUser, setCurrentUser} = useContext(UserContext);
     const [partners, setPartners] = useState(null);
+    const [partnerIndex, setPartnerIndex] = useState(0);
+    const [currentPartner, setCurrentPartner] = useState(null);
 
     const LogOutAndExit = () =>{
         setCurrentUser(null);
@@ -27,7 +29,7 @@ function MainMenu() {
             })
             const partners = res.data;
             console.log(res.data);
-            localStorage.setItem("partners", partners);
+            localStorage.setItem("partners", JSON.stringify(partners));
             setPartners(partners);
         } catch (error) {
             console.error("Dogodila se greska u dohvacanju drugih usera");
@@ -46,9 +48,17 @@ function MainMenu() {
         }
     }, []);
 
+    useEffect(() => {
+        if (partners && partners.length > 0) {
+            InitializeBrowsing();
+        }
+    }, [partners]);
 
-    function BrowsePartners() {
-      
+    async function InitializeBrowsing() {
+      if (partners && partners.length > 0) {
+          setCurrentPartner(partners[partnerIndex]);
+          console.log(partners[partnerIndex]);
+      }
     }
 
 
@@ -70,25 +80,16 @@ function MainMenu() {
       </header>
 
       <div className="parent_user_window">
-        {/*zakomentirano jer je napisano unutar profile card-a*/}
-        {/* <div className="user_description">
-          <p>Ime: {currentUser?.ime}</p>
-          <p>Godine: {currentUser?.godine}</p>
-          <p>Opis: {currentUser?.opis}</p>
-          <p>Smjer: {currentUser?.smjer}</p>
-        </div> */}
-
-      
-        {currentUser && (
+        {currentPartner && (
           <ProfileCard
-            name={currentUser.ime}
-            surname={currentUser.prezime}
-            major={currentUser.smjer}
-            favLanguage={currentUser.detalji.najdraziProgramskiJezik}
-            github={currentUser.detalji.github}
-            leetcode={currentUser.detalji.leetcode}
-            longBio={currentUser.detalji.opis}
-            image={currentUser.putanjaZaSliku}
+            name={currentPartner.ime}
+            surname={currentPartner.prezime}
+            major={currentPartner.smjer}
+            favLanguage={currentPartner.detalji.najdraziProgramskiJezik}
+            github={currentPartner.detalji.github}
+            leetcode={currentPartner.detalji.leetcode}
+            longBio={currentPartner.detalji.opis}
+            image={currentPartner.putanjaZaSliku}
           />
         )}
 

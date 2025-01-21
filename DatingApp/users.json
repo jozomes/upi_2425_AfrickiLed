@@ -44,13 +44,13 @@
     "ime": "Mariela",
     "prezime": "Uvodic",
     "detalji": {
-      "opis": "prepravak",
+      "opis": "jeli ovo moj profil??",
       "najdraziProgramskiJezik": "c#",
       "github": "neki",
       "leetcode": "nekidrugi"
     },
     "liked": [],
-    "putanjaZaSliku": "http://localhost:5000/profilePictures/1737475682569.jpeg"
+    "putanjaZaSliku": "http://localhost:5000/profilePictures/1737478155875.jpeg"
   },
   {
     "email": "novaosoba@pmfst.hr",
