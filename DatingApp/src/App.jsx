@@ -8,6 +8,7 @@ import RegistrationForm from './components/RegistrationForm'
 import LoginForm from './components/LoginForm'
 import RegistrationTest from './components/RegistrationTest'
 import MainRegistrationForm from './components/MainRegistrationForm'
+import ProfileCard from './components/ProfileCard'
 import { Route, Routes } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
 

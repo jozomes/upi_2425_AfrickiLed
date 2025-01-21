@@ -175,6 +175,7 @@ function EditProfile() {
                     </input>
                 </div>
             </div>
+            <br></br>
             <div>
                 <label htmlFor="profileImage">Upload slike:</label>
                     <input
@@ -184,8 +185,10 @@ function EditProfile() {
                     onChange={handleImageChange}
                     />
             </div>
-            <button type="submit">Spremi profil</button>
-            <button onClick={Exit}>Povratak na main menu</button>
+            <br></br>
+            <button type="submit">Save profile</button>
+            <br></br>
+            <button onClick={Exit} >← Return to the main menu </button>
             </div>
         </form>
       </div>
