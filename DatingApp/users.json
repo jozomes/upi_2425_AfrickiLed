@@ -17,7 +17,7 @@
     },
     "liked": [],
     "putanjaZaSliku": [
-      "http://localhost:5000/profilePictures/1737559473238.webp",
+      "http://localhost:5000/profilePictures/1737559473238.jpg",
       "http://localhost:5000/profilePictures/1737559479499.jpg"
     ]
   },
@@ -39,7 +39,7 @@
     },
     "liked": [],
     "putanjaZaSliku": [
-      "http://localhost:5000/profilePictures/1737559378565.webp",
+      "http://localhost:5000/profilePictures/1737559378565.jpg",
       "http://localhost:5000/profilePictures/1737559381173.jpg"
     ]
   },
@@ -58,7 +58,7 @@
     "liked": [],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559302726.jpg",
-      "http://localhost:5000/profilePictures/1737559304634.webp"
+      "http://localhost:5000/profilePictures/1737559304634.jpg"
     ]
   },
   {
@@ -75,24 +75,9 @@
     },
     "liked": [],
     "putanjaZaSliku": [
-      "http://localhost:5000/profilePictures/1737558978119.webp",
-      "http://localhost:5000/profilePictures/1737558980954.webp"
+      "http://localhost:5000/profilePictures/1737558978119.jpg",
+      "http://localhost:5000/profilePictures/1737558980954.jpg"
     ]
-  },
-  {
-    "email": "nova2@pmfst.hr",
-    "lozinka": "123",
-    "smjer": "Matematika",
-    "ime": "mate",
-    "prezime": "matić",
-    "detalji": {
-      "opis": "duzi opis osobe",
-      "najdraziProgramskiJezik": "c",
-      "github": "mateGit",
-      "leetcode": "mateLeet"
-    },
-    "liked": [],
-    "putanjaZaSliku": []
   },
   {
     "email": "markolivaja@pmfst.hr",
@@ -126,8 +111,8 @@
     "liked": [],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559129000.jpg",
-      "http://localhost:5000/profilePictures/1737559133717.jpeg",
-      "http://localhost:5000/profilePictures/1737559137023.webp"
+      "http://localhost:5000/profilePictures/1737559133717.jpg",
+      "http://localhost:5000/profilePictures/1737559137023.jpg"
     ]
   },
   {
