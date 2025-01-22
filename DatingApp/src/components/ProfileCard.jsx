@@ -3,12 +3,11 @@ import "../cssFiles/ProfileCard.css";
 
 const ProfileCard = ({
   name,
-  age,
-  shortBio,
+  surname,
   major,
   favLanguage,
   github,
-  githubProfile,
+  leetcode,
   longBio,
   image,
 }) => {
@@ -28,18 +27,26 @@ const ProfileCard = ({
         }}
       ></div>
       <div className="profile-content">
-        <h2>{name} {age ? `, ${age}` : ""}</h2>
+        <h2>{name} {surname}</h2>
         <h3>Smjer: {major}</h3>
-        <h3>O meni: {shortBio }</h3>
         
         {showDetails && (
           <div className="details">
             <p><strong>Najdraži programski jezik:</strong> {favLanguage}</p>
             <p>
               <strong>GitHub profil:</strong>{" "}
-              {githubProfile ? (
-                <a href={githubProfile} target="_blank" rel="noopener noreferrer">
+              {github ? (
+                <a href={github} target="_blank" rel="noopener noreferrer">
                   {github}
+                </a>
+              ) : (
+                ""
+              )}
+              <br></br>
+              <strong>Leetcode profil:</strong>{" "}
+              {leetcode ? (
+                <a href={leetcode} target="_blank" rel="noopener noreferrer">
+                  {leetcode}
                 </a>
               ) : (
                 ""

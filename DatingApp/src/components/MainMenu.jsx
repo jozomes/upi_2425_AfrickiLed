@@ -1,14 +1,15 @@
 import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
-
-import { useEffect } from 'react';
 import axios from 'axios';
+import ProfileCard from './ProfileCard';
 
 function MainMenu() {
     const navigate = useNavigate();
     const {currentUser, setCurrentUser} = useContext(UserContext);
     const [partners, setPartners] = useState(null);
+    const [partnerIndex, setPartnerIndex] = useState(0);
+    const [currentPartner, setCurrentPartner] = useState(null);
 
     const LogOutAndExit = () =>{
         setCurrentUser(null);
@@ -28,7 +29,7 @@ function MainMenu() {
             })
             const partners = res.data;
             console.log(res.data);
-            localStorage.setItem("partners", partners);
+            localStorage.setItem("partners", JSON.stringify(partners));
             setPartners(partners);
         } catch (error) {
             console.error("Dogodila se greska u dohvacanju drugih usera");
@@ -47,6 +48,33 @@ function MainMenu() {
         }
     }, []);
 
+    useEffect(() => {
+        if (partners && partners.length > 0) {
+            InitializeBrowsing();
+        }
+    }, [partners]);
+
+    async function InitializeBrowsing() {
+      if (partners && partners.length > 0) {
+          setCurrentPartner(partners[partnerIndex]);
+          console.log(partners[partnerIndex]);
+      }
+    }
+
+    function NextPartner(){
+      if (partnerIndex >= partners.length) {
+        setPartnerIndex(0);
+        return;
+      }
+
+      setPartnerIndex(partnerIndex+1);
+      setCurrentPartner(partners[partnerIndex]);
+    }
+
+    //async funkcija za post na serveru
+    function LikePartner() {
+      NextPartner();
+    }
 
     if (!currentUser) {
         return null;
@@ -66,32 +94,22 @@ function MainMenu() {
       </header>
 
       <div className="parent_user_window">
-        {/*zakomentirano jer je napisano unutar profile card-a*/}
-        {/* <div className="user_description">
-          <p>Ime: {currentUser?.ime}</p>
-          <p>Godine: {currentUser?.godine}</p>
-          <p>Opis: {currentUser?.opis}</p>
-          <p>Smjer: {currentUser?.smjer}</p>
-        </div> */}
-
-      
-        {currentUser && (
+        {currentPartner && (
           <ProfileCard
-            name={currentUser.ime}
-            age={currentUser.godine}
-            shortBio={currentUser.shortBio}
-            major={currentUser.smjer}
-            favLanguage={currentUser.favLanguage}
-            github={currentUser.github}
-            githubProfile={currentUser.githubProfile}
-            longBio={currentUser.longBio}
-            image={currentUser.putanjaZaSliku}
+            name={currentPartner.ime}
+            surname={currentPartner.prezime}
+            major={currentPartner.smjer}
+            favLanguage={currentPartner.detalji.najdraziProgramskiJezik}
+            github={currentPartner.detalji.github}
+            leetcode={currentPartner.detalji.leetcode}
+            longBio={currentPartner.detalji.opis}
+            image={currentPartner.putanjaZaSliku}
           />
         )}
 
         <div className="btn_like_dislike">
-          <button>0</button>
-          <button>1</button>
+          <button onClick={NextPartner}>0</button>
+          <button onClick={LikePartner}>1</button>
         </div>
       </div>
 
