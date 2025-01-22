@@ -10,6 +10,7 @@ function MainMenu() {
     const [partners, setPartners] = useState(null);
     const [partnerIndex, setPartnerIndex] = useState(0);
     const [currentPartner, setCurrentPartner] = useState(null);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const LogOutAndExit = () =>{
         setCurrentUser(null);
@@ -18,6 +19,20 @@ function MainMenu() {
         navigate("/");
         console.log(currentUser);
     }
+
+    const handleNextPicture = () => {
+      if (currentPartner?.putanjaZaSliku) {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % currentPartner.putanjaZaSliku.length);
+      }
+    };
+    
+    const handlePreviousPicture = () => {
+      if (currentPartner?.putanjaZaSliku) {
+        setCurrentImageIndex((prevIndex) =>
+          (prevIndex - 1 + currentPartner.putanjaZaSliku.length) % currentPartner.putanjaZaSliku.length
+        );
+      }
+    };
 
 
     async function GetPartners() {
@@ -31,6 +46,14 @@ function MainMenu() {
             console.log(res.data);
             localStorage.setItem("partners", JSON.stringify(partners));
             setPartners(partners);
+
+            if (partners && partners.length > 0) {
+              const partner = { 
+                  ...partners[0], 
+                  putanjaZaSliku: partners[0].putanjaZaSliku || [], 
+              };
+              setCurrentPartner(partner);
+          }
         } catch (error) {
             console.error("Dogodila se greska u dohvacanju drugih usera");
         }
@@ -103,9 +126,16 @@ function MainMenu() {
             github={currentPartner.detalji.github}
             leetcode={currentPartner.detalji.leetcode}
             longBio={currentPartner.detalji.opis}
-            image={currentPartner.putanjaZaSliku}
+            image={currentPartner.putanjaZaSliku?.[currentImageIndex] || ''}
+            onNextPicture={handleNextPicture}
+            onPreviousPicture={handlePreviousPicture}
           />
         )}
+        <div className="image-navigation">
+          <button onClick={handlePreviousPicture}>Previous</button>
+          <button onClick={handleNextPicture}>Next</button>
+        </div>
+        
 
         <div className="btn_like_dislike">
           <button onClick={NextPartner}>0</button>

@@ -169,7 +169,8 @@ app.post('/users', (req, res) => {
   // Add the user to the list
   const userToAdd = {
       ...newUser,
-      liked: [] 
+      liked: [],
+      putanjaZaSliku: []
   };
   users.push(userToAdd);
 
@@ -182,31 +183,27 @@ app.post('/users', (req, res) => {
 
 
 
-app.post('/upload-profile-picture', upload.single('profileImage'), (req, res) => {
-  if (!req.file) {
-      console.log('Nema slike za upload');
-      return res.status(400).json({ message: 'Slika nije poslana' });
+app.post('/upload-profile-picture', upload.array('profileImages', 10), (req, res) => {
+  if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ message: 'No images uploaded' });
   }
 
-  const imageUrl = `http://localhost:5000/profilePictures/${req.file.filename}`;
-  console.log('Slika uspješno spremljena:', req.file.filename);
-
-  // Pronađi korisnika po emailu iz `req.body.email`
   const { email } = req.body;
   const user = users.find(user => user.email === email);
   if (!user) {
-      return res.status(404).json({ message: 'Korisnik nije pronađen' });
+      return res.status(404).json({ message: 'User not found' });
   }
 
-  // Ažuriraj korisnika s novom putanjom za sliku
-  user.putanjaZaSliku = imageUrl;
+  
+  if (!Array.isArray(user.putanjaZaSliku)) {
+      user.putanjaZaSliku = [];
+  }
+
+  const imageUrls = req.files.map(file => `http://localhost:5000/profilePictures/${file.filename}`);
+  user.putanjaZaSliku.push(...imageUrls);
   saveUsersToFile();
 
-  // Pošalji odgovor sa ažuriranim podacima
-  res.status(200).json({
-      message: 'Slika uspješno spremljena i profil ažuriran',
-      putanjaZaSliku: imageUrl,
-  });
+  res.status(200).json({ putanjaZaSliku: user.putanjaZaSliku });
 });
 
 app.use('/profilePictures', express.static('profilePictures'));
