@@ -23,9 +23,9 @@ function EditProfile() {
     }
 
     const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        if(file){
-            postaviPodatke({ ...formaPodaci, profileImage: file});
+        const files = Array.from(event.target.files);
+        if (files.length) {
+            postaviPodatke({ ...formaPodaci, profileImages: files });
         }
     };
     const [profilePicture, setProfilePicture] = useState("");
@@ -53,47 +53,30 @@ function EditProfile() {
             }
 };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const formData = new FormData();
-        formData.append('profileImage', formaPodaci.profileImage);
-        formData.append('email', currentUser.email); // Dodaj email korisnika
-        
-
-        try {
-            const response = await axios.patch(`http://localhost:5000/update/${currentUser.email}`,{
-                detalji: {
-                    "opis": formaPodaci.short_desc,
-                    "najdraziProgramskiJezik": formaPodaci.fav_language,
-                    "github": formaPodaci.github,
-                    "leetcode": formaPodaci.leetcode,
-                }
-            });
-            console.log(response);
-        } catch (error) {
-            console.log(error);
-        }
-
-        try {
-            const response = await fetch('http://localhost:5000/upload-profile-picture', {
-                method: 'POST',
-                body: formData,
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                console.error('Greška pri uploadu slike:', errorData.message);
-                return;
-            }
-
-            const data = await response.json();
-            console.log('Slika uspješno spremljena:', data);
-
-            // Ažuriraj trenutno stanje korisnika
-            setCurrentUser({ ...currentUser, putanjaZaSliku: data.putanjaZaSliku });
-        } catch (error) {
-            console.error('Greška prilikom slanja slike:', error);
-        }
+const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+  
+    formaPodaci.profileImages.forEach((file) => {
+      formData.append('profileImages', file);
+    });
+    formData.append('email', currentUser.email);
+  
+    try {
+      const response = await fetch('http://localhost:5000/upload-profile-picture', {
+        method: 'POST',
+        body: formData,
+      });
+  
+      const data = await response.json();
+      if (response.ok) {
+        setCurrentUser({ ...currentUser, putanjaZaSliku: data.putanjaZaSliku });
+      } else {
+        console.error('Error uploading images:', data.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
 };
     // const UpdateProfile = async (event) => {
     //     event.preventDefault();
@@ -182,6 +165,7 @@ function EditProfile() {
                     type="file"
                     name="profileImage"
                     accept="image/*"
+                    multiple
                     onChange={handleImageChange}
                     />
             </div>

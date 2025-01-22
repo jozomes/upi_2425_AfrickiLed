@@ -3,7 +3,6 @@
     "email": "jmestrovi@pmfst.hr",
     "ime": "Jozo",
     "prezime": "Meštrović",
-    "putanjaZaSliku": "http://localhost:5000/profilePictures/1736691241979.jpg",
     "lozinka": "volimnasilje",
     "smjer": "ArijskaInfa",
     "opis": "Goat",
@@ -16,13 +15,16 @@
       "github": "jozomes",
       "leetcode": "enjinir"
     },
-    "liked": []
+    "liked": [],
+    "putanjaZaSliku": [
+      "http://localhost:5000/profilePictures/1737559473238.jpg",
+      "http://localhost:5000/profilePictures/1737559479499.jpg"
+    ]
   },
   {
     "email": "ioreb@pmfst.hr",
     "ime": "Ivana",
     "prezime": "Oreb",
-    "putanjaZaSliku": ":)",
     "lozinka": "lozinka123",
     "smjer": "Informatika",
     "opis": ":)",
@@ -35,7 +37,11 @@
       "github": "ivanaoreb",
       "leetcode": "ivanaoreb"
     },
-    "liked": []
+    "liked": [],
+    "putanjaZaSliku": [
+      "http://localhost:5000/profilePictures/1737559378565.jpg",
+      "http://localhost:5000/profilePictures/1737559381173.jpg"
+    ]
   },
   {
     "email": "muvodic@pmfst.hr",
@@ -50,39 +56,28 @@
       "leetcode": "nekidrugi"
     },
     "liked": [],
-    "putanjaZaSliku": "http://localhost:5000/profilePictures/1737478155875.jpeg"
-  },
-  {
-    "email": "novaosoba@pmfst.hr",
-    "lozinka": "abc",
-    "smjer": "Informatika",
-    "ime": "nova",
-    "prezime": "osoba",
-    "detalji": {
-      "opis": "Ova je test, jeli radi registracija",
-      "najdraziProgramskiJezik": "tajna je :)",
-      "github": "osoba",
-      "leetcode": "osobaLeet"
-    },
-    "liked": [
-      "nova2@pmfst.hr",
-      "markolivaja@pmfst.hr",
-      "lukaModric@pmfst.hr"
+    "putanjaZaSliku": [
+      "http://localhost:5000/profilePictures/1737559302726.jpg",
+      "http://localhost:5000/profilePictures/1737559304634.jpg"
     ]
   },
   {
-    "email": "nova2@pmfst.hr",
-    "lozinka": "123",
-    "smjer": "Matematika",
-    "ime": "mate",
-    "prezime": "matić",
+    "email": "dskendero@pmfst.hr",
+    "lozinka": "123123",
+    "smjer": "Informatika i tehnika",
+    "ime": "Davor",
+    "prezime": "Skenderović",
     "detalji": {
-      "opis": "duzi opis osobe",
-      "najdraziProgramskiJezik": "c",
-      "github": "mateGit",
-      "leetcode": "mateLeet"
+      "opis": "dsa",
+      "najdraziProgramskiJezik": "c#",
+      "github": "hub",
+      "leetcode": "leetleet"
     },
-    "liked": []
+    "liked": [],
+    "putanjaZaSliku": [
+      "http://localhost:5000/profilePictures/1737558978119.jpg",
+      "http://localhost:5000/profilePictures/1737558980954.jpg"
+    ]
   },
   {
     "email": "markolivaja@pmfst.hr",
@@ -97,7 +92,9 @@
       "leetcode": "markoLeet"
     },
     "liked": [],
-    "putanjaZaSliku": "http://localhost:5000/profilePictures/1737471600894.jpeg"
+    "putanjaZaSliku": [
+      "http://localhost:5000/profilePictures/1737559195857.jpg"
+    ]
   },
   {
     "email": "lukaModric@pmfst.hr",
@@ -111,7 +108,12 @@
       "github": "",
       "leetcode": ""
     },
-    "liked": []
+    "liked": [],
+    "putanjaZaSliku": [
+      "http://localhost:5000/profilePictures/1737559129000.jpg",
+      "http://localhost:5000/profilePictures/1737559133717.jpg",
+      "http://localhost:5000/profilePictures/1737559137023.jpg"
+    ]
   },
   {
     "email": "jozomestrovi@pmfst.hr",
@@ -125,21 +127,10 @@
       "github": "ne dam ",
       "leetcode": "nista"
     },
-    "liked": []
-  },
-  {
-    "email": "dskendero@pmfst.hr",
-    "lozinka": "123123",
-    "smjer": "Informatika i tehnika",
-    "ime": "Davor",
-    "prezime": "Skenderović",
-    "detalji": {
-      "opis": "Ko rano rani sam u nju upada",
-      "najdraziProgramskiJezik": "ASSEMBLY",
-      "github": "hub",
-      "leetcode": "leetleet"
-    },
     "liked": [],
-    "putanjaZaSliku": "http://localhost:5000/profilePictures/1736691563842.jpg"
+    "putanjaZaSliku": [
+      "http://localhost:5000/profilePictures/1737559035410.jpg",
+      "http://localhost:5000/profilePictures/1737559042502.jpg"
+    ]
   }
 ]
