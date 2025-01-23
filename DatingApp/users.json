@@ -50,15 +50,19 @@
     "ime": "Mariela",
     "prezime": "Uvodic",
     "detalji": {
-      "opis": "jeli ovo moj profil??",
-      "najdraziProgramskiJezik": "c#",
+      "opis": "UTCIFZVGUOBHILKM",
+      "najdraziProgramskiJezik": "c++",
       "github": "neki",
       "leetcode": "nekidrugi"
     },
     "liked": [],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559302726.jpg",
-      "http://localhost:5000/profilePictures/1737559304634.jpg"
+      "http://localhost:5000/profilePictures/1737559304634.jpg",
+      "http://localhost:5000/profilePictures/1737659235671.jpeg",
+      "http://localhost:5000/profilePictures/1737659261633.jpeg",
+      "http://localhost:5000/profilePictures/1737659933448.jpeg",
+      "http://localhost:5000/profilePictures/1737659965012.jpeg"
     ]
   },
   {
