@@ -50,19 +50,19 @@
     "ime": "Mariela",
     "prezime": "Uvodic",
     "detalji": {
-      "opis": "UTCIFZVGUOBHILKM",
-      "najdraziProgramskiJezik": "c++",
+      "opis": "mogu li izbjec slike?",
+      "najdraziProgramskiJezik": "python",
       "github": "neki",
       "leetcode": "nekidrugi"
     },
-    "liked": [],
+    "liked": [
+      "markolivaja@pmfst.hr",
+      "lukamodric@pmfst.hr",
+      "ioreb@pmfst.hr"
+    ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559302726.jpg",
-      "http://localhost:5000/profilePictures/1737559304634.jpg",
-      "http://localhost:5000/profilePictures/1737659235671.jpeg",
-      "http://localhost:5000/profilePictures/1737659261633.jpeg",
-      "http://localhost:5000/profilePictures/1737659933448.jpeg",
-      "http://localhost:5000/profilePictures/1737659965012.jpeg"
+      "http://localhost:5000/profilePictures/1737559304634.jpg"
     ]
   },
   {
@@ -97,7 +97,9 @@
     },
     "liked": [
       "jmestrovi@pmfst.hr",
-      "ioreb@pmfst.hr"
+      "ioreb@pmfst.hr",
+      "muvodic@pmfst.hr",
+      "dskendero@pmfst.hr"
     ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559195857.jpg"
@@ -117,7 +119,8 @@
     },
     "liked": [
       "markolivaja@pmfst.hr",
-      "jmestrovi@pmfst.hr"
+      "jmestrovi@pmfst.hr",
+      "muvodic@pmfst.hr"
     ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559129000.jpg",
@@ -144,5 +147,24 @@
       "http://localhost:5000/profilePictures/1737559035410.jpg",
       "http://localhost:5000/profilePictures/1737559042502.jpg"
     ]
+  },
+  {
+    "email": "manje22@pmfst.hr",
+    "lozinka": "loz",
+    "smjer": "Biologija-kemija",
+    "ime": "manje",
+    "prezime": "22",
+    "detalji": {
+      "opis": "Ja radim novi profil da vidin jeli listanje radi",
+      "najdraziProgramskiJezik": "tajna je :)",
+      "github": "neman",
+      "leetcode": "neman ni ovo"
+    },
+    "liked": [
+      "muvodic@pmfst.hr",
+      "markolivaja@pmfst.hr",
+      "lukamodric@pmfst.hr"
+    ],
+    "putanjaZaSliku": []
   }
 ]

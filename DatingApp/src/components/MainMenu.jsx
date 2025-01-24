@@ -98,19 +98,18 @@ function MainMenu() {
 
     async function InitializeBrowsing() {
       if (partners && partners.length > 0) {
+        // const index = Math.min(partnerIndex, partners.length -1);
         setCurrentPartner(partners[partnerIndex]);
         console.log(partners[partnerIndex]);
       }
     }
 
-    function NextPartner(){
-      if (partnerIndex >= partners.length) {
-        setPartnerIndex(0);
-        return;
-      }
-
-      setPartnerIndex(partnerIndex+1);
-      setCurrentPartner(partners[partnerIndex]);
+    function NextPartner() {
+      setPartnerIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % partners.length;
+        setCurrentPartner(partners[nextIndex]);
+        return nextIndex;
+      });
     }
 
     if (!currentUser) {

@@ -56,6 +56,10 @@ const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
 
+    if (!formaPodaci.profileImages) {
+        UpdateProfile();
+        return;
+    }
     formaPodaci.profileImages.forEach((file) => {
       formData.append('profileImages', file);
     });
