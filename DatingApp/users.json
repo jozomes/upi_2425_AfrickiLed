@@ -110,20 +110,21 @@
     "ime": "Luka",
     "prezime": "Modric",
     "detalji": {
-      "opis": ":P",
-      "najdraziProgramskiJezik": "c",
-      "github": "",
-      "leetcode": ""
+      "opis": "Testiram nakon sta san dirala nesto ",
+      "najdraziProgramskiJezik": "python",
+      "github": "oops",
+      "leetcode": "zeznila"
     },
     "liked": [
       "markolivaja@pmfst.hr",
-      "jmestrovi@pmfst.hr",
       "jmestrovi@pmfst.hr"
     ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559129000.jpg",
       "http://localhost:5000/profilePictures/1737559133717.jpg",
-      "http://localhost:5000/profilePictures/1737559137023.jpg"
+      "http://localhost:5000/profilePictures/1737559137023.jpg",
+      "http://localhost:5000/profilePictures/1737710155295.png",
+      "http://localhost:5000/profilePictures/1737710313508.png"
     ]
   },
   {
