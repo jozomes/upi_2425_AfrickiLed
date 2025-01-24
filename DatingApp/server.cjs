@@ -149,6 +149,35 @@ app.get('/browse', provjeriToken, (req,res) =>{
 })
 
 
+app.patch('/browse/like', provjeriToken, (req,res)=>{
+  try{
+    const korisnik = users.find(user => user.email.toLowerCase() === req.korisnik.korisnik.email);
+
+    if (!korisnik) {
+        return res.status(404).json({ error: 'Nije pronaden taj korisnik' });
+    }
+    
+    console.log(korisnik);
+    korisnik.liked.push(req.body.newLike);
+    console.log(req.body.newLike);
+    console.log(korisnik.liked);
+
+    fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2), (err) => {
+      if (err) {
+          console.log("Failed to write updated data to file");
+          return;
+      }
+      console.log("Updated file successfully");
+      return res.status(200).json({message:"azuriran liked", korisnik});
+    });
+  }
+  catch(error){
+    console.log(error);
+    res.status(500).json({message:"Greska pri dodavanje u liked"});
+  }
+})
+
+
 app.post('/users', (req, res) => {
   const newUser = req.body;
 

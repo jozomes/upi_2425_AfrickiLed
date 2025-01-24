@@ -59,6 +59,25 @@ function MainMenu() {
         }
     }
 
+    async function LikePartner() {
+      try{
+        const res = await axios.patch('http://localhost:5000/browse/like', 
+          { 
+            newLike: `${currentPartner.email}` 
+          },
+          { 
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
+          }
+        );
+        console.log(res.data);
+        NextPartner();
+      }catch(error){
+        console.log(error);
+      }
+    }
+
     useEffect(()=> {
         if (!currentUser) {
             navigate("/");
@@ -79,8 +98,8 @@ function MainMenu() {
 
     async function InitializeBrowsing() {
       if (partners && partners.length > 0) {
-          setCurrentPartner(partners[partnerIndex]);
-          console.log(partners[partnerIndex]);
+        setCurrentPartner(partners[partnerIndex]);
+        console.log(partners[partnerIndex]);
       }
     }
 
@@ -94,13 +113,8 @@ function MainMenu() {
       setCurrentPartner(partners[partnerIndex]);
     }
 
-    //async funkcija za post na serveru
-    function LikePartner() {
-      NextPartner();
-    }
-
     if (!currentUser) {
-        return null;
+      return null;
     }
 
   return (

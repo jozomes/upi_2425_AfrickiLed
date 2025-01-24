@@ -95,13 +95,16 @@
       "github": "markoGit",
       "leetcode": "markoLeet"
     },
-    "liked": [],
+    "liked": [
+      "jmestrovi@pmfst.hr",
+      "ioreb@pmfst.hr"
+    ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559195857.jpg"
     ]
   },
   {
-    "email": "lukaModric@pmfst.hr",
+    "email": "lukamodric@pmfst.hr",
     "lozinka": "nogomet",
     "smjer": "Matematika",
     "ime": "Luka",
@@ -112,7 +115,9 @@
       "github": "",
       "leetcode": ""
     },
-    "liked": [],
+    "liked": [
+      "markolivaja@pmfst.hr"
+    ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559129000.jpg",
       "http://localhost:5000/profilePictures/1737559133717.jpg",
