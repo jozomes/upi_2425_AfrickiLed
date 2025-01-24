@@ -157,10 +157,7 @@ app.patch('/browse/like', provjeriToken, (req,res)=>{
         return res.status(404).json({ error: 'Nije pronaden taj korisnik' });
     }
     
-    console.log(korisnik);
     korisnik.liked.push(req.body.newLike);
-    console.log(req.body.newLike);
-    console.log(korisnik.liked);
 
     fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2), (err) => {
       if (err) {
