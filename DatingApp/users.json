@@ -97,9 +97,9 @@
     },
     "liked": [
       "jmestrovi@pmfst.hr",
-      "ioreb@pmfst.hr",
-      "muvodic@pmfst.hr",
-      "dskendero@pmfst.hr"
+      "dskendero@pmfst.hr",
+      "lukamodric@pmfst.hr",
+      "jozomestrovi@pmfst.hr"
     ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559195857.jpg"
@@ -112,8 +112,8 @@
     "ime": "Luka",
     "prezime": "Modric",
     "detalji": {
-      "opis": "Testiram nakon sta san dirala nesto ",
-      "najdraziProgramskiJezik": "python",
+      "opis": "jeli uspjesno uredujem",
+      "najdraziProgramskiJezik": "tajna je :)",
       "github": "oops",
       "leetcode": "zeznila"
     },

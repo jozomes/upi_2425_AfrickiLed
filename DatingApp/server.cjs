@@ -156,6 +156,10 @@ app.patch('/browse/like', provjeriToken, (req,res)=>{
     if (!korisnik) {
         return res.status(404).json({ error: 'Nije pronaden taj korisnik' });
     }
+
+    if (korisnik.liked.includes(req.body.newLike)) {
+      return res.status(200).json({message:"korisnik je vec like-a"});
+    }
     
     korisnik.liked.push(req.body.newLike);
 
