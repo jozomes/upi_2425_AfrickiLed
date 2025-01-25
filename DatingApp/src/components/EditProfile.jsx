@@ -4,6 +4,9 @@ import axios from 'axios';
 import { UserContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 
+
+//problem azuriranje, neda mi se sve
+
 function EditProfile() {
     const {currentUser, setCurrentUser} = useContext(UserContext);
     const [formaPodaci, postaviPodatke] = useState({
@@ -136,7 +139,7 @@ const handleSubmit = async (event) => {
                     name='fav_language'
                     value={formaPodaci.fav_language}
                     onChange={promjenaUlaza}
-                    required>
+                    >
                         <option value=''>--":P"--</option>
                         {prog_lang.map(lang => (
                             <option key={lang} value={lang}>
