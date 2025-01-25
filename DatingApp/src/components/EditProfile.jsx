@@ -131,9 +131,10 @@ const handleSubmit = async (event) => {
                   </textarea>
                 </div>
             </div>
+            <br />
             <div>
                 <label>
-                    Najdrazi programski jezik
+                    Najdraži programski jezik
                     <div className={stil.input}>
                     <select
                     name='fav_language'
@@ -151,6 +152,7 @@ const handleSubmit = async (event) => {
                 </label>
 
             </div>
+            <br />
             <div>
                 <label htmlFor="GitHubAccount">GitHub:</label>
                 <div className={stil.input}>
@@ -159,6 +161,7 @@ const handleSubmit = async (event) => {
                 </input>
                 </div>
             </div>
+            <br />
             <div>
                 <label htmlFor="LeetCodeAccount">LeetCode:</label>
                 <div className={stil.input}>
@@ -167,7 +170,7 @@ const handleSubmit = async (event) => {
                     </input>
                 </div>
             </div>
-            <br></br>
+            <br />
             <div>
                 <label htmlFor="profileImage">Upload slike:</label>
                     <input
@@ -178,10 +181,10 @@ const handleSubmit = async (event) => {
                     onChange={handleImageChange}
                     />
             </div>
-            <br></br>
-            <button type="submit">Save profile</button>
-            <br></br>
-            <button onClick={Exit} >← Return to the main menu </button>
+            <div className="parent_buttons">
+                <button type="submit">Spremi</button>
+                <button onClick={Exit}>Poništi</button>
+            </div>
             </div>
         </form>
       </div>

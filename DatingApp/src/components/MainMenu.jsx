@@ -116,6 +116,44 @@ function MainMenu() {
       return null;
     }
 
+  //dodala sam ovo
+  // Funkcija za prijavu korisnika
+  const ReportUser = async () => {
+    try {
+      await axios.post('http://localhost:5000/report', {
+        reportedUserId: currentPartner.id,
+      }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      alert("Korisnik je uspješno prijavljen.");
+      NextPartner();
+    } catch (error) {
+      console.error("Greška prilikom prijavljivanja korisnika.", error);
+      alert("Nije moguće prijaviti korisnika. Pokušajte ponovo.");
+    }
+  };
+
+  // Funkcija za blokiranje korisnika
+  const BlockUser = async () => {
+    try {
+      await axios.post('http://localhost:5000/block', {
+        blockedUserId: currentPartner.id,
+      }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      alert("Korisnik je uspješno blokiran.");
+      NextPartner();
+    } catch (error) {
+      console.error("Greška prilikom blokiranja korisnika.", error);
+      alert("Nije moguće blokirati korisnika. Pokušajte ponovo.");
+    }
+  };
+
+
   return (
     <div className='container'>
       <header>
@@ -125,7 +163,7 @@ function MainMenu() {
         </div>
         <div className="parent_logout">
           <button className="logout" onClick={LogOutAndExit}>Log Out</button>
-          <button className="logout" onClick={() => navigate("/edit-profile")}>Edit Profile</button>
+          <button className="logout" onClick={() => navigate("/edit-profile")}>Uredi profil</button>
         </div>
       </header>
 
@@ -143,12 +181,7 @@ function MainMenu() {
             onNextPicture={handleNextPicture}
             onPreviousPicture={handlePreviousPicture}
           />
-        )}
-        <div className="image-navigation">
-          <button onClick={handlePreviousPicture}>Previous</button>
-          <button onClick={handleNextPicture}>Next</button>
-        </div>
-        
+        )}   
 
         <div className="btn_like_dislike">
           <button onClick={NextPartner}>0</button>
@@ -156,12 +189,16 @@ function MainMenu() {
         </div>
       </div>
 
+      {/* Botuni za prijavu i blokiranje */}
+      <div className="report_block_buttons">
+          <button onClick={ReportUser} className="report-button">Prijavi korisnika</button>
+          <button onClick={BlockUser} className="block-button">Blokiraj korisnika</button>
+        </div>
+
       <footer>
         <div className="footer">
           <p>Credits:</p>
-          <br></br>
           <a>About</a>
-          <a>Contact Us</a>
         </div>
       </footer>
     </div>

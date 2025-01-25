@@ -118,7 +118,7 @@ function MainRegistrationForm() {
                     />
                 </div>
 
-               
+                <br />
                 <label htmlFor="lozinka">Lozinka:</label>
                 <div className={stil.input}>
                     <input
@@ -132,6 +132,7 @@ function MainRegistrationForm() {
                     />
                 </div>
                 
+                <br />
                 <label htmlFor="ponovi_lozinku">Ponovi lozinku:</label>
                 <div className={stil.input}>
                     <input
@@ -146,7 +147,7 @@ function MainRegistrationForm() {
                 </div>
             
                 <hr></hr>
-
+                <br />
                 <label htmlFor="ime">Ime:</label>
                 <div className={stil.input}>
                     <input
@@ -159,7 +160,8 @@ function MainRegistrationForm() {
                         required
                     />
                 </div>
-               
+
+               <br />
                 <label htmlFor="prezime">Prezime:</label>
                 <div className={stil.input}>
                     <input
@@ -173,6 +175,7 @@ function MainRegistrationForm() {
                     />
                 </div>
                
+               <br />
                 <label htmlFor="description">Malo duži opis:</label>
                 <div className={stil.input}>
                     <textarea id="description"
@@ -185,6 +188,7 @@ function MainRegistrationForm() {
                     </textarea>      
                 </div>
 
+                <br />
                 <label htmlFor="smjer">Smjer:</label>
                 <div className={stil.input}>
                     <select
@@ -204,7 +208,7 @@ function MainRegistrationForm() {
                 </div>
                 
                 <hr></hr>
-
+                <br />
                 <label htmlFor="description">Najdraži programski jezik:</label>
                 <div className={stil.input}>
                     <select
@@ -221,13 +225,14 @@ function MainRegistrationForm() {
                     </select>
                 </div>
                     
-                
+                <br />
                 <label htmlFor="GitHubAccount">GitHub:</label>
                 <div className={stil.input}>
                     <input type="text" name="github" value={formaPodaci.github} onChange={promjenaUlaza} 
                     placeholder='GitHub'>
                     </input>
                 </div>
+                <br />
                 
                 <label htmlFor="LeetCodeAccount">LeetCode:</label>
                 <div className={stil.input}>

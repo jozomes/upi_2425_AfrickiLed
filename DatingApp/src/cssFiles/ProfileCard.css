@@ -7,7 +7,7 @@
 }
 
 .profile-card {
-  width: 300px;
+  width: 500px;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -19,7 +19,7 @@
 }
 
 .profile-card .profile-image {
-  height: 250px;
+  height: 350px;
   background-size: cover;
   background-position: center;
   border-bottom: 3px solid var(--primary-color);
@@ -28,12 +28,13 @@
 .profile-card .profile-content {
   padding: 20px;
   text-align: center;
+  width:75%;
 }
 
 .profile-card .profile-content h2 {
   margin: 10px 0;
   font-size: 1.5rem;
-  color: var(--primary-color);
+  color: rgb(227, 11, 92);
 }
 
 .profile-card .profile-content p {
@@ -55,4 +56,50 @@
 
 .profile-card button:hover {
   background-color: rgb(223, 68, 125);
+}
+
+.details{
+  display: flex;
+  
+}
+
+.details-table {
+  width: 100%;
+  border-collapse: collapse; 
+  border: 1px solid rgba(255, 255, 255, 0.3); 
+  color: black; 
+}
+
+.details-table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.details-table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.2); 
+}
+
+.details-table td strong {
+  color: rgb(248, 72, 137); 
+}
+
+
+.parent_user_window {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  text-align: center; 
+}
+
+.image-navigation {
+  display: flex;
+  justify-content: center; 
+}
+
+.image-navigation button {
+  font-size: 15px;
+  background-color: rgb(248, 72, 137);
+  border-radius: 55px;
+  width: 100px  !important;
 }
