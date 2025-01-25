@@ -72,6 +72,8 @@ function MainMenu() {
           }
         );
         console.log(res.data);
+        const updatedPartners = partners.filter((partner) => partner.email !== currentPartner.email);
+        setPartners(updatedPartners);
         NextPartner();
       }catch(error){
         console.log(error);
