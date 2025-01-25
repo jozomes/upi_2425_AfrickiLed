@@ -50,12 +50,16 @@
     "ime": "Mariela",
     "prezime": "Uvodic",
     "detalji": {
-      "opis": "jeli ovo moj profil??",
-      "najdraziProgramskiJezik": "c#",
+      "opis": "molim te radi ovo",
+      "najdraziProgramskiJezik": "python",
       "github": "neki",
       "leetcode": "nekidrugi"
     },
-    "liked": [],
+    "liked": [
+      "markolivaja@pmfst.hr",
+      "lukamodric@pmfst.hr",
+      "ioreb@pmfst.hr"
+    ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559302726.jpg",
       "http://localhost:5000/profilePictures/1737559304634.jpg"
@@ -91,28 +95,39 @@
       "github": "markoGit",
       "leetcode": "markoLeet"
     },
-    "liked": [],
+    "liked": [
+      "jmestrovi@pmfst.hr",
+      "ioreb@pmfst.hr",
+      "muvodic@pmfst.hr",
+      "dskendero@pmfst.hr"
+    ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559195857.jpg"
     ]
   },
   {
-    "email": "lukaModric@pmfst.hr",
+    "email": "lukamodric@pmfst.hr",
     "lozinka": "nogomet",
     "smjer": "Matematika",
     "ime": "Luka",
     "prezime": "Modric",
     "detalji": {
-      "opis": ":P",
-      "najdraziProgramskiJezik": "c",
-      "github": "",
-      "leetcode": ""
+      "opis": "Testiram nakon sta san dirala nesto ",
+      "najdraziProgramskiJezik": "python",
+      "github": "oops",
+      "leetcode": "zeznila"
     },
-    "liked": [],
+    "liked": [
+      "markolivaja@pmfst.hr",
+      "jmestrovi@pmfst.hr",
+      "muvodic@pmfst.hr"
+    ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559129000.jpg",
       "http://localhost:5000/profilePictures/1737559133717.jpg",
-      "http://localhost:5000/profilePictures/1737559137023.jpg"
+      "http://localhost:5000/profilePictures/1737559137023.jpg",
+      "http://localhost:5000/profilePictures/1737710155295.png",
+      "http://localhost:5000/profilePictures/1737710313508.png"
     ]
   },
   {
@@ -132,5 +147,23 @@
       "http://localhost:5000/profilePictures/1737559035410.jpg",
       "http://localhost:5000/profilePictures/1737559042502.jpg"
     ]
+  },
+  {
+    "email": "manje22@pmfst.hr",
+    "lozinka": "loz",
+    "smjer": "Biologija-kemija",
+    "ime": "manje",
+    "prezime": "22",
+    "detalji": {
+      "opis": "a sada?",
+      "github": "neman",
+      "leetcode": "neman ni ovo"
+    },
+    "liked": [
+      "muvodic@pmfst.hr",
+      "markolivaja@pmfst.hr",
+      "lukamodric@pmfst.hr"
+    ],
+    "putanjaZaSliku": []
   }
 ]
