@@ -40,3 +40,10 @@
 .read-the-docs {
   color: #888;
 }
+
+
+/* Default (svijetla tema) */
+:root {
+  background-color: white;
+}
+

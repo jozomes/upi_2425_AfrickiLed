@@ -1,22 +1,24 @@
 import { useState, createContext, useEffect } from 'react'
 import './App.css'
 import EditProfile from './components/EditProfile'
-import LargeProfile from './components/LargeProfile'
 import MainMenu from './components/MainMenu'
-import ServerTest from './components/ServerTest'
-import RegistrationForm from './components/RegistrationForm'
 import LoginForm from './components/LoginForm'
-import RegistrationTest from './components/RegistrationTest'
 import MainRegistrationForm from './components/MainRegistrationForm'
 import ProfileCard from './components/ProfileCard'
 import { Route, Routes } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
-
+import Admin from './components/Admin'
 export const UserContext = createContext(null);
+import About from './components/About'
+
+//dodano
+import { useNavigate } from 'react-router-dom'
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isInitializing, setIsInitializing] = useState(true);
+  //dodano
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -49,8 +51,14 @@ function App() {
           <Route path="/register" element={<MainRegistrationForm />}></Route>
           <Route path="/MainMenu" element={<MainMenu/>}></Route>
           <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/admin-page" element={<Admin/>}/>
+          <Route path="/about" element={<About/>}/>
         </Routes>
       </UserContext.Provider>
+
+      
+      <button className="logout" onClick={() => navigate("/admin-page")}>admin</button>
+      <button className="logout" onClick={() => navigate("/about")}>about</button>
     </>
   )
 }
