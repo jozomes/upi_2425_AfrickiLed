@@ -135,6 +135,7 @@ function MainMenu() {
 
     function NextPartner() {
       setPartnerIndex((prevIndex) => {
+        
         const nextIndex = (prevIndex + 1) % partners.length;
         setCurrentPartner(partners[nextIndex]);
         return nextIndex;

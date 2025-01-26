@@ -60,9 +60,7 @@
     "liked": [
       "markolivaja@pmfst.hr",
       "lukamodric@pmfst.hr",
-      "manje22@pmfst.hr",
-      "ioreb@pmfst.hr",
-      "jozomestrovi@pmfst.hr"
+      "manje22@pmfst.hr"
     ],
     "blokirani": [
       "jmestrovi@pmfst.hr"
@@ -127,10 +125,12 @@
     },
     "liked": [
       "markolivaja@pmfst.hr",
-      "muvodic@pmfst.hr"
+      "muvodic@pmfst.hr",
+      "dskendero@pmfst.hr"
     ],
     "blokirani": [
-      "jmestrovi@pmfst.hr"
+      "jmestrovi@pmfst.hr",
+      "manje22@pmfst.hr"
     ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559129000.jpg",
