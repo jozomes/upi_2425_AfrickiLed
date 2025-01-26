@@ -233,3 +233,6 @@ app.post('/upload-profile-picture', upload.array('profileImages', 10), (req, res
 });
 
 app.use('/profilePictures', express.static('profilePictures'));
+
+
+

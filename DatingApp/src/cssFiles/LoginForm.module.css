@@ -115,3 +115,29 @@ select{
   align-items: center;
   gap:10px;
 }
+
+/*za editprofile*/
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertikalno centriranje */
+  border: 5px solid rgb(227, 11, 92);
+  padding-bottom: 30px;
+  margin: auto;
+}
+
+
+.radioOption {
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+  font-size: 20px; 
+  color: rgb(248, 72, 137); 
+}
+
+.radioOption input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  accent-color: rgb(227, 11, 92);
+  cursor: pointer;
+}
