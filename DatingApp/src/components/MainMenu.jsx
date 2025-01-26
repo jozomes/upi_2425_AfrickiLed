@@ -11,6 +11,7 @@ function MainMenu() {
     const [partnerIndex, setPartnerIndex] = useState(0);
     const [currentPartner, setCurrentPartner] = useState(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [medusobniLikeovi, setMedusobniLikeovi] = useState(null);
 
     const LogOutAndExit = () =>{
         setCurrentUser(null);
@@ -44,6 +45,7 @@ function MainMenu() {
             })
             const partners = res.data;
             console.log(res.data);
+            localStorage.removeItem("partners");
             localStorage.setItem("partners", JSON.stringify(partners));
             setPartners(partners);
 
@@ -72,10 +74,36 @@ function MainMenu() {
           }
         );
         console.log(res.data);
+
+        const updatedLiked = [...(currentUser.liked || []), currentPartner.email];
+        const updatedUser = {...currentUser, liked: updatedLiked};
+        setCurrentUser(updatedUser);
+        localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+
         const updatedPartners = partners.filter((partner) => partner.email !== currentPartner.email);
         setPartners(updatedPartners);
         NextPartner();
       }catch(error){
+        console.log(error);
+      }
+    }
+
+    async function GetMedusobniLike(){
+      try {
+        const res = await axios.get('http://localhost:5000/usporediLikes',
+          { 
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
+          }
+        );
+        const dohvaceniMedusobniLikeovi = res.data.medusobniLike;
+        setMedusobniLikeovi(dohvaceniMedusobniLikeovi);
+        localStorage.setItem("medusobniLike", dohvaceniMedusobniLikeovi);
+        
+        console.log(`Imate ${dohvaceniMedusobniLikeovi.length} medusobnih like-ova`);
+
+      } catch (error) {
         console.log(error);
       }
     }
@@ -95,12 +123,15 @@ function MainMenu() {
     useEffect(() => {
         if (partners && partners.length > 0) {
             InitializeBrowsing();
+            GetMedusobniLike();
         }
     }, [partners]);
 
+
+
+
     async function InitializeBrowsing() {
       if (partners && partners.length > 0) {
-        // const index = Math.min(partnerIndex, partners.length -1);
         setCurrentPartner(partners[partnerIndex]);
         console.log(partners[partnerIndex]);
       }

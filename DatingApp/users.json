@@ -50,15 +50,17 @@
     "ime": "Mariela",
     "prezime": "Uvodic",
     "detalji": {
-      "opis": "molim te radi ovo",
-      "najdraziProgramskiJezik": "python",
+      "opis": "testiram nakon medusobnog likea fje",
+      "najdraziProgramskiJezik": "tajna je :)",
       "github": "neki",
       "leetcode": "nekidrugi"
     },
     "liked": [
       "markolivaja@pmfst.hr",
       "lukamodric@pmfst.hr",
-      "ioreb@pmfst.hr"
+      "manje22@pmfst.hr",
+      "ioreb@pmfst.hr",
+      "jozomestrovi@pmfst.hr"
     ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559302726.jpg",
@@ -161,8 +163,7 @@
     },
     "liked": [
       "ioreb@pmfst.hr",
-      "markolivaja@pmfst.hr",
-      "jozomestrovi@pmfst.hr"
+      "markolivaja@pmfst.hr"
     ],
     "putanjaZaSliku": []
   }

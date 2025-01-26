@@ -142,11 +142,26 @@ app.patch('/update/:mail', (req,res) =>{
 });
 
 
+app.get('/usporediLikes', provjeriToken, (req, res)=>{
+  const korisnik = req.korisnik.korisnik;
+  const likedUsers = korisnik.liked;
+  const medusobniLike = [];
+  users.forEach(user => {
+    if (likedUsers.includes(user.email) && user.liked.includes(korisnik.email)) {
+      console.log(`medusobni like: ${user.mail}`);
+      medusobniLike.push(user.email);
+    }
+  });
+
+  return res.status(200).json({message:"medusobni like: ", medusobniLike});
+});
+
+
 app.get('/browse', provjeriToken, (req,res) =>{
   const likedUsers = req.korisnik.korisnik.liked;
   const filteredUsers = users.filter(user => !likedUsers.includes(user.email) && user.email != req.korisnik.korisnik.email);
   res.send(filteredUsers);
-})
+});
 
 
 app.patch('/browse/like', provjeriToken, (req,res)=>{
@@ -169,6 +184,7 @@ app.patch('/browse/like', provjeriToken, (req,res)=>{
           return;
       }
       console.log("Updated file successfully");
+      users = JSON.parse(fs.readFileSync(USERS_FILE, 'utf-8'));
       return res.status(200).json({message:"azuriran liked", korisnik});
     });
   }
@@ -176,7 +192,7 @@ app.patch('/browse/like', provjeriToken, (req,res)=>{
     console.log(error);
     res.status(500).json({message:"Greska pri dodavanje u liked"});
   }
-})
+});
 
 
 app.post('/users', (req, res) => {
