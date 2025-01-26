@@ -248,6 +248,7 @@ app.post('/users', (req, res) => {
       ...newUser,
       liked: [],
       blokirani: [],
+      isAdmin: false,
       putanjaZaSliku: []
   };
   users.push(userToAdd);

@@ -13,6 +13,7 @@
     },
     "liked": [],
     "blokirani": [],
+    "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559473238.jpg",
       "http://localhost:5000/profilePictures/1737559479499.jpg"
@@ -30,14 +31,14 @@
       "github": "ivanaoreb",
       "leetcode": "ivanaoreb"
     },
-    
     "liked": [
-        "jmestrovi@pmfst.hr",
-        "muvodic@pmfst.hr",
-        "lukamodric@pmfst.hr",
-        "manje22@pmfst.hr"
+      "jmestrovi@pmfst.hr",
+      "muvodic@pmfst.hr",
+      "lukamodric@pmfst.hr",
+      "manje22@pmfst.hr"
     ],
     "blokirani": [],
+    "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559378565.jpg",
       "http://localhost:5000/profilePictures/1737559381173.jpg"
@@ -59,11 +60,14 @@
       "markolivaja@pmfst.hr",
       "lukamodric@pmfst.hr",
       "manje22@pmfst.hr",
-      "test@pmfst.hr"
+      "test@pmfst.hr",
+      "jozomestrovi@pmfst.hr"
     ],
     "blokirani": [
-      "jmestrovi@pmfst.hr"
+      "jmestrovi@pmfst.hr",
+      "dskendero@pmfst.hr"
     ],
+    "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559302726.jpg",
       "http://localhost:5000/profilePictures/1737559304634.jpg"
@@ -83,6 +87,7 @@
     },
     "liked": [],
     "blokirani": [],
+    "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737558978119.jpg",
       "http://localhost:5000/profilePictures/1737558980954.jpg"
@@ -105,8 +110,10 @@
     ],
     "blokirani": [
       "jmestrovi@pmfst.hr",
-      "dskendero@pmfst.hr"
+      "dskendero@pmfst.hr",
+      "muvodic@pmfst.hr"
     ],
+    "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559195857.jpg"
     ]
@@ -132,6 +139,7 @@
       "jmestrovi@pmfst.hr",
       "manje22@pmfst.hr"
     ],
+    "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559129000.jpg",
       "http://localhost:5000/profilePictures/1737559133717.jpg",
@@ -154,6 +162,7 @@
     },
     "liked": [],
     "blokirani": [],
+    "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559035410.jpg",
       "http://localhost:5000/profilePictures/1737559042502.jpg"
@@ -183,6 +192,7 @@
       "muvodic@pmfst.hr",
       "jmestrovi@pmfst.hr"
     ],
+    "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737860480339.jpeg"
     ]
@@ -207,6 +217,24 @@
     "blokirani": [
       "jmestrovi@pmfst.hr"
     ],
+    "isAdmin": false,
+    "putanjaZaSliku": []
+  },
+  {
+    "email": "notadmin@pmfst.hr",
+    "lozinka": "admin",
+    "smjer": "Matematika",
+    "ime": "not",
+    "prezime": "admin",
+    "detalji": {
+      "opis": "6x7ct8uzivbuo ipojmk",
+      "najdraziProgramskiJezik": "tajna je :)",
+      "github": "tcufzigvhjbk",
+      "leetcode": "rctzvgbhj"
+    },
+    "liked": [],
+    "blokirani": [],
+    "isAdmin": false,
     "putanjaZaSliku": []
   }
 ]
