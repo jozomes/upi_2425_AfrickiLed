@@ -104,8 +104,7 @@
       "leetcode": "markoLeet"
     },
     "liked": [
-      "lukamodric@pmfst.hr",
-      "jozomestrovi@pmfst.hr"
+      "lukamodric@pmfst.hr"
     ],
     "blokirani": [
       "jmestrovi@pmfst.hr"
@@ -128,10 +127,11 @@
     },
     "liked": [
       "markolivaja@pmfst.hr",
-      "jmestrovi@pmfst.hr",
       "muvodic@pmfst.hr"
     ],
-    "blokirani": [],
+    "blokirani": [
+      "jmestrovi@pmfst.hr"
+    ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559129000.jpg",
       "http://localhost:5000/profilePictures/1737559133717.jpg",
@@ -166,17 +166,25 @@
     "ime": "manje",
     "prezime": "22",
     "detalji": {
-      "opis": "a sada?",
+      "opis": "Oce li radit ako ovo napravim",
+      "najdraziProgramskiJezik": "java",
       "github": "neman",
       "leetcode": "neman ni ovo"
     },
     "liked": [
       "ioreb@pmfst.hr",
-      "markolivaja@pmfst.hr"
+      "markolivaja@pmfst.hr",
+      "jmestrovi@pmfst.hr",
+      "lukamodric@pmfst.hr",
+      "jozomestrovi@pmfst.hr",
+      "dskendero@pmfst.hr"
     ],
     "blokirani": [
-      "muvodic@pmfst.hr"
+      "muvodic@pmfst.hr",
+      "jmestrovi@pmfst.hr"
     ],
-    "putanjaZaSliku": []
+    "putanjaZaSliku": [
+      "http://localhost:5000/profilePictures/1737860480339.jpeg"
+    ]
   }
 ]

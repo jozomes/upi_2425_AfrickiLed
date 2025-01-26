@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
+import MedusobniLike from './MedusobniLike';
 import axios from 'axios';
 import ProfileCard from './ProfileCard';
 
@@ -74,11 +75,6 @@ function MainMenu() {
           }
         );
         console.log(res.data);
-
-        const updatedLiked = [...(currentUser.liked || []), currentPartner.email];
-        const updatedUser = {...currentUser, liked: updatedLiked};
-        setCurrentUser(updatedUser);
-        localStorage.setItem("currentUser", JSON.stringify(updatedUser));
 
         const updatedPartners = partners.filter((partner) => partner.email !== currentPartner.email);
         setPartners(updatedPartners);
@@ -229,6 +225,13 @@ function MainMenu() {
           <button onClick={ReportUser} className="report-button">Prijavi korisnika</button>
           <button onClick={BlockUser} className="block-button">Blokiraj korisnika</button>
         </div>
+
+      {medusobniLikeovi && <div>
+        <p>Medusobni likeovi</p>
+        {medusobniLikeovi.map(mail =>(
+          <MedusobniLike key={mail} mail={mail}></MedusobniLike>
+        ))}
+      </div>}
 
       <footer>
         <div className="footer">
