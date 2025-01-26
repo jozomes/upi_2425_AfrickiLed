@@ -30,6 +30,14 @@ const provjeriToken = (req, res, next)=>{
   return next();
 }
 
+const provjeriUlogu = ()=> (req, res, next)=>{
+  if (req.korisnik.korisnik && req.korisnik.korisnik.isAdmin) {
+    next();
+  } else{
+    res.status(403).send('Zabranjen pristup');
+  }
+}
+
 const uploadFolder = path.join(__dirname, 'profilePictures');
 if(!fs.existsSync(uploadFolder)){
   fs.mkdirSync(uploadFolder);
@@ -80,6 +88,10 @@ app.get('/users', (req, res) => {
   res.json({message:"radi molim te"});
 });
 
+app.get('/admin', provjeriToken, provjeriUlogu, (req, res) =>{
+  res.send('Jeli radi ovo samo za admine');
+});
+
 
 app.get('/users/:mail', (req, res) => {
   const potentialMail = req.params.mail;
@@ -107,7 +119,7 @@ app.get('/login', (req, res) =>{
     }
     //res.status(200).json({message:"Uspješna prijava!", korisnik});
     const token = jwt.sign(
-      {korisnik: korisnik},
+      {korisnik: korisnik, isAdmin: korisnik.isAdmin},
       'getCommit',
       {expiresIn: '1h'}
     );
