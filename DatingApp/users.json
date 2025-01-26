@@ -60,7 +60,8 @@
     "liked": [
       "markolivaja@pmfst.hr",
       "lukamodric@pmfst.hr",
-      "manje22@pmfst.hr"
+      "manje22@pmfst.hr",
+      "test@pmfst.hr"
     ],
     "blokirani": [
       "jmestrovi@pmfst.hr"
@@ -105,7 +106,8 @@
       "lukamodric@pmfst.hr"
     ],
     "blokirani": [
-      "jmestrovi@pmfst.hr"
+      "jmestrovi@pmfst.hr",
+      "dskendero@pmfst.hr"
     ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559195857.jpg"
@@ -186,5 +188,27 @@
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737860480339.jpeg"
     ]
+  },
+  {
+    "email": "test@pmfst.hr",
+    "lozinka": "test",
+    "smjer": "Informatika-tehnika",
+    "ime": "test",
+    "prezime": "test",
+    "detalji": {
+      "opis": "minjam",
+      "najdraziProgramskiJezik": "c++",
+      "github": "test",
+      "leetcode": "test"
+    },
+    "liked": [
+      "ioreb@pmfst.hr",
+      "lukamodric@pmfst.hr",
+      "muvodic@pmfst.hr"
+    ],
+    "blokirani": [
+      "jmestrovi@pmfst.hr"
+    ],
+    "putanjaZaSliku": []
   }
 ]
