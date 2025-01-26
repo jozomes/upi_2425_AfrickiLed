@@ -171,14 +171,16 @@ function MainMenu() {
   // Funkcija za blokiranje korisnika
   const BlockUser = async () => {
     try {
-      await axios.post('http://localhost:5000/block', {
-        blockedUserId: currentPartner.id,
-      }, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+      await axios.patch('http://localhost:5000/block',
+        { 
+          noviBlok: `${currentPartner.email}` 
         },
-      });
-      alert("Korisnik je uspješno blokiran.");
+        { 
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          }
+        });
+      //alert("Korisnik je uspješno blokiran.");
       NextPartner();
     } catch (error) {
       console.error("Greška prilikom blokiranja korisnika.", error);

@@ -16,6 +16,7 @@
       "leetcode": "enjinir"
     },
     "liked": [],
+    "blokirani": [],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559473238.jpg",
       "http://localhost:5000/profilePictures/1737559479499.jpg"
@@ -38,6 +39,7 @@
       "leetcode": "ivanaoreb"
     },
     "liked": [],
+    "blokirani": [],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559378565.jpg",
       "http://localhost:5000/profilePictures/1737559381173.jpg"
@@ -50,8 +52,8 @@
     "ime": "Mariela",
     "prezime": "Uvodic",
     "detalji": {
-      "opis": "testiram nakon medusobnog likea fje",
-      "najdraziProgramskiJezik": "tajna je :)",
+      "opis": "radi li?",
+      "najdraziProgramskiJezik": "c",
       "github": "neki",
       "leetcode": "nekidrugi"
     },
@@ -61,6 +63,9 @@
       "manje22@pmfst.hr",
       "ioreb@pmfst.hr",
       "jozomestrovi@pmfst.hr"
+    ],
+    "blokirani": [
+      "jmestrovi@pmfst.hr"
     ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559302726.jpg",
@@ -80,6 +85,7 @@
       "leetcode": "leetleet"
     },
     "liked": [],
+    "blokirani": [],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737558978119.jpg",
       "http://localhost:5000/profilePictures/1737558980954.jpg"
@@ -98,10 +104,11 @@
       "leetcode": "markoLeet"
     },
     "liked": [
-      "jmestrovi@pmfst.hr",
-      "dskendero@pmfst.hr",
       "lukamodric@pmfst.hr",
       "jozomestrovi@pmfst.hr"
+    ],
+    "blokirani": [
+      "jmestrovi@pmfst.hr"
     ],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559195857.jpg"
@@ -124,6 +131,7 @@
       "jmestrovi@pmfst.hr",
       "muvodic@pmfst.hr"
     ],
+    "blokirani": [],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559129000.jpg",
       "http://localhost:5000/profilePictures/1737559133717.jpg",
@@ -145,6 +153,7 @@
       "leetcode": "nista"
     },
     "liked": [],
+    "blokirani": [],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559035410.jpg",
       "http://localhost:5000/profilePictures/1737559042502.jpg"
@@ -164,6 +173,9 @@
     "liked": [
       "ioreb@pmfst.hr",
       "markolivaja@pmfst.hr"
+    ],
+    "blokirani": [
+      "muvodic@pmfst.hr"
     ],
     "putanjaZaSliku": []
   }

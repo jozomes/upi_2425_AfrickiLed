@@ -159,10 +159,41 @@ app.get('/usporediLikes', provjeriToken, (req, res)=>{
 
 app.get('/browse', provjeriToken, (req,res) =>{
   const likedUsers = req.korisnik.korisnik.liked;
-  const filteredUsers = users.filter(user => !likedUsers.includes(user.email) && user.email != req.korisnik.korisnik.email);
+  const blockedUsers = req.korisnik.korisnik.blokirani;
+  const filteredUsers = users.filter(user => !likedUsers.includes(user.email) && !blockedUsers.includes(user.email) && user.email != req.korisnik.korisnik.email);
   res.send(filteredUsers);
 });
 
+app.patch('/block', provjeriToken, (req, res)=>{
+  try{
+    const korisnik = users.find(user => user.email.toLowerCase() === req.korisnik.korisnik.email);
+
+    if (!korisnik) {
+        return res.status(404).json({ error: 'Nije pronaden taj korisnik' });
+    }
+
+    if (korisnik.blokirani.includes(req.body.noviBlok)) {
+      return res.status(200).json({message:"korisnik je vec blokiran"});
+    }
+    
+    console.log(req.body.noviBlok);
+    korisnik.blokirani.push(req.body.noviBlok);
+
+    fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2), (err) => {
+      if (err) {
+          console.log("Failed to write updated data to file");
+          return;
+      }
+      console.log("Updated file successfully");
+      users = JSON.parse(fs.readFileSync(USERS_FILE, 'utf-8'));
+      return res.status(200).json({message:"azurirani su blokirani korisnici", korisnik});
+    });
+  }
+  catch(error){
+    console.log(error);
+    res.status(500).json({message:"Greska pri dodavanje u liked"});
+  }
+})
 
 app.patch('/browse/like', provjeriToken, (req,res)=>{
   try{

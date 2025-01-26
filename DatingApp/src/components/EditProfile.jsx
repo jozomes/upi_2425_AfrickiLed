@@ -100,6 +100,7 @@ const handleSubmit = async (event) => {
                 }
             });
             console.log(response);
+            setTimeout(() => navigate("/MainMenu"), 3000);
         } catch (error) {
             console.log(error);
         }
@@ -140,6 +141,7 @@ const handleSubmit = async (event) => {
                     name='fav_language'
                     value={formaPodaci.fav_language}
                     onChange={promjenaUlaza}
+                    required
                     >
                         <option value=''>--":P"--</option>
                         {prog_lang.map(lang => (
