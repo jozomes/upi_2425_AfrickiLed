@@ -5,10 +5,6 @@
     "prezime": "Meštrović",
     "lozinka": "volimnasilje",
     "smjer": "ArijskaInfa",
-    "opis": "Goat",
-    "najdraziProgramskiJezik": "C#",
-    "github": "jozomes",
-    "leetcode": "enjinir",
     "detalji": {
       "opis": "Goat",
       "najdraziProgramskiJezik": "C#",
@@ -28,17 +24,19 @@
     "prezime": "Oreb",
     "lozinka": "lozinka123",
     "smjer": "Informatika",
-    "opis": ":)",
-    "najdraziProgramskiJezik": "Python",
-    "github": "ivanaoreb",
-    "leetcode": "ivanaoreb",
     "detalji": {
-      "opis": ":)",
-      "najdraziProgramskiJezik": "Python",
+      "opis": "ovo sam zaboravila dodat, radis li",
+      "najdraziProgramskiJezik": "javascript",
       "github": "ivanaoreb",
       "leetcode": "ivanaoreb"
     },
-    "liked": [],
+    
+    "liked": [
+        "jmestrovi@pmfst.hr",
+        "muvodic@pmfst.hr",
+        "lukamodric@pmfst.hr",
+        "manje22@pmfst.hr"
+    ],
     "blokirani": [],
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559378565.jpg",

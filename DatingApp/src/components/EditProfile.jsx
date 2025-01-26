@@ -1,22 +1,22 @@
-import { useState, useContext } from 'react'
-import stil from '../cssFiles/LoginForm.module.css'
+import { useState, useContext } from 'react';
+import stil from '../cssFiles/LoginForm.module.css';
 import axios from 'axios';
 import { UserContext } from '../App';
 import { useNavigate } from 'react-router-dom';
 
-
-//problem azuriranje, neda mi se sve
-
 function EditProfile() {
-    const {currentUser, setCurrentUser} = useContext(UserContext);
+    const { currentUser, setCurrentUser } = useContext(UserContext);
     const [formaPodaci, postaviPodatke] = useState({
         short_desc: currentUser.detalji.short_desc,
-        fav_language: currentUser.detalji.fav_language,
+        fav_language: currentUser.detalji.najdraziProgramskiJezik,
         github: currentUser.detalji.github,
         leetcode: currentUser.detalji.leetcode,
         profileImage: null,
-      });
+    });
+    
 
+    const [odabranoPolje, setOdabranoPolje] = useState('');
+    const [poruka, setPoruka] = useState('');
     const prog_lang = ["python", "c#", "javascript", "c++", "c", "java", "php", "rust", "tajna je :)"];
     const navigate = useNavigate();
 
@@ -28,168 +28,200 @@ function EditProfile() {
     const handleImageChange = (event) => {
         const files = Array.from(event.target.files);
         if (files.length) {
-            postaviPodatke({ ...formaPodaci, profileImages: files });
+            postaviPodatke({ ...formaPodaci, profileImage: files[0] });
         }
     };
 
-    const handleImageUpload = async (event) => {
-        const formData = new FormData();
-        formData.append('profilePicture', event.target.files[0]);
-
-        try {
-            const response = await fetch('http://localhost:5000/upload-profile-picture', {
-            method: 'POST',
-             body: formData,
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                console.log('Slika uspješno spremljena:', data.imageUrl);
-                setProfilePicture(data.imageUrl); // Spremi URL slike u stanje
-            } else {
-                console.error('Greška pri uploadu slike:', data.message);
-            }
-        } catch (error) {
-            console.error('Došlo je do greške:', error);
-            }
-};
-
-const handleSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData();
-
-    if (!formaPodaci.profileImages) {
-        UpdateProfile();
-        return;
-    }
-    formaPodaci.profileImages.forEach((file) => {
-      formData.append('profileImages', file);
-    });
-    formData.append('email', currentUser.email);
-
-    try {
-      const response = await fetch('http://localhost:5000/upload-profile-picture', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        setCurrentUser({ ...currentUser, putanjaZaSliku: data.putanjaZaSliku });
-      } else {
-        console.error('Error uploading images:', data.message);
-      }
-
-      UpdateProfile();
-
-    } catch (error) {
-      console.error('Error:', error);
-    }
-};
-
-    const UpdateProfile = async () => {
-
-        try {
-            const response = await axios.patch(`http://localhost:5000/update/${currentUser.email}`,{
-                detalji: {
-                    "opis": formaPodaci.short_desc,
-                    "najdraziProgramskiJezik": formaPodaci.fav_language,
-                    "github": formaPodaci.github,
-                    "leetcode": formaPodaci.leetcode,
-                }
-            });
-            console.log(response);
-            setTimeout(() => navigate("/MainMenu"), 3000);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const Exit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+        const podaciZaAzuriranje = {
+            opis: formaPodaci.short_desc || currentUser.detalji.short_desc,
+            najdraziProgramskiJezik: formaPodaci.fav_language|| currentUser.detalji.najdraziProgramskiJezik,
+            github: formaPodaci.github || currentUser.detalji.github,
+            leetcode: formaPodaci.leetcode || currentUser.detalji.leetcode,
+        };
+
+        try {
+            const response = await axios.patch(`http://localhost:5000/update/${currentUser.email}`, {
+                detalji: podaciZaAzuriranje
+            });
+
+            console.log(response);
+          
+            
+            setCurrentUser({ ...currentUser, detalji: podaciZaAzuriranje });
+            setPoruka('Promjene su uspješno pohranjene!');
+            setTimeout(() => navigate("/MainMenu"), 3000);
+
+        } catch (error) {
+            console.error(error);
+            setPoruka('Došlo je do greške prilikom spremanja promjena.');
+        }
+    };
+
+    const Exit = () => {
         navigate("/MainMenu");
-    }
+    };
 
     return (
-      <div className={stil.container}>
-        <div className={stil.header}>
-            <div className={stil.text}>Uređivanje profila</div>
-            <div className={stil.underline}></div>
-        </div>
-
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="description">Malo duži opis:</label>
-                <div className={stil.inputs}>
-                <div className={stil.input}>
-                    <textarea id="description"
-                    name="short_desc"
-                    minLength="1"
-                    maxLength="100"
-                    onChange={promjenaUlaza}
-                    placeholder='Duži opis'>
-                  </textarea>
-                </div>
+        <div className={stil.container}>
+            <div className={stil.header}>
+                <div className={stil.text}>Uređivanje profila</div>
+                <div className={stil.underline}></div>
             </div>
-            <br />
-            <div>
-                <label>
-                    Najdraži programski jezik
-                    <div className={stil.input}>
-                    <select
-                    name='fav_language'
-                    value={formaPodaci.fav_language}
-                    onChange={promjenaUlaza}
-                    required
-                    >
-                        <option value=''>--":P"--</option>
-                        {prog_lang.map(lang => (
-                            <option key={lang} value={lang}>
-                                {lang}
-                            </option>
-                        ))}
-                    </select>
+
+            <form onSubmit={handleSubmit}>
+                <div className={stil.radioContainer}>
+                    <p>Odaberite polje koje želite urediti:</p>
+                    <label className={stil.radioOption}>
+                        <input
+                            type="radio"
+                            name="odabranoPolje"
+                            value="short_desc"
+                            onChange={() => setOdabranoPolje('short_desc')}
+                        />
+                        Malo duži opis
+                    </label>
+                    <br />
+                    <label className={stil.radioOption}>
+                        <input
+                            type="radio"
+                            name="odabranoPolje"
+                            value="fav_language"
+                            onChange={() => setOdabranoPolje('fav_language')}
+                        />
+                        Najdraži programski jezik
+                    </label>
+                    <br />
+                    <label className={stil.radioOption}>
+                        <input
+                            type="radio"
+                            name="odabranoPolje"
+                            value="github"
+                            onChange={() => setOdabranoPolje('github')}
+                        />
+                        GitHub
+                    </label>
+                    <br />
+                    <label className={stil.radioOption}>
+                        <input
+                            type="radio"
+                            name="odabranoPolje"
+                            value="leetcode"
+                            onChange={() => setOdabranoPolje('leetcode')}
+                        />
+                        LeetCode
+                    </label>
+                    <br />
+                    <label className={stil.radioOption}>
+                        <input
+                            type="radio"
+                            name="odabranoPolje"
+                            value="profileImage"
+                            onChange={() => setOdabranoPolje('profileImage')}
+                        />
+                        Učitaj profilnu sliku
+                    </label>
+                </div>
+
+                {odabranoPolje === 'short_desc' && (
+                    <div>
+                        <label htmlFor="description">Malo duži opis:</label>
+                        <div className={stil.inputs}>
+                        <div className={stil.input}>
+                        <textarea
+                            id="description"
+                            name="short_desc"
+                            minLength="1"
+                            maxLength="100"
+                            value={formaPodaci.short_desc}
+                            onChange={promjenaUlaza}
+                            placeholder="Duži opis"
+                        />
+                        </div>
+                        </div>
                     </div>
-                </label>
+                )}
 
-            </div>
-            <br />
-            <div>
-                <label htmlFor="GitHubAccount">GitHub:</label>
-                <div className={stil.input}>
-                <input type="text" name="github" value={formaPodaci.github} onChange={promjenaUlaza}
-                placeholder='GitHub'>
-                </input>
+                {odabranoPolje === 'fav_language' && (
+                    <div>
+                        <div className={stil.inputs}>
+                        
+                        <div className={stil.input}>
+                        <label>
+                            Najdraži programski jezik: 
+                            <select
+                                name="fav_language"
+                                value={formaPodaci.fav_language}
+                                onChange={promjenaUlaza}
+                            >
+                                <option value="">--":P"--</option>
+                                {prog_lang.map((lang) => (
+                                    <option key={lang} value={lang}>
+                                        {lang}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                        </div></div>
+                    </div>
+                )}
+
+                {odabranoPolje === 'github' && (
+                    <div>
+                        <label htmlFor="GitHubAccount">GitHub:</label>
+                        <div className={stil.inputs}>
+                        <div className={stil.input}>
+                        <input
+                            type="text"
+                            name="github"
+                            value={formaPodaci.github}
+                            onChange={promjenaUlaza}
+                            placeholder="GitHub"
+                        /></div></div>
+                    </div>
+                )}
+
+                {odabranoPolje === 'leetcode' && (
+                    <div>
+                        <label htmlFor="LeetCodeAccount">LeetCode:</label>
+                        <div className={stil.inputs}>
+                        <div className={stil.input}>
+                        <input
+                            type="text"
+                            name="leetcode"
+                            value={formaPodaci.leetcode}
+                            onChange={promjenaUlaza}
+                            placeholder="LeetCode"
+                        /></div></div>
+                    </div>
+                )}
+
+                {odabranoPolje === 'profileImage' && (
+                    <div>
+                        <label htmlFor="profileImage">Upload slike:</label>
+                        <div className={stil.inputs}>
+                        <div className={stil.input}>
+                        <input
+                            type="file"
+                            name="profileImage"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                        /></div></div>
+                    </div>
+                )}
+                {poruka && <p>{poruka}</p>}
+                <div className={stil.buttons}>
+                    <button type="submit">Spremi</button>
+                    <button type="button" onClick={Exit}>
+                        Povratak
+                    </button>
                 </div>
-            </div>
-            <br />
-            <div>
-                <label htmlFor="LeetCodeAccount">LeetCode:</label>
-                <div className={stil.input}>
-                    <input type="text" name="leetcode" value={formaPodaci.leetcode} onChange={promjenaUlaza}
-                    placeholder='LeetCode'>
-                    </input>
-                </div>
-            </div>
-            <br />
-            <div>
-                <label htmlFor="profileImage">Upload slike:</label>
-                    <input
-                    type="file"
-                    name="profileImage"
-                    accept="image/*"
-                    multiple
-                    onChange={handleImageChange}
-                    />
-            </div>
-            <div className="parent_buttons">
-                <button type="submit">Spremi</button>
-                <button onClick={Exit}>Poništi</button>
-            </div>
-            </div>
-        </form>
-      </div>
-    )
-  }
-export default EditProfile
+            </form>
+
+            
+        </div>
+    );
+}
+
+export default EditProfile;

@@ -150,7 +150,7 @@ function MainMenu() {
   // Funkcija za prijavu korisnika
   const ReportUser = async () => {
     try {
-      await axios.post('http://localhost:5000/report', {
+      await axios.delete('http://localhost:5000/report', {
         reportedUserId: currentPartner.id,
       }, {
         headers: {
