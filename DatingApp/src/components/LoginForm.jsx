@@ -27,7 +27,11 @@ function LoginForm() {
             const decoded = jwtDecode(token);
             setCurrentUser(decoded.korisnik);
 
-            navigate("/MainMenu");
+            if (decoded.korisnik.isAdmin) {
+                navigate("/admin-page");
+            }else{
+                navigate("/MainMenu");
+            }
         }
         catch(error){
             setError("Došlo je do pogreške s poslužiteljem.");

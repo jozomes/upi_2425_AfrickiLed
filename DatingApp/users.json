@@ -236,5 +236,10 @@
     "blokirani": [],
     "isAdmin": false,
     "putanjaZaSliku": []
+  },
+  {
+    "email": "admin@pmfst.hr",
+    "lozinka": "admin",
+    "isAdmin": true
   }
 ]
