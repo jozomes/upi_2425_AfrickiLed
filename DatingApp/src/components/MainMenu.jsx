@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
+import MedusobniLike from './MedusobniLike';
 import axios from 'axios';
 import ProfileCard from './ProfileCard';
 
@@ -11,6 +12,7 @@ function MainMenu() {
     const [partnerIndex, setPartnerIndex] = useState(0);
     const [currentPartner, setCurrentPartner] = useState(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [medusobniLikeovi, setMedusobniLikeovi] = useState(null);
 
     const LogOutAndExit = () =>{
         setCurrentUser(null);
@@ -44,6 +46,7 @@ function MainMenu() {
             })
             const partners = res.data;
             console.log(res.data);
+            localStorage.removeItem("partners");
             localStorage.setItem("partners", JSON.stringify(partners));
             setPartners(partners);
 
@@ -72,8 +75,31 @@ function MainMenu() {
           }
         );
         console.log(res.data);
+
+        const updatedPartners = partners.filter((partner) => partner.email !== currentPartner.email);
+        setPartners(updatedPartners);
         NextPartner();
       }catch(error){
+        console.log(error);
+      }
+    }
+
+    async function GetMedusobniLike(){
+      try {
+        const res = await axios.get('http://localhost:5000/usporediLikes',
+          { 
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
+          }
+        );
+        const dohvaceniMedusobniLikeovi = res.data.medusobniLike;
+        setMedusobniLikeovi(dohvaceniMedusobniLikeovi);
+        localStorage.setItem("medusobniLike", dohvaceniMedusobniLikeovi);
+        
+        console.log(`Imate ${dohvaceniMedusobniLikeovi.length} medusobnih like-ova`);
+
+      } catch (error) {
         console.log(error);
       }
     }
@@ -93,12 +119,15 @@ function MainMenu() {
     useEffect(() => {
         if (partners && partners.length > 0) {
             InitializeBrowsing();
+            GetMedusobniLike();
         }
     }, [partners]);
 
+
+
+
     async function InitializeBrowsing() {
       if (partners && partners.length > 0) {
-        // const index = Math.min(partnerIndex, partners.length -1);
         setCurrentPartner(partners[partnerIndex]);
         console.log(partners[partnerIndex]);
       }
@@ -106,6 +135,7 @@ function MainMenu() {
 
     function NextPartner() {
       setPartnerIndex((prevIndex) => {
+        
         const nextIndex = (prevIndex + 1) % partners.length;
         setCurrentPartner(partners[nextIndex]);
         return nextIndex;
@@ -138,14 +168,16 @@ function MainMenu() {
   // Funkcija za blokiranje korisnika
   const BlockUser = async () => {
     try {
-      await axios.post('http://localhost:5000/block', {
-        blockedUserId: currentPartner.id,
-      }, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+      await axios.patch('http://localhost:5000/block',
+        { 
+          noviBlok: `${currentPartner.email}` 
         },
-      });
-      alert("Korisnik je uspješno blokiran.");
+        { 
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          }
+        });
+      //alert("Korisnik je uspješno blokiran.");
       NextPartner();
     } catch (error) {
       console.error("Greška prilikom blokiranja korisnika.", error);
@@ -194,6 +226,13 @@ function MainMenu() {
           <button onClick={ReportUser} className="report-button">Prijavi korisnika</button>
           <button onClick={BlockUser} className="block-button">Blokiraj korisnika</button>
         </div>
+
+      {medusobniLikeovi && <div>
+        <p>Medusobni likeovi</p>
+        {medusobniLikeovi.map(mail =>(
+          <MedusobniLike key={mail} mail={mail}></MedusobniLike>
+        ))}
+      </div>}
 
       <footer>
         <div className="footer">

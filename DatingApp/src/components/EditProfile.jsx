@@ -47,8 +47,12 @@ function EditProfile() {
             });
 
             console.log(response);
+          
+            
             setCurrentUser({ ...currentUser, detalji: podaciZaAzuriranje });
             setPoruka('Promjene su uspješno pohranjene!');
+            setTimeout(() => navigate("/MainMenu"), 3000);
+
         } catch (error) {
             console.error(error);
             setPoruka('Došlo je do greške prilikom spremanja promjena.');
