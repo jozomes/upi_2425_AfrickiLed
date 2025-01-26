@@ -18,6 +18,7 @@ function MainMenu() {
         setCurrentUser(null);
         localStorage.removeItem("token");
         localStorage.removeItem("partners");
+        localStorage.removeItem("medusobniLike")
         navigate("/");
         console.log(currentUser);
     }
@@ -237,7 +238,8 @@ function MainMenu() {
       <footer>
         <div className="footer">
           <p>Credits:</p>
-          <a>About</a>
+          <a onClick={() => navigate("/about")}>About</a>
+          {/* <button className="logout" onClick={() => navigate("/about")}>about</button> */}
         </div>
       </footer>
     </div>

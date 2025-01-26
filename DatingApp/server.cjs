@@ -172,7 +172,7 @@ app.get('/usporediLikes', provjeriToken, (req, res)=>{
 app.get('/browse', provjeriToken, (req,res) =>{
   const likedUsers = req.korisnik.korisnik.liked;
   const blockedUsers = req.korisnik.korisnik.blokirani;
-  const filteredUsers = users.filter(user => !likedUsers.includes(user.email) && !blockedUsers.includes(user.email) && user.email != req.korisnik.korisnik.email);
+  const filteredUsers = users.filter(user => !likedUsers.includes(user.email) && !blockedUsers.includes(user.email) && user.email != req.korisnik.korisnik.email && !user.isAdmin);
   res.send(filteredUsers);
 });
 
