@@ -51,7 +51,6 @@ function EditProfile() {
             
             setCurrentUser({ ...currentUser, detalji: podaciZaAzuriranje });
             setPoruka('Promjene su uspješno pohranjene!');
-
         } catch (error) {
             console.error(error);
             setPoruka('Došlo je do greške prilikom spremanja promjena.');
@@ -72,7 +71,7 @@ function EditProfile() {
             <form onSubmit={handleSubmit}>
                 <div className={stil.radioContainer}>
                     <p>Odaberite polje koje želite urediti:</p>
-                    <label className={stil.radioOption}>
+                    {/* <label className={stil.radioOption}>
                         <input
                             type="radio"
                             name="odabranoPolje"
@@ -80,7 +79,7 @@ function EditProfile() {
                             onChange={() => setOdabranoPolje('opis')}
                         />
                         Malo duži opis
-                    </label>
+                    </label> */}
                     <br />
                     <label className={stil.radioOption}>
                         <input
@@ -123,6 +122,7 @@ function EditProfile() {
                     </label>
                 </div>
 
+
                 {odabranoPolje === 'opis' && (
                     <div>
                         <label htmlFor="description">Malo duži opis:</label>
@@ -140,7 +140,7 @@ function EditProfile() {
                         </div>
                         </div>
                     </div>
-                )}
+                )} */}
 
                 {odabranoPolje === 'najdraziProgramskiJezik' && (
                     <div>

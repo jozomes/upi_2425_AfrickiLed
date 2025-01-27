@@ -61,66 +61,16 @@
       "leetcode": "nekidrugi"
     },
     "liked": [
-      "markolivaja@pmfst.hr",
-      "lukamodric@pmfst.hr",
-      "manje22@pmfst.hr",
-      "test@pmfst.hr",
-      "jozomestrovi@pmfst.hr",
       "ioreb@pmfst.hr"
     ],
     "blokirani": [
-      "jmestrovi@pmfst.hr",
-      "dskendero@pmfst.hr"
+      "lukamodric@pmfst.hr",
+      "test@pmfst.hr"
     ],
     "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559302726.jpg",
       "http://localhost:5000/profilePictures/1737559304634.jpg"
-    ]
-  },
-  {
-    "email": "dskendero@pmfst.hr",
-    "lozinka": "123123",
-    "smjer": "Informatika i tehnika",
-    "ime": "Davor",
-    "prezime": "Skenderović",
-    "detalji": {
-      "opis": "dsa",
-      "najdraziProgramskiJezik": "c#",
-      "github": "hub",
-      "leetcode": "leetleet"
-    },
-    "liked": [],
-    "blokirani": [],
-    "isAdmin": false,
-    "putanjaZaSliku": [
-      "http://localhost:5000/profilePictures/1737558978119.jpg",
-      "http://localhost:5000/profilePictures/1737558980954.jpg"
-    ]
-  },
-  {
-    "email": "markolivaja@pmfst.hr",
-    "lozinka": "hajduk",
-    "smjer": "Fizika ",
-    "ime": "Marko",
-    "prezime": "Livaja",
-    "detalji": {
-      "opis": "test",
-      "najdraziProgramskiJezik": "tajna je :)",
-      "github": "markoGit",
-      "leetcode": "markoLeet"
-    },
-    "liked": [
-      "lukamodric@pmfst.hr"
-    ],
-    "blokirani": [
-      "jmestrovi@pmfst.hr",
-      "dskendero@pmfst.hr",
-      "muvodic@pmfst.hr"
-    ],
-    "isAdmin": false,
-    "putanjaZaSliku": [
-      "http://localhost:5000/profilePictures/1737559195857.jpg"
     ]
   },
   {
@@ -130,7 +80,6 @@
     "ime": "Luka",
     "prezime": "Modric",
     "detalji": {
-      "opis": "jeli uspjesno uredujem",
       "najdraziProgramskiJezik": "tajna je :)",
       "github": "oops",
       "leetcode": "zeznila"
@@ -142,7 +91,8 @@
     ],
     "blokirani": [
       "jmestrovi@pmfst.hr",
-      "manje22@pmfst.hr"
+      "manje22@pmfst.hr",
+      "ioreb@pmfst.hr"
     ],
     "isAdmin": false,
     "putanjaZaSliku": [
@@ -229,5 +179,21 @@
     "email": "admin@pmfst.hr",
     "lozinka": "admin",
     "isAdmin": true
+  },
+  {
+    "email": "snoopy@pmfst.hr",
+    "lozinka": "snoopy",
+    "smjer": "Informatika-tehnika",
+    "ime": "snoopy",
+    "prezime": "pas",
+    "detalji": {
+      "najdraziProgramskiJezik": "c++",
+      "github": "drf8tzgui",
+      "leetcode": "h4ew"
+    },
+    "liked": [],
+    "blokirani": [],
+    "isAdmin": false,
+    "putanjaZaSliku": []
   }
 ]

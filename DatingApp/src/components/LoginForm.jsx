@@ -34,7 +34,7 @@ function LoginForm() {
             }
         }
         catch(error){
-            setError("Došlo je do pogreške s poslužiteljem.");
+            setError("Uneseni su krivi podaci.");
             console.error("Greška: ", error);
         }
     };
