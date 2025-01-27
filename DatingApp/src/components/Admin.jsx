@@ -5,6 +5,7 @@ import axios from 'axios';
 import '../cssFiles/mainMenu.css';
 function Admin() {
     const navigate = useNavigate();
+    const [prijavljeni, setPrijavljeni] = useState(null);
 
     // Funkcija za odjavu
     const Exit = () => {
@@ -35,7 +36,7 @@ function Admin() {
 
   const OdobriPrijavu = async (event) => {
     event.preventDefault();
-    
+
     try {
       const email = currentPartner.email.toLowerCase();
       await axios.delete(`http://localhost:5000/users/${email}`, {
@@ -50,6 +51,22 @@ function Admin() {
       alert('Nije moguće obrisati korisnika. Pokušajte ponovo.');
     }
   };
+
+  async function InitialLoad() {
+    try {
+      const response = await axios.get('http://localhost:5000/prijavljeni');
+      const podaci = response.data.prijave;
+      setPrijavljeni(podaci);
+      console.log(podaci);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(()=>{
+    InitialLoad();
+}, []);
+
     
   return (
     

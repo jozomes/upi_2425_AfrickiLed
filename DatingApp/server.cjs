@@ -355,3 +355,12 @@ app.delete('/users/:email', (req, res) => {
 
   res.status(200).json({ message: `Korisnik s emailom ${email} uspješno uklonjen` });
 });
+
+
+app.get('/prijavljeni', (req, res) =>{
+  try {
+    return res.status(200).json({message: "uspjesno dohvaceni prijavljeni korisnici", prijave});
+  } catch (error) {
+    return res.status(500).json({message: "greska u dohvacanje prijavljenih"});
+  }
+})
