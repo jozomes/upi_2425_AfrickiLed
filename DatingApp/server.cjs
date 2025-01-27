@@ -67,6 +67,16 @@ function saveUsersToFile() {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
+const ADMIN_FILE = path.join(__dirname, 'admin.json');
+let prijave = [];
+if (fs.existsSync(ADMIN_FILE)) {
+  const adminData = fs.readFileSync(ADMIN_FILE, 'utf-8');
+  prijave = JSON.parse(adminData);
+}
+
+function saveReportsToFile(){
+  fs.writeFileSync(ADMIN_FILE, JSON.stringify(prijave, null, 2));
+}
 ///////////////////////////////////////////////
 
 app.get("/", (req, res) => {
@@ -179,6 +189,18 @@ app.get('/browse', provjeriToken, (req,res) =>{
   res.send(filteredUsers);
 });
 
+
+app.post('/report', provjeriToken, (req, res) => {
+  try {
+    //dohvati listu prijava
+    //admin.json
+    //spremi pormjene
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({message:"Greska pri dodavanje u bloked"});
+  }
+})
+
 app.patch('/block', provjeriToken, (req, res)=>{
   try{
     const korisnik = users.find(user => user.email.toLowerCase() === req.korisnik.korisnik.email);
@@ -206,7 +228,7 @@ app.patch('/block', provjeriToken, (req, res)=>{
   }
   catch(error){
     console.log(error);
-    res.status(500).json({message:"Greska pri dodavanje u liked"});
+    res.status(500).json({message:"Greska pri dodavanje u bloked"});
   }
 })
 

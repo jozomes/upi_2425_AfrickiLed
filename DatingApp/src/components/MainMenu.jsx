@@ -150,18 +150,21 @@ function MainMenu() {
 
   // Funkcija za prijavu korisnika
   const ReportUser = async () => {
+    //nalik na blok samo prijava
     try {
-      const email = currentPartner.email.toLowerCase();
-      await axios.delete(`http://localhost:5000/users/${email}`, {
+      await axios.post('http://localhost:5000/report',
+      {
+        noviReport: `${currentPartner.email}`
+      },
+      {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
       });
-      alert('Korisnik je uspješno prijavljen.');
-      NextPartner(); 
+      NextPartner();
     } catch (error) {
-      console.error('Greška prilikom prijavljivanja korisnika.', error);
-      alert('Nije moguće prijaviti korisnika. Pokušajte ponovo.');
+      console.error("Greška prilikom prijavljivanja korisnika.", error);
+      alert("Nije moguće bprijaviti korisnika. Pokušajte ponovo.");
     }
   };
 

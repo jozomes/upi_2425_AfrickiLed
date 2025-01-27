@@ -31,9 +31,25 @@ function Admin() {
       {poruka && <p>{poruka}</p>}
     </div>
   );
-}
+}*/
 
-    */
+  const OdobriPrijavu = async (event) => {
+    event.preventDefault();
+    
+    try {
+      const email = currentPartner.email.toLowerCase();
+      await axios.delete(`http://localhost:5000/users/${email}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      alert('Korisnik je uspješno izbrisan.');
+      NextPartner(); 
+    } catch (error) {
+      console.error('Greška prilikom brisanje korisnika.', error);
+      alert('Nije moguće obrisati korisnika. Pokušajte ponovo.');
+    }
+  };
     
   return (
     
@@ -47,7 +63,7 @@ function Admin() {
                 
                 Korisnik: KOJI
                 <div className="parent_buttons">
-                    <button>Odobri</button>
+                    <button onClick={OdobriPrijavu}>Odobri</button>
                     <button>Odbaci</button>
                 </div>
             </div>
