@@ -222,23 +222,6 @@
     "putanjaZaSliku": []
   },
   {
-    "email": "notadmin@pmfst.hr",
-    "lozinka": "admin",
-    "smjer": "Matematika",
-    "ime": "not",
-    "prezime": "admin",
-    "detalji": {
-      "opis": "6x7ct8uzivbuo ipojmk",
-      "najdraziProgramskiJezik": "tajna je :)",
-      "github": "tcufzigvhjbk",
-      "leetcode": "rctzvgbhj"
-    },
-    "liked": [],
-    "blokirani": [],
-    "isAdmin": false,
-    "putanjaZaSliku": []
-  },
-  {
     "email": "admin@pmfst.hr",
     "lozinka": "admin",
     "isAdmin": true

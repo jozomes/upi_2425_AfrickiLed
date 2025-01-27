@@ -151,18 +151,17 @@ function MainMenu() {
   // Funkcija za prijavu korisnika
   const ReportUser = async () => {
     try {
-      await axios.delete('http://localhost:5000/report', {
-        reportedUserId: currentPartner.id,
-      }, {
+      const email = currentPartner.email.toLowerCase();
+      await axios.delete(`http://localhost:5000/users/${email}`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      alert("Korisnik je uspješno prijavljen.");
-      NextPartner();
+      alert('Korisnik je uspješno prijavljen.');
+      NextPartner(); 
     } catch (error) {
-      console.error("Greška prilikom prijavljivanja korisnika.", error);
-      alert("Nije moguće prijaviti korisnika. Pokušajte ponovo.");
+      console.error('Greška prilikom prijavljivanja korisnika.', error);
+      alert('Nije moguće prijaviti korisnika. Pokušajte ponovo.');
     }
   };
 
@@ -228,12 +227,19 @@ function MainMenu() {
           <button onClick={BlockUser} className="block-button">Blokiraj korisnika</button>
         </div>
 
-      {medusobniLikeovi && <div>
-        <p>Medusobni likeovi</p>
-        {medusobniLikeovi.map(mail =>(
-          <MedusobniLike key={mail} mail={mail}></MedusobniLike>
-        ))}
-      </div>}
+        {medusobniLikeovi && medusobniLikeovi.length > 0 && (
+          <div className="medusobni-likeovi-container">
+            <h2>Jedan lajk, ali tko će prvi riješiti ovaj problem?</h2>
+            <h3>Započni razgovor...</h3>
+            <div className="likeovi-list">
+              {medusobniLikeovi.map((mail) => (
+                <div key={mail} className="like-user-grid">
+                  <p className="like-user-mail">{mail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
       <footer>
         <div className="footer">
