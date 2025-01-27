@@ -154,29 +154,6 @@
     ]
   },
   {
-    "email": "test@pmfst.hr",
-    "lozinka": "test",
-    "smjer": "Informatika-tehnika",
-    "ime": "test",
-    "prezime": "test",
-    "detalji": {
-      "opis": "minjam",
-      "najdraziProgramskiJezik": "c++",
-      "github": "test",
-      "leetcode": "test"
-    },
-    "liked": [
-      "ioreb@pmfst.hr",
-      "lukamodric@pmfst.hr",
-      "muvodic@pmfst.hr"
-    ],
-    "blokirani": [
-      "jmestrovi@pmfst.hr"
-    ],
-    "isAdmin": false,
-    "putanjaZaSliku": []
-  },
-  {
     "email": "admin@pmfst.hr",
     "lozinka": "admin",
     "isAdmin": true
@@ -192,8 +169,15 @@
       "github": "snoopyGit",
       "leetcode": "snoopyLeet"
     },
-    "liked": [],
-    "blokirani": [],
+    "liked": [
+      "ioreb@pmfst.hr",
+      "muvodic@pmfst.hr",
+      "manje22@pmfst.hr"
+    ],
+    "blokirani": [
+      "lukamodric@pmfst.hr",
+      "jozomestrovi@pmfst.hr"
+    ],
     "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1738000916324.jpeg",
@@ -205,19 +189,26 @@
     "email": "markolivaja@pmfst.hr",
     "lozinka": "hajduk",
     "smjer": "Biologija-kemija",
-    "ime": "Marko",
-    "prezime": "Livaja",
+    "ime": "marko",
+    "prezime": "livaja",
     "detalji": {
-      "opis": "hžv",
+      "opis": "HŽV",
       "najdraziProgramskiJezik": "javascript",
-      "github": "markoo",
-      "leetcode": "markoo"
+      "github": "marko",
+      "leetcode": "marko"
     },
     "putanjaZaSliku": [
-      "http://localhost:5000/profilePictures/1738003176252.jpeg"
+      "http://localhost:5000/profilePictures/1738004659632.jpg"
     ],
-    "liked": [],
-    "blokirani": [],
+    "liked": [
+      "jmestrovi@pmfst.hr",
+      "ioreb@pmfst.hr",
+      "muvodic@pmfst.hr",
+      "lukamodric@pmfst.hr"
+    ],
+    "blokirani": [
+      "jozomestrovi@pmfst.hr"
+    ],
     "isAdmin": false
   }
 ]

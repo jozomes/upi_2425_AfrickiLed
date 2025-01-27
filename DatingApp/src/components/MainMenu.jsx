@@ -262,16 +262,19 @@ const handleLike = async () => {
             </div>
 
             {!endOfPartners && (
+              <div>
                 <div className="btn_like_dislike">
                     <button onClick={handleDislike}>0</button>
                     <button onClick={handleLike}>1</button>
                 </div>
+                <div className="report_block_buttons">
+                  <button onClick={ReportUser} className="report-button">Prijavi korisnika</button>
+                  <button onClick={BlockUser} className="block-button">Blokiraj korisnika</button>
+                </div>
+              </div>
             )}
 
-      <div className="report_block_buttons">
-          <button onClick={ReportUser} className="report-button">Prijavi korisnika</button>
-          <button onClick={BlockUser} className="block-button">Blokiraj korisnika</button>
-        </div>
+      
 
         {medusobniLikeovi && medusobniLikeovi.length > 0 && (
           <div className="medusobni-likeovi-container">
