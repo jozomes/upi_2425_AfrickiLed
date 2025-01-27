@@ -182,7 +182,19 @@ function MainMenu() {
           }
         });
       
-      NextPartner();
+      const ostaliPartneri = partners.filter(
+        (partner) => partner.email !== currentPartner.email
+      );
+      setPartners(ostaliPartneri);
+
+      if(ostaliPartneri.length > 0){
+        setCurrentPartner(ostaliPartneri[0]);
+        setPartnerIndex(0);
+      }
+      else{
+        setCurrentPartner(null);
+        setEndOfPartners(true);
+      }
     } catch (error) {
       console.error("Greška prilikom blokiranja korisnika.", error);
       alert("Nije moguće blokirati korisnika. Pokušajte ponovo.");

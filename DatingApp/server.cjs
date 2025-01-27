@@ -196,6 +196,10 @@ app.post('/report', provjeriToken, (req, res) => {
       return res.status(404).json({message: "Poslan je prazan mail"});
     }
 
+    if (prijave.includes(req.body.noviReport)) {
+      return res.status(200).json({message:"korisnik je vec prijavljen"});
+    }
+
     prijave.push(req.body.noviReport);
 
     fs.writeFile(ADMIN_FILE, JSON.stringify(prijave, null, 2), (err) => {
