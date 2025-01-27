@@ -232,6 +232,7 @@ const handleLike = async () => {
           <h1 className="header_naslov">Get Commit</h1>
           <div className="underline"></div>
         </div>
+        <h3>Bok, {currentUser.ime}!</h3>
         <div className="parent_logout">
           <button className="logout" onClick={LogOutAndExit}>Odjava</button>
           <button className="logout" onClick={() => navigate("/edit-profile")}>Uredi profil</button>
