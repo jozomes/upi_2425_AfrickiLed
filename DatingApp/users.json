@@ -200,5 +200,24 @@
       "http://localhost:5000/profilePictures/1738000935053.jpg",
       "http://localhost:5000/profilePictures/1738002141329.jpeg"
     ]
+  },
+  {
+    "email": "markolivaja@pmfst.hr",
+    "lozinka": "hajduk",
+    "smjer": "Biologija-kemija",
+    "ime": "Marko",
+    "prezime": "Livaja",
+    "detalji": {
+      "opis": "hžv",
+      "najdraziProgramskiJezik": "javascript",
+      "github": "markoo",
+      "leetcode": "markoo"
+    },
+    "putanjaZaSliku": [
+      "http://localhost:5000/profilePictures/1738003176252.jpeg"
+    ],
+    "liked": [],
+    "blokirani": [],
+    "isAdmin": false
   }
 ]

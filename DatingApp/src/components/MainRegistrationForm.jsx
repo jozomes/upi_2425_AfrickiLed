@@ -48,7 +48,7 @@ function MainRegistrationForm() {
     const handleImageChange = (event) => {
         const files = Array.from(event.target.files);
         if (files.length) {
-            postaviPodatke({ ...formaPodaci, profileImage: files[0] });
+            postaviPodatke({ ...formaPodaci, putanjaZaSliku: files[0] });
         }
     };
 
@@ -97,11 +97,36 @@ function MainRegistrationForm() {
         try {
             const response = await axios.post('http://localhost:5000/users', zaSlanje);
             console.log(response);
+            await PohranaSlike();
             //alert("Registracija uspješna!");
             navigate("/");
         } catch (err) {
             console.error("Greška prilikom slanja podataka:", err);
             alert("Došlo je do greške prilikom registracije.");
+        }
+    }
+
+    const PohranaSlike = async () =>{
+        const formData = new FormData();
+        formData.append('profileImages', formaPodaci.putanjaZaSliku);
+        formData.append('email', formaPodaci.email);
+
+        try {
+            const response = await fetch('http://localhost:5000/upload-profile-picture', {
+                method: 'POST',
+                body: formData,
+            });
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Greska pri uploadu slike', errorData.message);
+                return;
+            }
+
+            const data = await response.json();
+            console.log('Slika uspješno spremljena:', data);  // Check server response
+            postaviPodatke((prevState) => ({...prevState, profileImage: null}));
+        } catch (error) {
+            console.error('Greška prilikom slanja slike:', error);
         }
     }
 
@@ -256,7 +281,7 @@ function MainRegistrationForm() {
                         <div className={stil.input}>
                             <input
                                 type="file"
-                                name="profileImage"
+                                name="putanjaZaSliku"
                                 accept="image/*"
                                 onChange={handleImageChange}
                                 /></div></div>
