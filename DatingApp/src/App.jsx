@@ -55,10 +55,6 @@ function App() {
           <Route path="/about" element={<About/>}/>
         </Routes>
       </UserContext.Provider>
-
-      
-      <button className="logout" onClick={() => navigate("/admin-page")}>admin</button>
-      <button className="logout" onClick={() => navigate("/about")}>about</button>
     </>
   )
 }

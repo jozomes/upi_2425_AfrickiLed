@@ -8,7 +8,7 @@ function About() {
 
     // Funkcija za odjavu
     const Exit = () => {
-        localStorage.removeItem("token");
+        //localStorage.removeItem("token");
         navigate("/MainMenu");
     };
     

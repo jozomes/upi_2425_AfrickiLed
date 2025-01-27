@@ -30,6 +30,14 @@ const provjeriToken = (req, res, next)=>{
   return next();
 }
 
+const provjeriUlogu = ()=> (req, res, next)=>{
+  if (req.korisnik.korisnik && req.korisnik.korisnik.isAdmin) {
+    next();
+  } else{
+    res.status(403).send('Zabranjen pristup');
+  }
+}
+
 const uploadFolder = path.join(__dirname, 'profilePictures');
 if(!fs.existsSync(uploadFolder)){
   fs.mkdirSync(uploadFolder);
@@ -78,6 +86,10 @@ app.get('/users', (req, res) => {
   console.log("Korisnici:", users);
   if(users.length==0){console.log("nema korisnika");}
   res.json({message:"radi molim te"});
+});
+
+app.get('/admin', provjeriToken, provjeriUlogu, (req, res) =>{
+  res.send('Jeli radi ovo samo za admine');
 });
 
 
@@ -160,7 +172,7 @@ app.get('/usporediLikes', provjeriToken, (req, res)=>{
 app.get('/browse', provjeriToken, (req,res) =>{
   const likedUsers = req.korisnik.korisnik.liked;
   const blockedUsers = req.korisnik.korisnik.blokirani;
-  const filteredUsers = users.filter(user => !likedUsers.includes(user.email) && !blockedUsers.includes(user.email) && user.email != req.korisnik.korisnik.email);
+  const filteredUsers = users.filter(user => !likedUsers.includes(user.email) && !blockedUsers.includes(user.email) && user.email != req.korisnik.korisnik.email && !user.isAdmin);
   res.send(filteredUsers);
 });
 
@@ -248,6 +260,7 @@ app.post('/users', (req, res) => {
       ...newUser,
       liked: [],
       blokirani: [],
+      isAdmin: false,
       putanjaZaSliku: []
   };
   users.push(userToAdd);
