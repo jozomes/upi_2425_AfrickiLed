@@ -1,4 +1,4 @@
-// path/to/your/function.js
+
 const axios = require('axios');
 const jwtDecode = require('jwt-decode');
 const handleSubmit = async ({ email, lozinka, setError, navigate, setCurrentUser }) => {
