@@ -178,6 +178,7 @@ function MainMenu() {
           }
         });
       //alert("Korisnik je uspješno blokiran.");
+      //pogledaj kod u staroj verziji samo ukloni iz niza
       NextPartner();
     } catch (error) {
       console.error("Greška prilikom blokiranja korisnika.", error);

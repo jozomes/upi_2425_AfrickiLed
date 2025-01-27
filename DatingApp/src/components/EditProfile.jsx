@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom';
 function EditProfile() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [formaPodaci, postaviPodatke] = useState({
-        short_desc: currentUser.detalji.short_desc,
-        fav_language: currentUser.detalji.najdraziProgramskiJezik,
+        // opis: currentUser.detalji.opis,
+        najdraziProgramskiJezik: currentUser.detalji.najdraziProgramskiJezik,
         github: currentUser.detalji.github,
         leetcode: currentUser.detalji.leetcode,
         profileImage: null,
@@ -35,8 +35,8 @@ function EditProfile() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const podaciZaAzuriranje = {
-            opis: formaPodaci.short_desc || currentUser.detalji.short_desc,
-            najdraziProgramskiJezik: formaPodaci.fav_language|| currentUser.detalji.najdraziProgramskiJezik,
+            // opis: formaPodaci.opis || currentUser.detalji.opis,
+            najdraziProgramskiJezik: formaPodaci.najdraziProgramskiJezik|| currentUser.detalji.najdraziProgramskiJezik,
             github: formaPodaci.github || currentUser.detalji.github,
             leetcode: formaPodaci.leetcode || currentUser.detalji.leetcode,
         };
@@ -51,8 +51,6 @@ function EditProfile() {
             
             setCurrentUser({ ...currentUser, detalji: podaciZaAzuriranje });
             setPoruka('Promjene su uspješno pohranjene!');
-            setTimeout(() => navigate("/MainMenu"), 3000);
-
         } catch (error) {
             console.error(error);
             setPoruka('Došlo je do greške prilikom spremanja promjena.');
@@ -73,22 +71,22 @@ function EditProfile() {
             <form onSubmit={handleSubmit}>
                 <div className={stil.radioContainer}>
                     <p>Odaberite polje koje želite urediti:</p>
-                    <label className={stil.radioOption}>
+                    {/* <label className={stil.radioOption}>
                         <input
                             type="radio"
                             name="odabranoPolje"
-                            value="short_desc"
-                            onChange={() => setOdabranoPolje('short_desc')}
+                            value="opis"
+                            onChange={() => setOdabranoPolje('opis')}
                         />
                         Malo duži opis
-                    </label>
+                    </label> */}
                     <br />
                     <label className={stil.radioOption}>
                         <input
                             type="radio"
                             name="odabranoPolje"
-                            value="fav_language"
-                            onChange={() => setOdabranoPolje('fav_language')}
+                            value="najdraziProgramskiJezik"
+                            onChange={() => setOdabranoPolje('najdraziProgramskiJezik')}
                         />
                         Najdraži programski jezik
                     </label>
@@ -124,26 +122,26 @@ function EditProfile() {
                     </label>
                 </div>
 
-                {odabranoPolje === 'short_desc' && (
+                {/* {odabranoPolje === 'opis' && (
                     <div>
                         <label htmlFor="description">Malo duži opis:</label>
                         <div className={stil.inputs}>
                         <div className={stil.input}>
                         <textarea
                             id="description"
-                            name="short_desc"
+                            name="opis"
                             minLength="1"
                             maxLength="100"
-                            value={formaPodaci.short_desc}
+                            value={formaPodaci.opis}
                             onChange={promjenaUlaza}
                             placeholder="Duži opis"
                         />
                         </div>
                         </div>
                     </div>
-                )}
+                )} */}
 
-                {odabranoPolje === 'fav_language' && (
+                {odabranoPolje === 'najdraziProgramskiJezik' && (
                     <div>
                         <div className={stil.inputs}>
                         
@@ -151,8 +149,8 @@ function EditProfile() {
                         <label>
                             Najdraži programski jezik: 
                             <select
-                                name="fav_language"
-                                value={formaPodaci.fav_language}
+                                name="najdraziProgramskiJezik"
+                                value={formaPodaci.najdraziProgramskiJezik}
                                 onChange={promjenaUlaza}
                             >
                                 <option value="">--":P"--</option>
