@@ -133,7 +133,7 @@ app.get('/login', (req, res) =>{
 
 
 app.patch('/update/:mail', (req,res) =>{
-  const potentialMail = req.params.mail;
+  const potentialMail = req.params.mail.toLowerCase();
 
   const existingUser = users.find(user => user.email.toLowerCase() === potentialMail);
 
@@ -141,7 +141,10 @@ app.patch('/update/:mail', (req,res) =>{
       return res.status(404).json({ error: 'Nije pronaden taj korisnik' });
   }
 
-  existingUser.detalji = req.body.detalji;
+  existingUser.detalji = {
+    ...existingUser.detalji,
+    ...req.body.detalji,
+  };
 
   fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2), (err) => {
     if (err) {
