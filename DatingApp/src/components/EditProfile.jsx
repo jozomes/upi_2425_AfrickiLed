@@ -43,10 +43,6 @@ function EditProfile() {
 
         const formData = new FormData();
         formData.append('profileImages', formaPodaci.profileImage);
-        // formData.append('opis', formaPodaci.opis);
-        // formData.append('fav_language', formaPodaci.najdraziProgramskiJezik);
-        // formData.append('github', formaPodaci.github);
-        // formData.append('leetcode', formaPodaci.leetcode);
         formData.append('email', currentUser.email);
 
          try {
@@ -64,7 +60,6 @@ function EditProfile() {
             const data = await response.json();
             console.log('Slika uspješno spremljena:', data);  // Check server response
             postaviPodatke((prevState) => ({...prevState, profileImage: null}));
-            //await UpdateProfile();
             
         } catch (error) {
             console.error('Greška prilikom slanja slike:', error);
@@ -103,16 +98,6 @@ function EditProfile() {
             <form onSubmit={handleSubmit}>
                 <div className={stil.radioContainer}>
                     <p>Odaberite polje koje želite urediti:</p>
-                    {/* <label className={stil.radioOption}>
-                        <input
-                            type="radio"
-                            name="odabranoPolje"
-                            value="opis"
-                            onChange={() => setOdabranoPolje('opis')}
-                        />
-                        Malo duži opis
-                    </label> */}
-                    <br />
                     <label className={stil.radioOption}>
                         <input
                             type="radio"

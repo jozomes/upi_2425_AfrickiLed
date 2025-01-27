@@ -1,17 +1,18 @@
 [
   {
-    "email": "jmestrovi@pmfst.hr",
+    "email": "jmestrovic@pmfst.hr",
     "ime": "Jozo",
     "prezime": "Meštrović",
-    "lozinka": "volimnasilje",
-    "smjer": "ArijskaInfa",
+    "lozinka": "nesto",
+    "smjer": "Informatika",
     "detalji": {
-      "opis": "pliz radi zadnji put",
-      "najdraziProgramskiJezik": "php",
+      "opis": "bug riješim marko livaja",
+      "najdraziProgramskiJezik": "javascript",
       "github": "jozomes",
-      "leetcode": "huhwhat"
+      "leetcode": "jozomes"
     },
-    "liked": [],
+    "liked": [
+    ],
     "blokirani": [],
     "isAdmin": false,
     "putanjaZaSliku": [
@@ -26,22 +27,13 @@
     "lozinka": "lozinka123",
     "smjer": "Informatika",
     "detalji": {
-      "opis": "promjena broj dva",
+      "opis": "hi :)",
       "najdraziProgramskiJezik": "python",
       "github": "ivanaoreb",
-      "leetcode": "ivanaorebd"
+      "leetcode": "ivanaoreb"
     },
-    "liked": [
-      "jmestrovi@pmfst.hr",
-      "markolivaja@pmfst.hr",
-      "manje22@pmfst.hr",
-      "dskendero@pmfst.hr",
-      "lukamodric@pmfst.hr",
-      "test@pmfst.hr"
-    ],
-    "blokirani": [
-      "dskendero@pmfst.hr"
-    ],
+    "liked": [],
+    "blokirani": [],
     "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559378565.jpg",
@@ -55,54 +47,17 @@
     "ime": "Mariela",
     "prezime": "Uvodic",
     "detalji": {
-      "opis": "ovo sam zaboravila dodat, radis li",
+      "opis": "moram imati opis :(",
       "najdraziProgramskiJezik": "c",
-      "github": "neki",
-      "leetcode": "nekidrugi"
+      "github": "muvodic",
+      "leetcode": "mariela"
     },
-    "liked": [
-      "ioreb@pmfst.hr"
-    ],
-    "blokirani": [
-      "lukamodric@pmfst.hr",
-      "test@pmfst.hr",
-      "jmestrovi@pmfst.hr"
-    ],
+    "liked": [],
+    "blokirani": [],
     "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559302726.jpg",
-      "http://localhost:5000/profilePictures/1737559304634.jpg",
-      "http://localhost:5000/profilePictures/1738000765016.jpeg"
-    ]
-  },
-  {
-    "email": "lukamodric@pmfst.hr",
-    "lozinka": "nogomet",
-    "smjer": "Matematika",
-    "ime": "Luka",
-    "prezime": "Modric",
-    "detalji": {
-      "najdraziProgramskiJezik": "tajna je :)",
-      "github": "oops",
-      "leetcode": "zeznila"
-    },
-    "liked": [
-      "markolivaja@pmfst.hr",
-      "muvodic@pmfst.hr",
-      "dskendero@pmfst.hr"
-    ],
-    "blokirani": [
-      "jmestrovi@pmfst.hr",
-      "manje22@pmfst.hr",
-      "ioreb@pmfst.hr"
-    ],
-    "isAdmin": false,
-    "putanjaZaSliku": [
-      "http://localhost:5000/profilePictures/1737559129000.jpg",
-      "http://localhost:5000/profilePictures/1737559133717.jpg",
-      "http://localhost:5000/profilePictures/1737559137023.jpg",
-      "http://localhost:5000/profilePictures/1737710155295.png",
-      "http://localhost:5000/profilePictures/1737710313508.png"
+      "http://localhost:5000/profilePictures/1737559304634.jpg"
     ]
   },
   {
@@ -121,24 +76,12 @@
       "github": "snoopyGit",
       "leetcode": "snoopyLeet"
     },
-    "liked": [
-      "ioreb@pmfst.hr",
-      "muvodic@pmfst.hr",
-      "manje22@pmfst.hr",
-      "jmestrovi@pmfst.hr"
-    ],
-    "blokirani": [
-      "lukamodric@pmfst.hr",
-      "jozomestrovi@pmfst.hr",
-      "jmestrovi@pmfst.hr",
-      "markolivaja@pmfst.hr",
-      "hmandela@pmfst.hr"
-    ],
+    "liked": [],
+    "blokirani": [],
     "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1738000916324.jpeg",
-      "http://localhost:5000/profilePictures/1738000935053.jpg",
-      "http://localhost:5000/profilePictures/1738002141329.jpeg"
+      "http://localhost:5000/profilePictures/1738000935053.jpg"
     ]
   },
   {
@@ -154,16 +97,11 @@
       "leetcode": "marko"
     },
     "putanjaZaSliku": [
-      "http://localhost:5000/profilePictures/1738004659632.jpg"
+      "http://localhost:5000/profilePictures/1738000765016.jpg",
+      "http://localhost:5000/profilePictures/1738000765016.jpeg"
     ],
-    "liked": [
-      "lukamodric@pmfst.hr"
-    ],
-    "blokirani": [
-      "manje22@pmfst.hr",
-      "jmestrovi@pmfst.hr",
-      "muvodic@pmfst.hr"
-    ],
+    "liked": [],
+    "blokirani": [],
     "isAdmin": false
   }
 ]

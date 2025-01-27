@@ -1,7 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
-import MedusobniLike from './MedusobniLike';
 import axios from 'axios';
 import ProfileCard from './ProfileCard';
 
@@ -162,7 +161,7 @@ function MainMenu() {
         }
       });
       await BlockUser();
-      NextPartner(); //uklonit?
+      NextPartner(); 
     } catch (error) {
       console.error("Greška prilikom prijavljivanja korisnika.", error);
       alert("Nije moguće bprijaviti korisnika. Pokušajte ponovo.");
@@ -201,7 +200,6 @@ function MainMenu() {
     }
   };
 
-//dodajem drugi put
 // Funkcija za preskakanje trenutnog korisnika
 const handleInteraction = () => {
   const updatedSeenUsers = [...seenUsers, currentPartner.email];
@@ -311,7 +309,6 @@ const handleLike = async () => {
         <div className="footer">
           <p>Credits:</p>
           <a onClick={() => navigate("/about")}>About</a>
-          {/* <button className="logout" onClick={() => navigate("/about")}>about</button> */}
         </div>
       </footer>
     </div>

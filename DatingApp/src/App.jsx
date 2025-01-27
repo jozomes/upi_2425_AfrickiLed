@@ -4,20 +4,17 @@ import EditProfile from './components/EditProfile'
 import MainMenu from './components/MainMenu'
 import LoginForm from './components/LoginForm'
 import MainRegistrationForm from './components/MainRegistrationForm'
-import ProfileCard from './components/ProfileCard'
 import { Route, Routes } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
 import Admin from './components/Admin'
 export const UserContext = createContext(null);
 import About from './components/About'
 
-//dodano
 import { useNavigate } from 'react-router-dom'
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isInitializing, setIsInitializing] = useState(true);
-  //dodano
   const navigate = useNavigate();
 
   useEffect(() => {

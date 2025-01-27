@@ -161,7 +161,6 @@ footer a{
 }
 
 /*za medusobno lajkanje*/
-
 .medusobni-likeovi-container {
   margin: 20px 0;
   padding: 20px;
@@ -187,7 +186,7 @@ footer a{
 
 .like-user-grid {
   display: grid;
-  grid-template-columns: 1fr; /* Jedan stupac unutar grida */
+  grid-template-columns: 1fr; 
   padding: 15px;
   background-color: #ffffff;
   border-radius: 8px;
