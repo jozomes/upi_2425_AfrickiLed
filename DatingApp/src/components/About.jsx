@@ -1,14 +1,10 @@
-import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../App';
-import axios from 'axios';
 import '../cssFiles/mainMenu.css';
 function About() {
     const navigate = useNavigate();
 
     // Funkcija za odjavu
     const Exit = () => {
-        //localStorage.removeItem("token");
         navigate("/MainMenu");
     };
     

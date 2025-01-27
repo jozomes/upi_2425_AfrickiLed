@@ -98,7 +98,6 @@ function MainRegistrationForm() {
             const response = await axios.post('http://localhost:5000/users', zaSlanje);
             console.log(response);
             await PohranaSlike();
-            //alert("Registracija uspješna!");
             navigate("/");
         } catch (err) {
             console.error("Greška prilikom slanja podataka:", err);
