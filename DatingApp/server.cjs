@@ -67,6 +67,16 @@ function saveUsersToFile() {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
+const ADMIN_FILE = path.join(__dirname, 'admin.json');
+let prijave = [];
+if (fs.existsSync(ADMIN_FILE)) {
+  const adminData = fs.readFileSync(ADMIN_FILE, 'utf-8');
+  prijave = JSON.parse(adminData);
+}
+
+function saveReportsToFile(){
+  fs.writeFileSync(ADMIN_FILE, JSON.stringify(prijave, null, 2));
+}
 ///////////////////////////////////////////////
 
 app.get("/", (req, res) => {
@@ -179,6 +189,35 @@ app.get('/browse', provjeriToken, (req,res) =>{
   res.send(filteredUsers);
 });
 
+
+app.post('/report', provjeriToken, (req, res) => {
+  try {
+    if (!req.body.noviReport) {
+      return res.status(404).json({message: "Poslan je prazan mail"});
+    }
+
+    if (prijave.includes(req.body.noviReport)) {
+      return res.status(200).json({message:"korisnik je vec prijavljen"});
+    }
+
+    prijave.push(req.body.noviReport);
+
+    fs.writeFile(ADMIN_FILE, JSON.stringify(prijave, null, 2), (err) => {
+      if (err) {
+          console.log("Failed to write updated data to file");
+          return;
+      }
+      console.log("Updated file successfully");
+      prijave = JSON.parse(fs.readFileSync(ADMIN_FILE, 'utf-8'));
+      return res.status(200).json({message:"azurirani su prijavljeni korisnici"});
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({message:"Greska pri dodavanje u bloked"});
+  }
+})
+
 app.patch('/block', provjeriToken, (req, res)=>{
   try{
     const korisnik = users.find(user => user.email.toLowerCase() === req.korisnik.korisnik.email);
@@ -206,7 +245,7 @@ app.patch('/block', provjeriToken, (req, res)=>{
   }
   catch(error){
     console.log(error);
-    res.status(500).json({message:"Greska pri dodavanje u liked"});
+    res.status(500).json({message:"Greska pri dodavanje u bloked"});
   }
 })
 
@@ -314,5 +353,27 @@ app.delete('/users/:email', (req, res) => {
   users.splice(userIndex, 1); // Ukloni korisnika iz liste
   saveUsersToFile(); // Spremi ažuriranu listu u datoteku
 
+  const prijavljenIndex = prijave.findIndex(element => element === email);
+  prijave.splice(prijavljenIndex, 1);
+  saveReportsToFile();
+
   res.status(200).json({ message: `Korisnik s emailom ${email} uspješno uklonjen` });
 });
+
+app.delete('/odbaci/:email', (req, res) =>{
+  const email = req.params.email.toLowerCase();
+  const prijavljenIndex = prijave.findIndex(element => element === email);
+  prijave.splice(prijavljenIndex, 1);
+  saveReportsToFile();
+
+  res.status(200).json({ message: `Korisnik s emailom ${email} uspješno uklonjen s liste prijava` });
+})
+
+
+app.get('/prijavljeni', (req, res) =>{
+  try {
+    return res.status(200).json({message: "uspjesno dohvaceni prijavljeni korisnici", prijave});
+  } catch (error) {
+    return res.status(500).json({message: "greska u dohvacanje prijavljenih"});
+  }
+})

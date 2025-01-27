@@ -150,18 +150,22 @@ function MainMenu() {
 
   // Funkcija za prijavu korisnika
   const ReportUser = async () => {
+    //nalik na blok samo prijava
     try {
-      const email = currentPartner.email.toLowerCase();
-      await axios.delete(`http://localhost:5000/users/${email}`, {
+      await axios.post('http://localhost:5000/report',
+      {
+        noviReport: `${currentPartner.email}`
+      },
+      {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
       });
-      alert('Korisnik je uspješno prijavljen.');
-      NextPartner(); 
+      await BlockUser();
+      NextPartner(); //uklonit?
     } catch (error) {
-      console.error('Greška prilikom prijavljivanja korisnika.', error);
-      alert('Nije moguće prijaviti korisnika. Pokušajte ponovo.');
+      console.error("Greška prilikom prijavljivanja korisnika.", error);
+      alert("Nije moguće bprijaviti korisnika. Pokušajte ponovo.");
     }
   };
 
@@ -177,7 +181,20 @@ function MainMenu() {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           }
         });
-      NextPartner();
+      
+      const ostaliPartneri = partners.filter(
+        (partner) => partner.email !== currentPartner.email
+      );
+      setPartners(ostaliPartneri);
+
+      if(ostaliPartneri.length > 0){
+        setCurrentPartner(ostaliPartneri[0]);
+        setPartnerIndex(0);
+      }
+      else{
+        setCurrentPartner(null);
+        setEndOfPartners(true);
+      }
     } catch (error) {
       console.error("Greška prilikom blokiranja korisnika.", error);
       alert("Nije moguće blokirati korisnika. Pokušajte ponovo.");
