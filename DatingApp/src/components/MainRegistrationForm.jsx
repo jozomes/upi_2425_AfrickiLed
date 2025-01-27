@@ -15,6 +15,7 @@ function MainRegistrationForm() {
         fav_language: '',
         github: '',
         leetcode: '',
+        putanjaZaSliku: ''
     });
 
     function promjenaUlaza(event) {
@@ -39,9 +40,17 @@ function MainRegistrationForm() {
                 "github":object.github,
                 "leetcode":object.leetcode
             },
+            "putanjaZaSliku":object.putanjaZaSliku,
             "liked":[]
         }
     }
+
+    const handleImageChange = (event) => {
+        const files = Array.from(event.target.files);
+        if (files.length) {
+            postaviPodatke({ ...formaPodaci, profileImage: files[0] });
+        }
+    };
 
     async function JedinstvenMail(mail){
         const url = `http://localhost:5000/users/${mail}`;
@@ -241,6 +250,17 @@ function MainRegistrationForm() {
                         </input>
                 </div>
                 <br></br>
+                <div>
+                    <label htmlFor="profileImage">Upload slike:</label>
+                        <div className={stil.inputs}>
+                        <div className={stil.input}>
+                            <input
+                                type="file"
+                                name="profileImage"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                                /></div></div>
+                        </div>
                 <div>
                 <button type="submit">Prijavi se</button>
                 </div>

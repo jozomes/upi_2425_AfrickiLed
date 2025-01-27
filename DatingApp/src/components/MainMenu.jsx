@@ -5,6 +5,7 @@ import MedusobniLike from './MedusobniLike';
 import axios from 'axios';
 import ProfileCard from './ProfileCard';
 
+
 function MainMenu() {
     const navigate = useNavigate();
     const {currentUser, setCurrentUser} = useContext(UserContext);
@@ -13,6 +14,8 @@ function MainMenu() {
     const [currentPartner, setCurrentPartner] = useState(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [medusobniLikeovi, setMedusobniLikeovi] = useState(null);
+    const [endOfPartners, setEndOfPartners] = useState(false);
+    const [seenUsers, setSeenUsers] = useState([]);
 
     const LogOutAndExit = () =>{
         setCurrentUser(null);
@@ -65,6 +68,7 @@ function MainMenu() {
 
     async function LikePartner() {
       try{
+        
         const res = await axios.patch('http://localhost:5000/browse/like', 
           { 
             newLike: `${currentPartner.email}` 
@@ -124,9 +128,6 @@ function MainMenu() {
         }
     }, [partners]);
 
-
-
-
     async function InitializeBrowsing() {
       if (partners && partners.length > 0) {
         setCurrentPartner(partners[partnerIndex]);
@@ -136,18 +137,17 @@ function MainMenu() {
 
     function NextPartner() {
       setPartnerIndex((prevIndex) => {
-        
-        const nextIndex = (prevIndex + 1) % partners.length;
+     const nextIndex = (prevIndex + 1) % partners.length;
         setCurrentPartner(partners[nextIndex]);
         return nextIndex;
       });
     }
+    
 
     if (!currentUser) {
       return null;
     }
 
-  //dodala sam ovo
   // Funkcija za prijavu korisnika
   const ReportUser = async () => {
     try {
@@ -177,8 +177,6 @@ function MainMenu() {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           }
         });
-      //alert("Korisnik je uspješno blokiran.");
-      //pogledaj kod u staroj verziji samo ukloni iz niza
       NextPartner();
     } catch (error) {
       console.error("Greška prilikom blokiranja korisnika.", error);
@@ -186,6 +184,46 @@ function MainMenu() {
     }
   };
 
+//dodajem drugi put
+// Funkcija za preskakanje trenutnog korisnika
+const handleInteraction = () => {
+  const updatedSeenUsers = [...seenUsers, currentPartner.email];
+  setSeenUsers(updatedSeenUsers);
+
+  const remainingPartners = partners.filter(
+      (partner) => !updatedSeenUsers.includes(partner.email)
+  );
+
+  if (remainingPartners.length > 0) {
+      setCurrentPartner(remainingPartners[0]); 
+  } else {
+      setEndOfPartners(true); 
+  }
+
+  setPartners(remainingPartners); 
+};
+
+ const handleDislike = () => {
+  handleInteraction(); 
+};
+
+// Funkcija za lajkanje korisnika
+const handleLike = async () => {
+  try {
+      await axios.patch(
+          'http://localhost:5000/browse/like',
+          { newLike: currentPartner.email },
+          {
+              headers: {
+                  Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+          }
+      );
+      handleInteraction(); 
+  } catch (error) {
+      console.error("Dogodila se greška prilikom lajkanja korisnika.", error);
+  }
+};
 
   return (
     <div className='container'>
@@ -194,35 +232,42 @@ function MainMenu() {
           <h1 className="header_naslov">Get Commit</h1>
           <div className="underline"></div>
         </div>
+        <h3>Bok, {currentUser.ime}!</h3>
         <div className="parent_logout">
-          <button className="logout" onClick={LogOutAndExit}>Log Out</button>
+          <button className="logout" onClick={LogOutAndExit}>Odjava</button>
           <button className="logout" onClick={() => navigate("/edit-profile")}>Uredi profil</button>
         </div>
       </header>
 
       <div className="parent_user_window">
-        {currentPartner && (
-          <ProfileCard
-            name={currentPartner.ime}
-            surname={currentPartner.prezime}
-            major={currentPartner.smjer}
-            favLanguage={currentPartner.detalji.najdraziProgramskiJezik}
-            github={currentPartner.detalji.github}
-            leetcode={currentPartner.detalji.leetcode}
-            longBio={currentPartner.detalji.opis}
-            image={currentPartner.putanjaZaSliku?.[currentImageIndex] || ''}
-            onNextPicture={handleNextPicture}
-            onPreviousPicture={handlePreviousPicture}
-          />
-        )}   
+                {!endOfPartners && currentPartner ? (
+                    <ProfileCard
+                        name={currentPartner.ime}
+                        surname={currentPartner.prezime}
+                        major={currentPartner.smjer}
+                        favLanguage={currentPartner.detalji.najdraziProgramskiJezik}
+                        github={currentPartner.detalji.github}
+                        leetcode={currentPartner.detalji.leetcode}
+                        longBio={currentPartner.detalji.opis}
+                        image={currentPartner.putanjaZaSliku?.[currentImageIndex] || ''}
+                        onNextPicture={handleNextPicture}
+                        onPreviousPicture={handlePreviousPicture}
+                    />
+                ) : (
+                    <div className="end-of-partners-message">
+                        <p>Došli ste do kraja potencijalnih partnera.</p>
+                        <p>Pokušajte kasnije ponovno!</p>
+                    </div>
+                )}
+            </div>
 
-        <div className="btn_like_dislike">
-          <button onClick={NextPartner}>0</button>
-          <button onClick={LikePartner}>1</button>
-        </div>
-      </div>
+            {!endOfPartners && (
+                <div className="btn_like_dislike">
+                    <button onClick={handleDislike}>0</button>
+                    <button onClick={handleLike}>1</button>
+                </div>
+            )}
 
-      {/* Botuni za prijavu i blokiranje */}
       <div className="report_block_buttons">
           <button onClick={ReportUser} className="report-button">Prijavi korisnika</button>
           <button onClick={BlockUser} className="block-button">Blokiraj korisnika</button>

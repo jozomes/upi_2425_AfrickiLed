@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 function EditProfile() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [formaPodaci, postaviPodatke] = useState({
-        // opis: currentUser.detalji.opis,
+        opis: currentUser.detalji.opis,
         najdraziProgramskiJezik: currentUser.detalji.najdraziProgramskiJezik,
         github: currentUser.detalji.github,
         leetcode: currentUser.detalji.leetcode,
@@ -35,10 +35,10 @@ function EditProfile() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const podaciZaAzuriranje = {
-            // opis: formaPodaci.opis || currentUser.detalji.opis,
+            opis: formaPodaci.opis || currentUser.detalji.opis,
             najdraziProgramskiJezik: formaPodaci.najdraziProgramskiJezik|| currentUser.detalji.najdraziProgramskiJezik,
             github: formaPodaci.github || currentUser.detalji.github,
-            leetcode: formaPodaci.leetcode || currentUser.detalji.leetcode,
+            leetcode: formaPodaci.leetcode || currentUser.detalji.leetcode
         };
 
         try {
@@ -122,7 +122,8 @@ function EditProfile() {
                     </label>
                 </div>
 
-                {/* {odabranoPolje === 'opis' && (
+
+                {odabranoPolje === 'opis' && (
                     <div>
                         <label htmlFor="description">Malo duži opis:</label>
                         <div className={stil.inputs}>

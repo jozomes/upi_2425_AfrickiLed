@@ -1,19 +1,47 @@
 [
   {
+    "email": "jmestrovi@pmfst.hr",
+    "ime": "Jozo",
+    "prezime": "Meštrović",
+    "lozinka": "volimnasilje",
+    "smjer": "ArijskaInfa",
+    "detalji": {
+      "opis": "pliz radi zadnji put",
+      "najdraziProgramskiJezik": "php",
+      "github": "jozomes",
+      "leetcode": "huhwhat"
+    },
+    "liked": [],
+    "blokirani": [],
+    "isAdmin": false,
+    "putanjaZaSliku": [
+      "http://localhost:5000/profilePictures/1737559473238.jpg",
+      "http://localhost:5000/profilePictures/1737559479499.jpg"
+    ]
+  },
+  {
     "email": "ioreb@pmfst.hr",
     "ime": "Ivana",
     "prezime": "Oreb",
     "lozinka": "lozinka123",
     "smjer": "Informatika",
     "detalji": {
-      "najdraziProgramskiJezik": "java",
+      "opis": "promjena broj dva",
+      "najdraziProgramskiJezik": "python",
       "github": "ivanaoreb",
-      "leetcode": "ivanaoreb"
+      "leetcode": "ivanaorebd"
     },
     "liked": [
-      "jmestrovi@pmfst.hr"
+      "jmestrovi@pmfst.hr",
+      "markolivaja@pmfst.hr",
+      "manje22@pmfst.hr",
+      "dskendero@pmfst.hr",
+      "lukamodric@pmfst.hr",
+      "test@pmfst.hr"
     ],
-    "blokirani": [],
+    "blokirani": [
+      "dskendero@pmfst.hr"
+    ],
     "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559378565.jpg",
@@ -27,7 +55,8 @@
     "ime": "Mariela",
     "prezime": "Uvodic",
     "detalji": {
-      "najdraziProgramskiJezik": "php",
+      "opis": "ovo sam zaboravila dodat, radis li",
+      "najdraziProgramskiJezik": "c",
       "github": "neki",
       "leetcode": "nekidrugi"
     },
