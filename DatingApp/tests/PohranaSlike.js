@@ -1,4 +1,4 @@
-const PohranaSlike = async () =>{
+const PohranaSlike = async (formaPodaci, postaviPodatke) => {
     const formData = new FormData();
     formData.append('profileImages', formaPodaci.putanjaZaSliku);
     formData.append('email', formaPodaci.email);
@@ -15,10 +15,11 @@ const PohranaSlike = async () =>{
         }
 
         const data = await response.json();
-        console.log('Slika uspješno spremljena:', data);  // Check server response
-        postaviPodatke((prevState) => ({...prevState, profileImage: null}));
+        console.log('Slika uspješno spremljena:', data); // Check server response
+        postaviPodatke((prevState) => ({ ...prevState, profileImage: null }));
     } catch (error) {
         console.error('Greška prilikom slanja slike:', error);
     }
-}
+};
+
 module.exports = PohranaSlike;

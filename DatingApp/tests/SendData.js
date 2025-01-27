@@ -36,7 +36,7 @@ const SendData = async (event, formaPodaci, navigate, PohranaSlike, alertFunctio
         alertFunction("Registracija uspješna!");
         navigate("/");
     } catch (err) {
-        console.error("Greška prilikom slanja podataka:", err);
+        console.error("Greška prilikom slanja podataka:", err.message);
         alertFunction("Došlo je do greške prilikom registracije.");
     }
 }
