@@ -1,25 +1,5 @@
 [
   {
-    "email": "jmestrovi@pmfst.hr",
-    "ime": "Jozo",
-    "prezime": "Meštrović",
-    "lozinka": "volimnasilje",
-    "smjer": "ArijskaInfa",
-    "detalji": {
-      "opis": "pliz radi zadnji put",
-      "najdraziProgramskiJezik": "php",
-      "github": "jozomes",
-      "leetcode": "huhwhat"
-    },
-    "liked": [],
-    "blokirani": [],
-    "isAdmin": false,
-    "putanjaZaSliku": [
-      "http://localhost:5000/profilePictures/1737559473238.jpg",
-      "http://localhost:5000/profilePictures/1737559479499.jpg"
-    ]
-  },
-  {
     "email": "ioreb@pmfst.hr",
     "ime": "Ivana",
     "prezime": "Oreb",
@@ -91,9 +71,9 @@
       "dskendero@pmfst.hr"
     ],
     "blokirani": [
-      "jmestrovi@pmfst.hr",
       "manje22@pmfst.hr",
-      "ioreb@pmfst.hr"
+      "ioreb@pmfst.hr",
+      "jozomestrovi@pmfst.hr"
     ],
     "isAdmin": false,
     "putanjaZaSliku": [
