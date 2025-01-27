@@ -6,10 +6,10 @@
     "lozinka": "volimnasilje",
     "smjer": "ArijskaInfa",
     "detalji": {
-      "opis": "Goat",
-      "najdraziProgramskiJezik": "C#",
+      "opis": "pliz radi zadnji put",
+      "najdraziProgramskiJezik": "php",
       "github": "jozomes",
-      "leetcode": "enjinir"
+      "leetcode": "huhwhat"
     },
     "liked": [],
     "blokirani": [],
@@ -26,18 +26,22 @@
     "lozinka": "lozinka123",
     "smjer": "Informatika",
     "detalji": {
-      "opis": "ovo sam zaboravila dodat, radis li",
-      "najdraziProgramskiJezik": "javascript",
+      "opis": "promjena broj dva",
+      "najdraziProgramskiJezik": "python",
       "github": "ivanaoreb",
-      "leetcode": "ivanaoreb"
+      "leetcode": "ivanaorebd"
     },
     "liked": [
       "jmestrovi@pmfst.hr",
-      "muvodic@pmfst.hr",
+      "markolivaja@pmfst.hr",
+      "manje22@pmfst.hr",
+      "dskendero@pmfst.hr",
       "lukamodric@pmfst.hr",
-      "manje22@pmfst.hr"
+      "test@pmfst.hr"
     ],
-    "blokirani": [],
+    "blokirani": [
+      "dskendero@pmfst.hr"
+    ],
     "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559378565.jpg",
@@ -51,7 +55,7 @@
     "ime": "Mariela",
     "prezime": "Uvodic",
     "detalji": {
-      "opis": "radi li?",
+      "opis": "ovo sam zaboravila dodat, radis li",
       "najdraziProgramskiJezik": "c",
       "github": "neki",
       "leetcode": "nekidrugi"
