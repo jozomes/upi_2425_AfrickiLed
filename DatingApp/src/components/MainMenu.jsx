@@ -161,6 +161,7 @@ function MainMenu() {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         }
       });
+      await BlockUser();
       NextPartner();
     } catch (error) {
       console.error("Greška prilikom prijavljivanja korisnika.", error);
@@ -180,6 +181,7 @@ function MainMenu() {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           }
         });
+      
       NextPartner();
     } catch (error) {
       console.error("Greška prilikom blokiranja korisnika.", error);

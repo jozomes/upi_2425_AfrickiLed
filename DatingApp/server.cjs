@@ -192,9 +192,22 @@ app.get('/browse', provjeriToken, (req,res) =>{
 
 app.post('/report', provjeriToken, (req, res) => {
   try {
-    //dohvati listu prijava
-    //admin.json
-    //spremi pormjene
+    if (!req.body.noviReport) {
+      return res.status(404).json({message: "Poslan je prazan mail"});
+    }
+
+    prijave.push(req.body.noviReport);
+
+    fs.writeFile(ADMIN_FILE, JSON.stringify(prijave, null, 2), (err) => {
+      if (err) {
+          console.log("Failed to write updated data to file");
+          return;
+      }
+      console.log("Updated file successfully");
+      prijave = JSON.parse(fs.readFileSync(ADMIN_FILE, 'utf-8'));
+      return res.status(200).json({message:"azurirani su prijavljeni korisnici"});
+    });
+
   } catch (error) {
     console.log(error);
     res.status(500).json({message:"Greska pri dodavanje u bloked"});
