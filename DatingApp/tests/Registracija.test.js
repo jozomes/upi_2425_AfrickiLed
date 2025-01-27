@@ -1,95 +1,102 @@
 const SendData = require('./SendData');
 const axios = require('axios');
-const PohranaSlike = require('./PohranaSlike');
-const JedinstvenMail = jest.fn(); 
-// or
-jest.mock('./JedinstvenMail', () => ({ 
-  default: jest.fn() 
-}));
-
 jest.mock('axios');
-jest.mock('./PohranaSlike');
+
+// Mock dependencies
+jest.mock('./JedinstvenMail', () => jest.fn());
+const mockJedinstvenMail = require('./JedinstvenMail');
 
 describe('SendData', () => {
+    let mockAlert, mockNavigate, mockPohranaSlike, mockEvent;
+
     beforeEach(() => {
+        mockAlert = jest.fn();
+        mockNavigate = jest.fn();
+        mockPohranaSlike = jest.fn();
+        mockEvent = { preventDefault: jest.fn() };
+
         jest.clearAllMocks();
-    })
-  it('uspjesna registracija', async () => {
-    const mockNavigate = jest.fn();
-    const mockPohranaSlike = jest.fn();
-    const mockAlert = jest.fn();
-    jest.mocked(PohranaSlike).mockResolvedValueOnce(true);
-    axios.post.mockResolvedValueOnce({ data: {} });
+    });
 
-    const formData = { 
-        email: 'antegoi@pmfst.hr', 
-        lozinka: 'tajnaLozinka', 
-        ponovi_lozinka: 'tajnaLozinka',
-    };
+    it('izbacit alert ukoliko mail ne zavrsava sa pmfst.hr', async () => {
+        const formData = {
+            email: 'student@gmail.com',
+            lozinka: 'password123',
+            ponovi_lozinku: 'password123',
+        };
 
-    const mockEvent = { preventDefault: jest.fn() }; 
+        await SendData(mockEvent, formData, mockNavigate, mockPohranaSlike, mockAlert);
 
-    await SendData(mockEvent, formData, mockNavigate, mockPohranaSlike, mockAlert); 
+        expect(mockAlert).toHaveBeenCalledWith("Unesite pmfst.hr domenu");
+        expect(mockNavigate).not.toHaveBeenCalled();
+        expect(mockPohranaSlike).not.toHaveBeenCalled();
+    });
 
-    expect(mockAlert).toHaveBeenCalledTimes(1); 
+    it('alert ukoliko se ne podudaraju lozinke', async () => {
+        const formData = {
+            email: 'student@pmfst.hr',
+            lozinka: 'password123',
+            ponovi_lozinku: 'differentPassword',
+        };
 
-  });
+        await SendData(mockEvent, formData, mockNavigate, mockPohranaSlike, mockAlert);
 
-  it('"Unesite pmfst.hr domenu" alert', async () => {
-    const mockNavigate = jest.fn();
-    const mockPohranaSlike = jest.fn();
-    const mockAlert = jest.fn(); 
-    const formData = { 
-        email: 'korisnik@gmail.hr', 
-        lozinka: 'tajnaLozinka', 
-        ponovi_lozinka: 'tajnaLozinka',
-    };
+        expect(mockAlert).toHaveBeenCalledWith("Lozinke se ne podudaraju");
+        expect(mockNavigate).not.toHaveBeenCalled();
+        expect(mockPohranaSlike).not.toHaveBeenCalled();
+    });
 
-    const mockEvent = { preventDefault: jest.fn() }; 
+    it('alert ukoliko se unosi vec postojeci email', async () => {
+        const formData = {
+            email: 'jmestrovi@pmfst.hr',
+            lozinka: 'password123',
+            ponovi_lozinku: 'password123',
+        };
 
-    await SendData(mockEvent, formData, mockNavigate, mockPohranaSlike, mockAlert); 
+        mockJedinstvenMail.mockResolvedValue(false);
 
-    expect(mockAlert).toHaveBeenCalledWith("Unesite pmfst.hr domenu"); 
-  });
+        await SendData(mockEvent, formData, mockNavigate, mockPohranaSlike, mockAlert);
 
-  it('"Lozinke se ne podudaraju" alert', async () => {
-    const mockNavigate = jest.fn();
-    const mockPohranaSlike = jest.fn();
-    const mockAlert = jest.fn();
-    const formData = { 
-      email: 'korisnik@pmfst.hr', 
-      lozinka: 'tajnaLozinka', 
-      ponovi_lozinka: 'drugaLozinka', 
-    };
+        expect(mockAlert).toHaveBeenCalledWith("Ovaj mail se vec koristi");
+        expect(mockNavigate).not.toHaveBeenCalled();
+        expect(mockPohranaSlike).not.toHaveBeenCalled();
+    });
 
-    const mockEvent = { preventDefault: jest.fn() }; 
+    it('uspjesna registracija', async () => {
+        const formData = {
+            email: 'student@pmfst.hr',
+            lozinka: 'password123',
+            ponovi_lozinku: 'password123',
+        };
 
-    await SendData(mockEvent, formData, mockNavigate, mockPohranaSlike, mockAlert); 
+        mockJedinstvenMail.mockResolvedValue(true);
+        axios.post.mockResolvedValue({ data: { success: true } });
 
-    expect(mockAlert).toHaveBeenCalledWith("Lozinke se ne podudaraju"); 
-    expect(axios.post).not.toHaveBeenCalled(); 
-    expect(mockPohranaSlike).not.toHaveBeenCalled(); 
-    expect(mockNavigate).not.toHaveBeenCalled(); 
-  });
+        await SendData(mockEvent, formData, mockNavigate, mockPohranaSlike, mockAlert);
 
-  it('"Ovaj mail se vec koristi" alert', async () => {
-    const mockNavigate = jest.fn();
-    const mockPohranaSlike = jest.fn();
-    const mockAlert = jest.fn();
-    const formData = { 
-      email: 'markolivaja@pmfst.hr', 
-      lozinka: 'tajnaLozinka', 
-      ponovi_lozinka: 'tajnaLozinka', 
-    };
+        expect(axios.post).toHaveBeenCalledWith('http://localhost:5000/users', {
+            email: formData.email,
+            password: formData.lozinka,
+        });
+        expect(mockPohranaSlike).toHaveBeenCalled();
+        expect(mockAlert).toHaveBeenCalledWith("Registracija uspješna!");
+        expect(mockNavigate).toHaveBeenCalledWith("/");
+    });
 
-    
-    JedinstvenMail.mockReturnValueOnce(false); 
-    const mockEvent = { preventDefault: jest.fn() }; 
-    await SendData(mockEvent, formData, mockNavigate, mockPohranaSlike, mockAlert); 
+    it('registration failure (API error)', async () => {
+        const formData = {
+            email: 'student@pmfst.hr',
+            lozinka: 'password123',
+            ponovi_lozinku: 'password123',
+        };
 
-    expect(axios.post).not.toHaveBeenCalled(); 
-    expect(mockPohranaSlike).not.toHaveBeenCalled(); 
-    expect(mockNavigate).not.toHaveBeenCalled(); 
-  });
-  
+        mockJedinstvenMail.mockResolvedValue(true);
+        axios.post.mockRejectedValue(new Error('Network Error'));
+
+        await SendData(mockEvent, formData, mockNavigate, mockPohranaSlike, mockAlert);
+
+        expect(mockAlert).toHaveBeenCalledWith("Došlo je do greške prilikom registracije.");
+        expect(mockNavigate).not.toHaveBeenCalled();
+        expect(mockPohranaSlike).not.toHaveBeenCalled();
+    });
 });

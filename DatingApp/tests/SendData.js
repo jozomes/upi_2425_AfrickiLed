@@ -1,4 +1,12 @@
 const JedinstvenMail = require('./JedinstvenMail.js'); 
+const axios = require('axios');
+const ParseData = (formaPodaci) => {
+    return {
+        email: formaPodaci.email,
+        password: formaPodaci.lozinka,
+        // Add other necessary transformations here
+    };
+  };
 const SendData = async (event, formaPodaci, navigate, PohranaSlike, alertFunction) => { 
     event.preventDefault();
   
