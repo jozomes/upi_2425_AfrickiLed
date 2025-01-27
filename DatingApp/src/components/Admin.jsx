@@ -11,6 +11,29 @@ function Admin() {
         localStorage.removeItem("token");
         navigate("/");
     };
+
+    /*potencijalna zamjena za return()
+    return (
+    <div className="container">
+      <h1>Obavijesti</h1>
+      {email ? (
+        <div className="obavijest">
+          <p>Korisnik za brisanje: {email}</p>
+          <div className="parent_buttons">
+            <button onClick={handleDeleteUser} disabled={loading}>
+              {loading ? 'Obrađujem...' : 'Odobri'}
+            </button>
+          </div>
+        </div>
+      ) : (
+        <p>Nema korisnika za brisanje.</p>
+      )}
+      {poruka && <p>{poruka}</p>}
+    </div>
+  );
+}
+
+    */
     
   return (
     

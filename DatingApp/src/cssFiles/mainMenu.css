@@ -159,3 +159,51 @@ footer a{
   border-radius: 55px;
   width: 10%;
 }
+
+/*za medusobno lajkanje*/
+
+.medusobni-likeovi-container {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: rgb(252, 204, 222);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width:85%;
+}
+
+.medusobni-likeovi-container h2 {
+  font-size: 1.5rem;
+  color:rgb(175, 7, 69);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.likeovi-list {
+  display: flex;
+  flex-direction: column;
+  width:95%;
+  gap: 15px; 
+}
+
+.like-user-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Jedan stupac unutar grida */
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.like-user-grid:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.like-user-mail {
+  font-size: 1rem;
+  color: #555;
+  text-align: center;
+  word-break: break-word;
+}
+

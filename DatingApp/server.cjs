@@ -299,5 +299,17 @@ app.post('/upload-profile-picture', upload.array('profileImages', 10), (req, res
 
 app.use('/profilePictures', express.static('profilePictures'));
 
+//brisanje korisnika
+app.delete('/users/:email', (req, res) => {
+  const email = req.params.email.toLowerCase();
 
+  const userIndex = users.findIndex(user => user.email === email);
+  if (userIndex === -1) {
+    return res.status(404).json({ message: 'Korisnik nije pronađen' });
+  }
 
+  users.splice(userIndex, 1); // Ukloni korisnika iz liste
+  saveUsersToFile(); // Spremi ažuriranu listu u datoteku
+
+  res.status(200).json({ message: `Korisnik s emailom ${email} uspješno uklonjen` });
+});
