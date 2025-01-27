@@ -1,71 +1,112 @@
+const handleSubmit = require('./handleSubmitPrijava.js'); 
+const axios = require('axios');
+const jwtDecode = require('jwt-decode');
 
-const handleSubmit  = require('./handleSubmit.js'); 
 
-global.fetch = jest.fn(); // Mock fetch
+jest.mock('axios');
+jest.mock('jwt-decode', () => jest.fn()); 
+
+const mockNavigate = jest.fn();
+const mockSetError = jest.fn();
+const mockSetCurrentUser = jest.fn();
+
+const mockLocalStorage = (() => {
+  let store = {};
+  return {
+    getItem: (key) => store[key],
+    setItem: (key, value) => (store[key] = value || ''),
+    clear: () => (store = {}),
+  };
+})();
+
+global.localStorage = mockLocalStorage;
 
 describe('handleSubmit', () => {
-    let setError;
+  beforeEach(() => {
+    jest.clearAllMocks();
+    localStorage.clear();
+  });
 
-    beforeAll(() => {
-        global.alert = jest.fn(); 
+  it('izbaciti error ako fali email ili sifra', async () => {
+    const email = ''; 
+    const lozinka = ''; 
+
+    await handleSubmit({ 
+      email, 
+      lozinka, 
+      setError: mockSetError, 
+      navigate: mockNavigate, 
+      setCurrentUser: mockSetCurrentUser 
     });
 
-    beforeEach(() => {
-        setError = jest.fn();
-        fetch.mockClear(); 
-        global.alert.mockClear(); 
+    expect(mockSetError).toHaveBeenCalledWith('Sva polja moraju biti popunjena.');
+    expect(mockNavigate).not.toHaveBeenCalled();
+    expect(mockSetCurrentUser).not.toHaveBeenCalled();
+  });
+
+  it('treba navigirati na admin stranicu ako je user stvarno admin', async () => {
+    const email = 'admin@pmfst.hr';
+    const lozinka = 'admin';
+    const token = 'fakeToken';
+    const decodedToken = { korisnik: { isAdmin: true } };
+
+    axios.get.mockResolvedValueOnce({ data: { token } });
+    jwtDecode.mockReturnValueOnce(decodedToken);
+
+    await handleSubmit({ 
+      email, 
+      lozinka, 
+      setError: mockSetError, 
+      navigate: mockNavigate, 
+      setCurrentUser: mockSetCurrentUser 
     });
 
-    afterAll(() => {
-        delete global.alert; 
+    expect(axios.get).toHaveBeenCalledWith(
+      `http://localhost:5000/login?email=${encodeURIComponent(email)}&lozinka=${encodeURIComponent(lozinka)}`
+    );
+    expect(localStorage.getItem('token')).toBe(token);
+    expect(mockSetCurrentUser).toHaveBeenCalledWith(decodedToken.korisnik);
+    expect(mockNavigate).toHaveBeenCalledWith('/admin-page');
+  });
+
+  it('treba navigirati na mainMenu ukoliko je user', async () => {
+    const email = 'jmestrovi@pmfst.hr';
+    const lozinka = 'volimnasilje';
+    const token = 'fakeToken';
+    const decodedToken = { korisnik: { isAdmin: false } };
+
+    axios.get.mockResolvedValueOnce({ data: { token } });
+    jwtDecode.mockReturnValueOnce(decodedToken);
+
+    await handleSubmit({ 
+      email, 
+      lozinka, 
+      setError: mockSetError, 
+      navigate: mockNavigate, 
+      setCurrentUser: mockSetCurrentUser 
     });
 
-    it('treba vratit grešku ako fali email ili lozinka', async () => {
-        await handleSubmit('', 'password', setError);
-        expect(setError).toHaveBeenCalledWith('Sva polja moraju biti popunjena.');
+    expect(localStorage.getItem('token')).toBe(token);
+    expect(mockSetCurrentUser).toHaveBeenCalledWith(decodedToken.korisnik);
+    expect(mockNavigate).toHaveBeenCalledWith('/MainMenu');
+  });
 
-        await handleSubmit('test@example.com', '', setError);
-        expect(setError).toHaveBeenCalledWith('Sva polja moraju biti popunjena.');
+  it('error ako su uneseni krivi podaci', async () => {
+    const email = 'user@test.com';
+    const lozinka = 'wrongPassword';
+
+    axios.get.mockRejectedValueOnce(new Error('Invalid credentials'));
+
+    await handleSubmit({ 
+      email, 
+      lozinka, 
+      setError: mockSetError, 
+      navigate: mockNavigate, 
+      setCurrentUser: mockSetCurrentUser 
     });
 
-    it('treba vratiti grešku ukoliko su podatci krivi', async () => {
-        fetch.mockResolvedValue({
-            ok: false,
-            json: jest.fn().mockResolvedValue({ error: 'Invalid login' }),
-        });
-
-        await handleSubmit('test@example.com', 'password', setError);
-        expect(setError).toHaveBeenCalledWith('Invalid login');
-        expect(global.alert).not.toHaveBeenCalled();
-    });
-
-    it('treba vratiti genericku error poruku ukoliko dode do bilo kakve druge greske', async () => {
-        fetch.mockResolvedValue({
-            ok: false,
-            json: jest.fn().mockResolvedValue({}),
-        });
-
-        await handleSubmit('test@example.com', 'password', setError);
-        expect(setError).toHaveBeenCalledWith('Neispravni podaci za prijavu');
-        expect(global.alert).not.toHaveBeenCalled();
-    });
-
-    it('pokazati success alert ukoliko je prijava uspjesna', async () => {
-        fetch.mockResolvedValue({
-            ok: true,
-            json: jest.fn().mockResolvedValue({}),
-        });
-
-        await handleSubmit('jmestrovi@pmfst.hr', 'volimnasilje', setError);
-        expect(setError).toHaveBeenCalledWith('');
-        expect(global.alert).toHaveBeenCalledWith('Prijava uspješna!');
-    });
-
-    it('ispisati server error ukoliko fetch ne radi', async () => {
-        fetch.mockRejectedValue(new Error('Network error'));
-
-        await handleSubmit('test@example.com', 'password', setError);
-        expect(setError).toHaveBeenCalledWith('Došlo je do pogreške s poslužiteljem.');
-        expect(global.alert).not.toHaveBeenCalled();
-    });
+    expect(mockSetError).toHaveBeenCalledWith('Uneseni su krivi podaci.');
+    expect(mockNavigate).not.toHaveBeenCalled();
+    expect(mockSetCurrentUser).not.toHaveBeenCalled();
+  });
 });
