@@ -353,8 +353,21 @@ app.delete('/users/:email', (req, res) => {
   users.splice(userIndex, 1); // Ukloni korisnika iz liste
   saveUsersToFile(); // Spremi ažuriranu listu u datoteku
 
+  const prijavljenIndex = prijave.findIndex(element => element === email);
+  prijave.splice(prijavljenIndex, 1);
+  saveReportsToFile();
+
   res.status(200).json({ message: `Korisnik s emailom ${email} uspješno uklonjen` });
 });
+
+app.delete('/odbaci/:email', (req, res) =>{
+  const email = req.params.email.toLowerCase();
+  const prijavljenIndex = prijave.findIndex(element => element === email);
+  prijave.splice(prijavljenIndex, 1);
+  saveReportsToFile();
+
+  res.status(200).json({ message: `Korisnik s emailom ${email} uspješno uklonjen s liste prijava` });
+})
 
 
 app.get('/prijavljeni', (req, res) =>{

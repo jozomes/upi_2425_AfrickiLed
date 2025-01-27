@@ -162,7 +162,7 @@ function MainMenu() {
         }
       });
       await BlockUser();
-      NextPartner();
+      NextPartner(); //uklonit?
     } catch (error) {
       console.error("Greška prilikom prijavljivanja korisnika.", error);
       alert("Nije moguće bprijaviti korisnika. Pokušajte ponovo.");
