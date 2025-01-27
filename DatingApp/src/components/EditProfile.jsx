@@ -34,28 +34,60 @@ function EditProfile() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const podaciZaAzuriranje = {
-            opis: formaPodaci.opis || currentUser.detalji.opis,
-            najdraziProgramskiJezik: formaPodaci.najdraziProgramskiJezik|| currentUser.detalji.najdraziProgramskiJezik,
-            github: formaPodaci.github || currentUser.detalji.github,
-            leetcode: formaPodaci.leetcode || currentUser.detalji.leetcode
-        };
 
-        try {
-            const response = await axios.patch(`http://localhost:5000/update/${currentUser.email}`, {
-                detalji: podaciZaAzuriranje
+        if (!formaPodaci.profileImage) {
+            await UpdateProfile();
+            console.log("azuriran profil");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('profileImages', formaPodaci.profileImage);
+        // formData.append('opis', formaPodaci.opis);
+        // formData.append('fav_language', formaPodaci.najdraziProgramskiJezik);
+        // formData.append('github', formaPodaci.github);
+        // formData.append('leetcode', formaPodaci.leetcode);
+        formData.append('email', currentUser.email);
+
+         try {
+            const response = await fetch('http://localhost:5000/upload-profile-picture', {
+            method: 'POST',
+            body: formData,
             });
+            // Check for non-OK response
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Greška pri uploadu slike:', errorData.message);
+                return;
+            }
 
-            console.log(response);
-          
+            const data = await response.json();
+            console.log('Slika uspješno spremljena:', data);  // Check server response
+            postaviPodatke((prevState) => ({...prevState, profileImage: null}));
+            //await UpdateProfile();
             
-            setCurrentUser({ ...currentUser, detalji: podaciZaAzuriranje });
-            setPoruka('Promjene su uspješno pohranjene!');
         } catch (error) {
-            console.error(error);
-            setPoruka('Došlo je do greške prilikom spremanja promjena.');
+            console.error('Greška prilikom slanja slike:', error);
         }
     };
+
+    const UpdateProfile = async () => {
+
+        try {
+            const response = await axios.patch(`http://localhost:5000/update/${currentUser.email}`,{
+                detalji: {
+                    "opis": formaPodaci.opis,
+                    "najdraziProgramskiJezik": formaPodaci.najdraziProgramskiJezik,
+                    "github": formaPodaci.github,
+                    "leetcode": formaPodaci.leetcode,
+                }
+            });
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
 
     const Exit = () => {
         navigate("/MainMenu");
@@ -140,7 +172,7 @@ function EditProfile() {
                         </div>
                         </div>
                     </div>
-                )} */}
+                )}
 
                 {odabranoPolje === 'najdraziProgramskiJezik' && (
                     <div>

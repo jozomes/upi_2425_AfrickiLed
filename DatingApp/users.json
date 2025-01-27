@@ -70,7 +70,8 @@
     "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1737559302726.jpg",
-      "http://localhost:5000/profilePictures/1737559304634.jpg"
+      "http://localhost:5000/profilePictures/1737559304634.jpg",
+      "http://localhost:5000/profilePictures/1738000765016.jpeg"
     ]
   },
   {
@@ -187,13 +188,17 @@
     "ime": "snoopy",
     "prezime": "pas",
     "detalji": {
-      "najdraziProgramskiJezik": "c++",
-      "github": "drf8tzgui",
-      "leetcode": "h4ew"
+      "najdraziProgramskiJezik": "rust",
+      "github": "snoopyGit",
+      "leetcode": "snoopyLeet"
     },
     "liked": [],
     "blokirani": [],
     "isAdmin": false,
-    "putanjaZaSliku": []
+    "putanjaZaSliku": [
+      "http://localhost:5000/profilePictures/1738000916324.jpeg",
+      "http://localhost:5000/profilePictures/1738000935053.jpg",
+      "http://localhost:5000/profilePictures/1738002141329.jpeg"
+    ]
   }
 ]
