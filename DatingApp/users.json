@@ -11,8 +11,7 @@
       "github": "jozomes",
       "leetcode": "jozomes"
     },
-    "liked": [
-    ],
+    "liked": [],
     "blokirani": [],
     "isAdmin": false,
     "putanjaZaSliku": [
@@ -72,12 +71,19 @@
     "ime": "snoopy",
     "prezime": "pas",
     "detalji": {
+      "opis": "ja sam samo pas",
       "najdraziProgramskiJezik": "rust",
       "github": "snoopyGit",
       "leetcode": "snoopyLeet"
     },
-    "liked": [],
-    "blokirani": [],
+    "liked": [
+      "jmestrovic@pmfst.hr",
+      "ioreb@pmfst.hr"
+    ],
+    "blokirani": [
+      "muvodic@pmfst.hr",
+      "markolivaja@pmfst.hr"
+    ],
     "isAdmin": false,
     "putanjaZaSliku": [
       "http://localhost:5000/profilePictures/1738000916324.jpeg",
@@ -97,8 +103,26 @@
       "leetcode": "marko"
     },
     "putanjaZaSliku": [
-      "http://localhost:5000/profilePictures/1738000765016.jpg",
       "http://localhost:5000/profilePictures/1738000765016.jpeg"
+    ],
+    "liked": [],
+    "blokirani": [],
+    "isAdmin": false
+  },
+  {
+    "email": "kitty@pmfst.hr",
+    "lozinka": "macka",
+    "smjer": "Fizika ",
+    "ime": "Hello",
+    "prezime": "Kitty",
+    "detalji": {
+      "opis": "hello kitty :)",
+      "najdraziProgramskiJezik": "rust",
+      "github": "kitty",
+      "leetcode": "kitty"
+    },
+    "putanjaZaSliku": [
+      "http://localhost:5000/profilePictures/1738023732567.jpg"
     ],
     "liked": [],
     "blokirani": [],

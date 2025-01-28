@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 function EditProfile() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [formaPodaci, postaviPodatke] = useState({
-        opis: currentUser.detalji.opis,
         najdraziProgramskiJezik: currentUser.detalji.najdraziProgramskiJezik,
         github: currentUser.detalji.github,
         leetcode: currentUser.detalji.leetcode,
@@ -71,7 +70,6 @@ function EditProfile() {
         try {
             const response = await axios.patch(`http://localhost:5000/update/${currentUser.email}`,{
                 detalji: {
-                    "opis": formaPodaci.opis,
                     "najdraziProgramskiJezik": formaPodaci.najdraziProgramskiJezik,
                     "github": formaPodaci.github,
                     "leetcode": formaPodaci.leetcode,
@@ -138,26 +136,6 @@ function EditProfile() {
                         Učitaj profilnu sliku
                     </label>
                 </div>
-
-
-                {odabranoPolje === 'opis' && (
-                    <div>
-                        <label htmlFor="description">Malo duži opis:</label>
-                        <div className={stil.inputs}>
-                        <div className={stil.input}>
-                        <textarea
-                            id="description"
-                            name="opis"
-                            minLength="1"
-                            maxLength="100"
-                            value={formaPodaci.opis}
-                            onChange={promjenaUlaza}
-                            placeholder="Duži opis"
-                        />
-                        </div>
-                        </div>
-                    </div>
-                )}
 
                 {odabranoPolje === 'najdraziProgramskiJezik' && (
                     <div>
